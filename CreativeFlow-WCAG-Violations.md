@@ -1,43 +1,17 @@
-# CreativeFlow Marketing - WCAG Violations Analysis
+# CreativeFlow Marketing - WCAG 1.4 Violations Analysis
 
-This document identifies accessibility violations found in the CreativeFlow Marketing subpage for educational purposes.
+This document identifies WCAG 1.4 (Distinguishable) violations found in the CreativeFlow Marketing subpage for educational purposes.
 
 ## Overview
 
-The CreativeFlow Marketing page is a digital marketing agency website showcasing services, portfolio projects, and a contact form. This analysis covers violations against WCAG 2.1 Level AA success criteria.
+The CreativeFlow Marketing page demonstrates violations against WCAG 2.1 Success Criterion 1.4 (Distinguishable), which focuses on making it easier for users to see and hear content including separating foreground from background.
 
 ---
 
-## Identified WCAG Violations
+## WCAG 1.4 Violations Identified
 
-### 1. **Success Criterion 1.1.1 - Non-text Content (Level A)**
-
-**Location:** Services section icons
-**Issue:** Missing alternative text for decorative service icons
-**Impact:** Screen reader users cannot understand what the icons represent
-**Code Example:**
-```html
-<img src="data:image/svg+xml..." class="w-8 h-8" />
-```
-**Expected:** Icons should have descriptive alt text or be marked as decorative
-
----
-
-### 2. **Success Criterion 1.3.1 - Info and Relationships (Level A)**
-
-**Location:** Contact form select dropdown
-**Issue:** Select element lacks proper labeling
-**Impact:** Form fields are not programmatically associated with their purposes
-**Code Example:**
-```html
-<select class="w-full px-4 py-3...">
-    <option value="">Select Service Type</option>
-```
-**Expected:** Form elements should have proper labels or aria-label attributes
-
----
-
-### 3. **Success Criterion 1.4.1 - Use of Color (Level A)**
+### 1. **Success Criterion 1.4.1 - Use of Color (Level A)**
+*"Use more than color in your design"*
 
 **Location:** Portfolio project status indicators
 **Issue:** Project status conveyed only through color (green, yellow, blue dots)
@@ -51,7 +25,8 @@ The CreativeFlow Marketing page is a digital marketing agency website showcasing
 
 ---
 
-### 4. **Success Criterion 1.4.3 - Contrast (Minimum) (Level AA)**
+### 2. **Success Criterion 1.4.3 - Contrast (Minimum) (Level AA)**
+*"Make non-text items easier to see with contrast"*
 
 **Location:** Multiple text elements
 **Issue:** Insufficient color contrast ratios
@@ -63,7 +38,8 @@ The CreativeFlow Marketing page is a digital marketing agency website showcasing
 
 ---
 
-### 5. **Success Criterion 1.4.5 - Images of Text (Level AA)**
+### 3. **Success Criterion 1.4.5 - Images of Text (Level AA)**
+*"Use text, not an image of text"*
 
 **Location:** Site logo in header
 **Issue:** Logo contains text rendered as an image
@@ -76,82 +52,56 @@ The CreativeFlow Marketing page is a digital marketing agency website showcasing
 
 ---
 
-### 6. **Success Criterion 2.1.1 - Keyboard (Level A)**
+### 4. **Success Criterion 1.4.11 - Non-text Contrast (Level AA)**
+*"Make text easier to see with contrast"*
 
-**Location:** Contact form submit button
-**Issue:** Submit button implemented as div with onclick instead of proper button element
+**Location:** Interactive elements (buttons, form fields, focus indicators)
+**Issue:** UI components and states have insufficient contrast against their background
+**Specific Examples:**
+- Button borders: `border: 1px solid #4A5568;` on dark background
+- Form focus indicators: `.poor-focus:focus { outline: 1px solid #666666; }`
+**Impact:** Interactive elements are difficult to perceive, especially for users with visual impairments
+**Expected:** Non-text UI elements should have minimum contrast ratio of 3:1
+
+---
+
+### 5. **Success Criterion 1.4.13 - Content on Hover or Focus (Level AA)**
+*"Content has to be accessible"*
+
+**Location:** Tooltip elements in portfolio and services sections
+**Issue:** Hover-triggered content that cannot be easily accessed or dismissed
 **Code Example:**
 ```html
-<div onclick="submitForm()" class="inline-block bg-blue-600...">
-    Send Message
-</div>
+<h3 class="tooltip-hover" data-tooltip="Strategic planning for brand positioning">Brand Strategy</h3>
+<span class="absolute... opacity-0 group-hover:opacity-100 pointer-events-none">
+    Includes logo design, color schemes, typography
+</span>
 ```
-**Impact:** Button cannot be activated using keyboard navigation
-**Expected:** Use proper button elements that are focusable and activatable via keyboard
-
----
-
-### 7. **Success Criterion 2.4.4 - Link Purpose (In Context) (Level A)**
-
-**Location:** Main navigation links
-**Issue:** Generic link text without clear destination context
-**Code Example:**
-```html
-<a href="#" class="text-white hover:text-blue-300">Home</a>
-<a href="#" class="text-white hover:text-blue-300">Services</a>
-```
-**Impact:** Users cannot determine link purposes, especially when using screen readers
-**Expected:** Links should have descriptive text or additional context about their purpose
-
----
-
-### 8. **Success Criterion 3.3.1 - Error Identification (Level A)**
-
-**Location:** Contact form
-**Issue:** No form validation or error messages
-**Impact:** Users cannot identify and correct input errors
-**Expected:** Form should validate input and provide clear error messages
-
----
-
-### 9. **Success Criterion 3.3.2 - Labels or Instructions (Level A)**
-
-**Location:** All contact form fields
-**Issue:** Form fields rely only on placeholder text without proper labels
-**Code Example:**
-```html
-<input type="text" placeholder="Your Name" class="w-full..." />
-<input type="email" placeholder="Email Address" class="w-full..." />
-```
-**Impact:** Form fields are not properly labeled for assistive technologies
-**Expected:** Each form field should have associated label elements
-
----
-
-### 10. **Success Criterion 4.1.2 - Name, Role, Value (Level A)**
-
-**Location:** Contact form elements and custom interactive elements
-**Issue:** Custom div button lacks proper role and accessibility properties
-**Impact:** Assistive technologies cannot understand the purpose and state of interactive elements
-**Expected:** Interactive elements should have appropriate ARIA roles, names, and states
+**Impact:** 
+- Content appears only on hover, making it inaccessible to keyboard users
+- Tooltips disappear immediately when cursor moves away
+- No way to dismiss content with keyboard
+- Cannot interact with tooltip content due to `pointer-events-none`
+**Expected:** Additional content should be hoverable, dismissible, and persistent
 
 ---
 
 ## Summary
 
-**Total Violations Found:** 10 distinct WCAG violations across 8 success criteria
+**Total 1.4 Violations Found:** 5 distinct violations within the Distinguishable guideline
 **Severity Levels:**
-- **Level A violations:** 7 (critical for basic accessibility)
-- **Level AA violations:** 3 (important for enhanced accessibility)
+- **Level A violations:** 1 (Use of Color)
+- **Level AA violations:** 4 (Contrast, Images of Text, Non-text Contrast, Content on Hover/Focus)
 
-**Most Critical Issues:**
-1. Keyboard inaccessibility of submit button
-2. Missing form labels
-3. Poor color contrast
-4. Images of text in logo
+**Focus Areas:**
+1. **Visual Perception** - Ensuring content can be distinguished from background
+2. **Color Independence** - Not relying solely on color to convey information
+3. **Text Accessibility** - Using real text instead of images of text
+4. **Interactive Element Visibility** - Ensuring UI components are perceivable
+5. **Additional Content Access** - Making hover/focus content accessible to all users
 
-**Recommended Priority:** Address Level A violations first, then Level AA violations for comprehensive accessibility compliance.
+**Educational Value:** This page demonstrates common visual accessibility barriers that affect users with various visual impairments, color blindness, and those using assistive technologies.
 
 ---
 
-*This analysis is for educational purposes to help identify and understand common WCAG violations in web development.*
+*This analysis focuses specifically on WCAG 2.1 Success Criterion 1.4 violations for targeted accessibility testing and learning.*
