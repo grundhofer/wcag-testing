@@ -561,6 +561,38 @@
         .skip-to-content:focus {
             top: 0;
         }
+        
+        /* TaskFlow 1.3 violation styles */
+        #taskflow .reorder-visual {
+            display: flex;
+            flex-direction: column;
+        }
+        #taskflow .reorder-visual .visual-first {
+            order: -1;
+        }
+        
+        /* 1.3.4 Orientation - Lock to portrait only */
+        @media screen and (orientation: landscape) {
+            #taskflow .orientation-restricted {
+                display: none;
+            }
+            #taskflow .landscape-warning {
+                display: block !important;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 2rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                z-index: 9999;
+                text-align: center;
+            }
+        }
+        #taskflow .landscape-warning {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -754,31 +786,31 @@
                                     alt="CreativeFlow Marketing logo"
                                     class="mb-8"
                                 />
-                                <h1 class="text-4xl font-bold mb-4">Digital Marketing Excellence</h1>
+                                <h1 class="text-4xl font-bold mb-4">Digitale Marketing-Exzellenz</h1>
                                 <p class="text-xl" style="color: #b0b0b0;">
-                                    We transform brands through innovative digital strategies and creative solutions.
+                                    Wir transformieren Marken durch innovative digitale Strategien und kreative Lösungen.
                                 </p>
                             </div>
                             
                             <nav class="hidden md:block">
                                 <ul class="flex space-x-6">
-                                    <li><a href="#home" class="text-white hover:text-blue-300">Home</a></li>
-                                    <li><a href="#services" class="text-white hover:text-blue-300">Our Services</a></li>
-                                    <li><a href="#portfolio" class="text-white hover:text-blue-300">View Portfolio</a></li>
-                                    <li><a href="#about" class="text-white hover:text-blue-300">About Us</a></li>
-                                    <li><a href="#contact" class="text-white hover:text-blue-300">Contact Form</a></li>
+                                    <li><a href="#home" class="text-white hover:text-blue-300">Startseite</a></li>
+                                    <li><a href="#services" class="text-white hover:text-blue-300">Unsere Leistungen</a></li>
+                                    <li><a href="#portfolio" class="text-white hover:text-blue-300">Portfolio ansehen</a></li>
+                                    <li><a href="#about" class="text-white hover:text-blue-300">Über uns</a></li>
+                                    <li><a href="#contact" class="text-white hover:text-blue-300">Kontaktformular</a></li>
                                 </ul>
                             </nav>
                         </div>
                         
                         <!-- CTA Section -->
                         <div class="mt-12 text-center">
-                            <h2 class="text-2xl mb-6">Ready to elevate your brand?</h2>
+                            <h2 class="text-2xl mb-6">Bereit, Ihre Marke zu verbessern?</h2>
                             <button class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold mr-4" style="border: 1px solid #4A5568;">
-                                Get Started
+                                Jetzt starten
                             </button>
                             <button class="border hover:bg-white hover:text-gray-900 px-8 py-3 rounded-lg font-semibold" style="border-color: #718096;">
-                                View Our Work
+                                Unsere Arbeit ansehen
                             </button>
                         </div>
                     </div>
@@ -787,7 +819,7 @@
                 <!-- Services Section -->
                 <section class="py-16 bg-gray-800">
                     <div class="container">
-                        <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
+                        <h2 class="text-3xl font-bold text-center mb-12">Unsere Leistungen</h2>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                             <!-- Service 1 -->
@@ -795,8 +827,8 @@
                                 <div class="w-16 h-16 bg-blue-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
                                     <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTMuMDkgOC4yNkwyMCA5TDEzLjA5IDE1Ljc0TDEyIDIyTDEwLjkxIDE1Ljc0TDQgOUwxMC45MSA4LjI2TDEyIDJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" class="w-8 h-8" alt="Brand Strategy icon" />
                                 </div>
-                                <h3 class="text-xl font-semibold mb-2 tooltip-hover" data-tooltip="Strategic planning for brand positioning">Brand Strategy</h3>
-                                <p style="color: #999999;">Comprehensive brand positioning and messaging development</p>
+                                <h3 class="text-xl font-semibold mb-2 tooltip-hover" data-tooltip="Strategische Planung für Markenpositionierung">Markenstrategie</h3>
+                                <p style="color: #999999;">Umfassende Markenpositionierung und Nachrichtenentwicklung</p>
                             </div>
                             
                             <!-- Service 2 -->
@@ -804,8 +836,8 @@
                                 <div class="w-16 h-16 bg-green-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
                                     <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMNS41IDlINS41VjIwSDEwVjE0SDE0VjIwSDE4LjVWOUwxMiAyWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+" class="w-8 h-8" alt="Digital Marketing icon"/>
                                 </div>
-                                <h3 class="text-xl font-semibold mb-2">Digital Marketing</h3>
-                                <p class="text-gray-300">Multi-channel campaigns that drive engagement and conversions</p>
+                                <h3 class="text-xl font-semibold mb-2">Digitales Marketing</h3>
+                                <p class="text-gray-300">Multikanal-Kampagnen für Engagement und Konversionen</p>
                             </div>
                             
                             <!-- Service 3 -->
@@ -813,8 +845,8 @@
                                 <div class="w-16 h-16 bg-purple-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
                                     <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcgN0gxN1YxN0g3VjdaTTkgOVYxNUgxNVY5SDlaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" class="w-8 h-8" alt="Web Design icon"/>
                                 </div>
-                                <h3 class="text-xl font-semibold mb-2">Web Design</h3>
-                                <p class="text-gray-300">Responsive websites that convert visitors into customers</p>
+                                <h3 class="text-xl font-semibold mb-2">Webdesign</h3>
+                                <p class="text-gray-300">Responsive Websites, die Besucher zu Kunden machen</p>
                             </div>
                             
                             <!-- Service 4 -->
@@ -822,8 +854,8 @@
                                 <div class="w-16 h-16 bg-red-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
                                     <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTUuMDkgOC4yNkwyMiA5TDE3IDEzTDE4LjE4IDIxTDEyIDE3TDUuODIgMjFMNyAxM0wyIDlMOC45MSA4LjI2TDEyIDJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" class="w-8 h-8" alt="Content Creation icon"/>
                                 </div>
-                                <h3 class="text-xl font-semibold mb-2">Content Creation</h3>
-                                <p class="text-gray-300">Compelling content that tells your brand story effectively</p>
+                                <h3 class="text-xl font-semibold mb-2">Content-Erstellung</h3>
+                                <p class="text-gray-300">Überzeugende Inhalte, die Ihre Markengeschichte effektiv erzählen</p>
                             </div>
                         </div>
                     </div>
@@ -832,7 +864,7 @@
                 <!-- Portfolio Section -->
                 <section class="py-16 bg-gray-700">
                     <div class="container">
-                        <h2 class="text-3xl font-bold mb-8">Our Portfolio</h2>
+                        <h2 class="text-3xl font-bold mb-8">Unser Portfolio</h2>
                         <p class="text-gray-300 mb-12 text-center max-w-2xl mx-auto">
                             We've helped brands across industries achieve their marketing goals through strategic design and innovative campaigns.
                         </p>
@@ -842,29 +874,29 @@
                             <div class="bg-gray-800 rounded-lg overflow-hidden p-6">
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                                    <span class="text-xs text-gray-400">Completed</span>
+                                    <span class="text-xs text-gray-400">Abgeschlossen</span>
                                 </div>
                                 
                                 <div class="h-48 rounded-lg mb-4 overflow-hidden bg-gray-600 flex items-center justify-center">
                                     <div class="text-center text-gray-300">
                                         <div class="text-4xl mb-2">🎨</div>
-                                        <div class="text-sm font-medium">Brand Identity Design</div>
-                                        <div class="text-xs text-gray-400 mt-1">Logo & Visual Identity</div>
+                                        <div class="text-sm font-medium">Markenidentitäts-Design</div>
+                                        <div class="text-xs text-gray-400 mt-1">Logo & Visuelle Identität</div>
                                     </div>
                                 </div>
                                 
                                 <h3 class="text-xl font-semibold mb-2">TechFlow Startup Rebrand</h3>
                                 <p style="color: #666666;" class="text-sm mb-4">
-                                    Complete visual identity redesign for emerging fintech company, including logo, color palette, and brand guidelines.
+                                    Komplette visuelle Identitäts-Neugestaltung für aufstrebendes Fintech-Unternehmen, einschließlich Logo, Farbpalette und Markenrichtlinien.
                                 </p>
                                 <div class="flex justify-between items-center">
                                     <span class="text-sm text-blue-400 relative group">
-                                        Brand Identity
+                                        Markenidentität
                                         <span class="absolute bottom-full left-0 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap">
-                                            Includes logo design, color schemes, typography
+                                            Beinhaltet Logo-Design, Farbschemata, Typografie
                                         </span>
                                     </span>
-                                    <span class="text-sm text-gray-400">6 months</span>
+                                    <span class="text-sm text-gray-400">6 Monate</span>
                                 </div>
                             </div>
                             
@@ -878,18 +910,18 @@
                                 <div class="h-48 rounded-lg mb-4 overflow-hidden bg-gray-600 flex items-center justify-center">
                                     <div class="text-center text-gray-300">
                                         <div class="text-4xl mb-2">🛒</div>
-                                        <div class="text-sm font-medium">E-commerce Platform</div>
-                                        <div class="text-xs text-gray-400 mt-1">Online Shopping Experience</div>
+                                        <div class="text-sm font-medium">E-Commerce-Plattform</div>
+                                        <div class="text-xs text-gray-400 mt-1">Online-Shopping-Erlebnis</div>
                                     </div>
                                 </div>
                                 
                                 <h3 class="text-xl font-semibold mb-2">ShopSmart E-commerce Platform</h3>
                                 <p class="text-gray-300 text-sm mb-4">
-                                    Modern e-commerce platform with seamless user experience, advanced search functionality, and mobile-first design.
+                                    Moderne E-Commerce-Plattform mit nahtlosem Benutzererlebnis, erweiterten Suchfunktionen und Mobile-First-Design.
                                 </p>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-sm text-green-400">Web Development</span>
-                                    <span class="text-sm text-gray-400">8 months</span>
+                                    <span class="text-sm text-green-400">Webentwicklung</span>
+                                    <span class="text-sm text-gray-400">8 Monate</span>
                                 </div>
                             </div>
                             
@@ -897,24 +929,24 @@
                             <div class="bg-gray-800 rounded-lg overflow-hidden p-6">
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="w-3 h-3 rounded-full bg-blue-500"></div>
-                                    <span class="text-xs text-gray-400">Planning</span>
+                                    <span class="text-xs text-gray-400">Planung</span>
                                 </div>
                                 
                                 <div class="h-48 rounded-lg mb-4 overflow-hidden bg-gray-600 flex items-center justify-center">
                                     <div class="text-center text-gray-300">
                                         <div class="text-4xl mb-2">📊</div>
-                                        <div class="text-sm font-medium">Annual Report Design</div>
-                                        <div class="text-xs text-gray-400 mt-1">Corporate Communications</div>
+                                        <div class="text-sm font-medium">Jahresbericht-Design</div>
+                                        <div class="text-xs text-gray-400 mt-1">Unternehmenskommunikation</div>
                                     </div>
                                 </div>
                                 
-                                <h3 class="text-xl font-semibold mb-2">GlobalTech Annual Report</h3>
+                                <h3 class="text-xl font-semibold mb-2">GlobalTech Jahresbericht</h3>
                                 <p class="text-gray-300 text-sm mb-4">
-                                    Corporate annual report design with interactive data visualization and comprehensive financial analysis.
+                                    Corporate Jahresbericht-Design mit interaktiver Datenvisualisierung und umfassender Finanzanalyse.
                                 </p>
                                 <div class="flex justify-between items-center">
                                     <span class="text-sm text-purple-400">Print & Digital</span>
-                                    <span class="text-sm text-gray-400">4 months</span>
+                                    <span class="text-sm text-gray-400">4 Monate</span>
                                 </div>
                             </div>
                         </div>
@@ -923,19 +955,19 @@
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                             <div>
                                 <div class="text-3xl font-bold text-blue-400 mb-2">150+</div>
-                                <div class="text-gray-300">Projects Completed</div>
+                                <div class="text-gray-300">Projekte abgeschlossen</div>
                             </div>
                             <div>
                                 <div class="text-3xl font-bold text-green-400 mb-2">98%</div>
-                                <div class="text-gray-300">Client Satisfaction</div>
+                                <div class="text-gray-300">Kundenzufriedenheit</div>
                             </div>
                             <div>
                                 <div class="text-3xl font-bold text-purple-400 mb-2">5+</div>
-                                <div class="text-gray-300">Years Experience</div>
+                                <div class="text-gray-300">Jahre Erfahrung</div>
                             </div>
                             <div>
                                 <div class="text-3xl font-bold text-red-400 mb-2">24</div>
-                                <div class="text-gray-300">Industry Awards</div>
+                                <div class="text-gray-300">Branchenauszeichnungen</div>
                             </div>
                         </div>
                     </div>
@@ -945,15 +977,15 @@
                 <section class="py-16 bg-gray-800">
                     <div class="container">
                         <div class="max-w-2xl mx-auto">
-                            <h2 class="text-3xl font-bold text-center mb-8">Start Your Project</h2>
+                            <h2 class="text-3xl font-bold text-center mb-8">Starten Sie Ihr Projekt</h2>
                             <p class="text-gray-300 text-center mb-12">
-                                Ready to transform your brand? Let's discuss your project requirements and create something amazing together.
+                                Bereit, Ihre Marke zu transformieren? Lassen Sie uns Ihre Projektanforderungen besprechen und gemeinsam etwas Erstaunliches schaffen.
                             </p>
                             
                             <form class="space-y-6">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
-                                        <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
+                                        <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Vollständiger Name</label>
                                         <input 
                                             type="text" 
                                             id="name"
@@ -962,7 +994,7 @@
                                         />
                                     </div>
                                     <div>
-                                        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                                        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">E-Mail-Adresse</label>
                                         <input 
                                             type="email" 
                                             id="email"
@@ -973,7 +1005,7 @@
                                 </div>
                                 
                                 <div>
-                                    <label for="company" class="block text-sm font-medium text-gray-300 mb-2">Company Name</label>
+                                    <label for="company" class="block text-sm font-medium text-gray-300 mb-2">Firmenname</label>
                                     <input 
                                         type="text" 
                                         id="company"
@@ -983,18 +1015,18 @@
                                 </div>
                                 
                                 <div>
-                                    <label for="service" class="block text-sm font-medium text-gray-300 mb-2">Service Type</label>
+                                    <label for="service" class="block text-sm font-medium text-gray-300 mb-2">Service-Typ</label>
                                     <select id="service" name="service" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none">
-                                        <option value="">Select Service Type</option>
-                                        <option value="brand">Brand Strategy</option>
-                                        <option value="digital">Digital Marketing</option>
-                                        <option value="web">Web Design</option>
-                                        <option value="content">Content Creation</option>
+                                        <option value="">Service-Typ auswählen</option>
+                                        <option value="brand">Markenstrategie</option>
+                                        <option value="digital">Digitales Marketing</option>
+                                        <option value="web">Webdesign</option>
+                                        <option value="content">Content-Erstellung</option>
                                     </select>
                                 </div>
                                 
                                 <div>
-                                    <label for="project" class="block text-sm font-medium text-gray-300 mb-2">Project Details</label>
+                                    <label for="project" class="block text-sm font-medium text-gray-300 mb-2">Projektdetails</label>
                                     <textarea 
                                         id="project"
                                         name="project"
@@ -1005,7 +1037,7 @@
                                 
                                 <div class="text-center">
                                     <button type="submit" onclick="submitForm(); return false;" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold text-white transition-colors focus:outline-none">
-                                        Send Message
+                                        Nachricht senden
                                     </button>
                                 </div>
                             </form>
@@ -1017,15 +1049,22 @@
         
         <!-- TaskFlow Pro Page -->
         <div id="taskflow" class="page">
-            <div class="min-h-screen bg-gray-50">
-                <!-- Header -->
+            <div class="min-h-screen bg-gray-50 orientation-restricted">
+                <!-- Landscape orientation warning -->
+                <div class="landscape-warning">
+                    <h2 class="text-2xl font-bold mb-4">Bitte drehen Sie Ihr Gerät</h2>
+                    <p>Diese Anwendung funktioniert am besten im Hochformat.</p>
+                </div>
+                
+                <!-- Header with meaningful sequence issue -->
                 <header class="bg-white border-b border-gray-200">
                     <div class="container py-6">
-                        <div class="flex justify-between items-center">
+                        <div class="flex justify-between items-center reorder-visual">
                             <h1 class="text-3xl font-bold text-gray-900" data-i18n-key="taskflow.title">TaskFlow Pro</h1>
+                            <!-- VIOLATION 1.3.2: Visual order doesn't match DOM order -->
                             <div class="flex items-center gap-4">
                                 <span class="text-sm text-gray-600" data-i18n-key="taskflow.welcome">Willkommen, Sarah</span>
-                                <button class="btn btn-primary" data-i18n-key="taskflow.newTask">Neue Aufgabe</button>
+                                <button class="btn btn-primary visual-first" data-i18n-key="taskflow.newTask">Neue Aufgabe</button>
                             </div>
                         </div>
                     </div>
@@ -1069,7 +1108,7 @@
                                     </div>
                                     <div class="flex justify-between text-xs text-gray-500 mt-2">
                                         <span>Fällig: 15. Sep</span>
-                                        <span style="color: #ff0000;">Hoch</span> <!-- VIOLATION: Color only indicator -->
+                                        <span class="text-red-600">Priorität: Hoch</span>
                                     </div>
                                 </div>
                                 
@@ -1081,7 +1120,7 @@
                                     </div>
                                     <div class="flex justify-between text-xs text-gray-500 mt-2">
                                         <span>Fällig: 30. Sep</span>
-                                        <span style="color: #ffaa00;">Mittel</span>
+                                        <span class="text-yellow-600">Priorität: Mittel</span>
                                     </div>
                                 </div>
                                 
@@ -1093,19 +1132,21 @@
                                     </div>
                                     <div class="flex justify-between text-xs text-gray-500 mt-2">
                                         <span>Fällig: 8. Sep</span>
-                                        <span style="color: #00aa00;">Niedrig</span>
+                                        <span class="text-green-600">Priorität: Niedrig</span>
                                     </div>
                                 </div>
                             </div>
                             
-                            <!-- Task List -->
+                            <!-- Task List with 1.3.1 and 1.3.3 violations -->
                             <div class="business-card">
                                 <h3 class="text-xl font-semibold mb-4">Aktuelle Aufgaben</h3>
+                                <!-- VIOLATION 1.3.3: Instructions rely on sensory characteristics -->
+                                <p class="text-sm text-gray-600 mb-3">Klicken Sie auf das runde Symbol links, um Aufgaben abzuhaken. Die grünen Kästchen zeigen erledigte Aufgaben.</p>
                                 <div class="space-y-3">
                                     <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
-                                        <!-- VIOLATION: Missing form labels -->
+                                        <!-- VIOLATION 1.3.1: Missing form labels -->
                                         <div class="flex items-center gap-3">
-                                            <input type="checkbox" class="w-4 h-4">
+                                            <input type="checkbox" class="w-4 h-4 rounded">
                                             <div>
                                                 <div class="font-medium">Homepage Mockup erstellen</div>
                                                 <div class="text-sm text-gray-600">Website-Redesign • Sarah Weber</div>
@@ -1140,7 +1181,44 @@
                         <!-- Sidebar -->
                         <div class="lg:col-span-1">
                             <div class="space-y-6">
-                                <!-- Team Activity -->
+                                <!-- User Profile Form with 1.3.5 violations -->
+                                <div class="business-card">
+                                    <h3 class="text-lg font-semibold mb-4">Profil Aktualisieren</h3>
+                                    <!-- VIOLATION 1.3.5: Missing autocomplete attributes for input purpose -->
+                                    <form class="space-y-3">
+                                        <input type="text" placeholder="Vollständiger Name" class="w-full px-3 py-2 border border-gray-300 rounded">
+                                        <input type="email" placeholder="E-Mail Adresse" class="w-full px-3 py-2 border border-gray-300 rounded">
+                                        <input type="tel" placeholder="Telefonnummer" class="w-full px-3 py-2 border border-gray-300 rounded">
+                                        <input type="text" placeholder="Geburtsdatum (TT.MM.JJJJ)" class="w-full px-3 py-2 border border-gray-300 rounded">
+                                        <button type="submit" class="btn btn-primary w-full">Speichern</button>
+                                    </form>
+                                </div>
+                                
+                                <!-- Team Activity with table lacking proper structure -->
+                                <div class="business-card">
+                                    <h3 class="text-lg font-semibold mb-4" data-i18n-key="taskflow.recentActivity">Team Statistiken</h3>
+                                    <!-- VIOLATION 1.3.1: Table without proper header associations -->
+                                    <table class="w-full text-sm">
+                                        <tr class="border-b">
+                                            <td class="py-2 font-semibold">Mitglied</td>
+                                            <td class="py-2 font-semibold text-right">Aufgaben</td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="py-2">Sarah Weber</td>
+                                            <td class="py-2 text-right">12</td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="py-2">Michael Schmidt</td>
+                                            <td class="py-2 text-right">8</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2">Lisa Müller</td>
+                                            <td class="py-2 text-right">15</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                
+                                <!-- Original Team Activity moved down -->
                                 <div class="business-card">
                                     <h3 class="text-lg font-semibold mb-4" data-i18n-key="taskflow.recentActivity">Letzte Aktivitäten</h3>
                                     <div class="space-y-3">
@@ -1168,10 +1246,13 @@
                                     </div>
                                 </div>
                                 
-                                <!-- Upcoming Deadlines -->
+                                <!-- Upcoming Deadlines with 1.3.2 sequence issue -->
                                 <div class="business-card">
                                     <h3 class="text-lg font-semibold mb-4">Anstehende Fristen</h3>
-                                    <div class="space-y-3">
+                                    <!-- VIOLATION 1.3.3: More sensory characteristic instructions -->
+                                    <p class="text-sm text-gray-600 mb-3">Die roten Einträge unten sind dringend. Wählen Sie den blauen Bereich für Details.</p>
+                                    <!-- VIOLATION 1.3.2: Visual order changed with CSS but DOM order remains -->
+                                    <div class="space-y-3" style="display: flex; flex-direction: column-reverse;">
                                         <div class="p-3 bg-red-50 border-l-4 border-red-400">
                                             <div class="font-medium text-red-800">Marketing Grafiken</div>
                                             <div class="text-sm text-red-600">Heute fällig</div>
