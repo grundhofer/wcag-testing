@@ -1,0 +1,2461 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCAG Testing Platform - Educational Accessibility Learning</title>
+    <meta name="description" content="Interactive educational platform for learning WCAG compliance through real business website examples with intentional violations for educational purposes">
+    
+    <style>
+        /* ===============================================
+           WCAG Testing Platform - Complete Embedded CSS
+           =============================================== */
+        
+        /* Reset and Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* CSS Custom Properties */
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-dark: #1e40af;
+            --primary-blue-light: #3b82f6;
+            
+            --secondary-gray: #64748b;
+            --secondary-gray-light: #94a3b8;
+            --secondary-gray-dark: #475569;
+            
+            --accent-emerald: #059669;
+            --accent-emerald-dark: #047857;
+            --accent-emerald-light: #10b981;
+            
+            --neutral-50: #f8fafc;
+            --neutral-100: #f1f5f9;
+            --neutral-200: #e2e8f0;
+            --neutral-300: #cbd5e1;
+            --neutral-400: #94a3b8;
+            --neutral-500: #64748b;
+            --neutral-600: #475569;
+            --neutral-700: #334155;
+            --neutral-800: #1e293b;
+            --neutral-900: #0f172a;
+            
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            
+            --background: #ffffff;
+            --background-alt: #f8fafc;
+            
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            
+            --line-height-base: 1.6;
+            --border-radius: 0.5rem;
+            --border-radius-sm: 0.25rem;
+            --border-radius-lg: 0.75rem;
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            
+            --spacing-1: 0.25rem;
+            --spacing-2: 0.5rem;
+            --spacing-3: 0.75rem;
+            --spacing-4: 1rem;
+            --spacing-5: 1.25rem;
+            --spacing-6: 1.5rem;
+            --spacing-8: 2rem;
+            --spacing-10: 2.5rem;
+            --spacing-12: 3rem;
+            --spacing-16: 4rem;
+            --spacing-20: 5rem;
+            --spacing-24: 6rem;
+        }
+        
+        body {
+            background: var(--background);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-base);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-4);
+        }
+        
+        h1 { font-size: var(--font-size-4xl); }
+        h2 { font-size: var(--font-size-3xl); }
+        h3 { font-size: var(--font-size-2xl); }
+        h4 { font-size: var(--font-size-xl); }
+        h5 { font-size: var(--font-size-lg); }
+        h6 { font-size: var(--font-size-base); }
+        
+        p {
+            margin-bottom: var(--spacing-4);
+        }
+        
+        a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        a:hover {
+            color: var(--primary-blue-dark);
+            text-decoration: underline;
+        }
+        
+        /* Layout System */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-4);
+        }
+        
+        .min-h-screen {
+            min-height: 100vh;
+        }
+        
+        /* Page System */
+        .page {
+            display: none;
+            min-height: 100vh;
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Navigation */
+        .nav {
+            background: white;
+            border-bottom: 1px solid var(--neutral-200);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-brand {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-2);
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+        
+        .nav-item {
+            display: inline-block;
+        }
+        
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--spacing-2) var(--spacing-4);
+            border-radius: var(--border-radius);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-blue);
+            background-color: var(--neutral-50);
+            text-decoration: none;
+        }
+        
+        .nav-link.active {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .nav-link.active:hover {
+            background-color: var(--primary-blue-dark);
+            color: white;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: var(--spacing-3) var(--spacing-6);
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            font-size: var(--font-size-base);
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-blue-dark);
+            box-shadow: var(--shadow-md);
+            text-decoration: none;
+        }
+        
+        .btn-secondary {
+            background-color: var(--accent-emerald);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--accent-emerald-dark);
+            text-decoration: none;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Cards */
+        .business-card {
+            background: white;
+            border: 1px solid var(--neutral-200);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-6);
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.2s ease;
+        }
+        
+        .business-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Grid System */
+        .grid {
+            display: grid;
+        }
+        
+        .grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+        .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+        
+        .gap-6 { gap: var(--spacing-6); }
+        .gap-8 { gap: var(--spacing-8); }
+        
+        /* Flexbox */
+        .flex { display: flex; }
+        .flex-wrap { flex-wrap: wrap; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-2 { gap: var(--spacing-2); }
+        .gap-4 { gap: var(--spacing-4); }
+        
+        /* Spacing */
+        .p-4 { padding: var(--spacing-4); }
+        .p-6 { padding: var(--spacing-6); }
+        .p-8 { padding: var(--spacing-8); }
+        .py-4 { padding-top: var(--spacing-4); padding-bottom: var(--spacing-4); }
+        .py-6 { padding-top: var(--spacing-6); padding-bottom: var(--spacing-6); }
+        .py-8 { padding-top: var(--spacing-8); padding-bottom: var(--spacing-8); }
+        .py-12 { padding-top: var(--spacing-12); padding-bottom: var(--spacing-12); }
+        .py-20 { padding-top: var(--spacing-20); padding-bottom: var(--spacing-20); }
+        .px-4 { padding-left: var(--spacing-4); padding-right: var(--spacing-4); }
+        .px-6 { padding-left: var(--spacing-6); padding-right: var(--spacing-6); }
+        
+        .m-4 { margin: var(--spacing-4); }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .mb-2 { margin-bottom: var(--spacing-2); }
+        .mb-4 { margin-bottom: var(--spacing-4); }
+        .mb-6 { margin-bottom: var(--spacing-6); }
+        .mb-8 { margin-bottom: var(--spacing-8); }
+        .mb-12 { margin-bottom: var(--spacing-12); }
+        .mt-4 { margin-top: var(--spacing-4); }
+        .mt-6 { margin-top: var(--spacing-6); }
+        .mt-8 { margin-top: var(--spacing-8); }
+        .mt-16 { margin-top: var(--spacing-16); }
+        
+        /* Text */
+        .text-center { text-align: center; }
+        .text-sm { font-size: var(--font-size-sm); }
+        .text-base { font-size: var(--font-size-base); }
+        .text-lg { font-size: var(--font-size-lg); }
+        .text-xl { font-size: var(--font-size-xl); }
+        .text-2xl { font-size: var(--font-size-2xl); }
+        .text-3xl { font-size: var(--font-size-3xl); }
+        .text-4xl { font-size: var(--font-size-4xl); }
+        
+        .font-medium { font-weight: 500; }
+        .font-semibold { font-weight: 600; }
+        .font-bold { font-weight: 700; }
+        
+        .text-white { color: #ffffff; }
+        .text-gray-400 { color: var(--neutral-400); }
+        .text-gray-500 { color: var(--neutral-500); }
+        .text-gray-600 { color: var(--neutral-600); }
+        .text-gray-700 { color: var(--neutral-700); }
+        .text-gray-900 { color: var(--neutral-900); }
+        .text-blue-600 { color: var(--primary-blue); }
+        .text-green-600 { color: var(--accent-emerald); }
+        
+        /* Backgrounds */
+        .bg-white { background-color: #ffffff; }
+        .bg-gray-50 { background-color: var(--neutral-50); }
+        .bg-gray-100 { background-color: var(--neutral-100); }
+        .bg-gray-200 { background-color: var(--neutral-200); }
+        .bg-gray-800 { background-color: var(--neutral-800); }
+        .bg-gray-900 { background-color: var(--neutral-900); }
+        .bg-blue-600 { background-color: var(--primary-blue-light); }
+        .bg-green-500 { background-color: var(--accent-emerald-light); }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+            color: white;
+            padding: var(--spacing-20) 0;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: var(--font-size-4xl);
+            margin-bottom: var(--spacing-6);
+        }
+        
+        .hero p {
+            font-size: var(--font-size-xl);
+            opacity: 0.9;
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+        }
+        
+        .language-switcher select {
+            padding: var(--spacing-2) var(--spacing-3);
+            border: 1px solid var(--neutral-300);
+            border-radius: var(--border-radius-sm);
+            background: white;
+            font-size: var(--font-size-sm);
+        }
+        
+        /* Forms */
+        input, textarea, select {
+            padding: var(--spacing-3) var(--spacing-4);
+            border: 1px solid var(--neutral-300);
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-base);
+            transition: border-color 0.2s ease;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        /* WCAG Violation Styles (Educational) */
+        .violation-low-contrast {
+            color: #a8a8a8 !important;
+            background-color: #f0f0f0 !important;
+        }
+        
+        .violation-fixed-size {
+            font-size: 12px !important;
+        }
+        
+        .violation-color-only {
+            border: none !important;
+            background: none !important;
+        }
+        
+        .violation-color-only.error {
+            color: red !important;
+        }
+        
+        .violation-color-only.success {
+            color: green !important;
+        }
+        
+        .violation-keyboard-trap:focus {
+            outline: none !important;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            padding: var(--spacing-2);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+        
+        /* Focus Styles */
+        *:focus-visible {
+            outline: 2px solid var(--primary-blue);
+            outline-offset: 2px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
+            .grid-cols-3 { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-container {
+                flex-wrap: wrap;
+            }
+            
+            .grid-cols-4,
+            .grid-cols-3,
+            .grid-cols-2 {
+                grid-template-columns: repeat(1, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: var(--font-size-3xl);
+            }
+            
+            .hero p {
+                font-size: var(--font-size-lg);
+            }
+            
+            .container {
+                padding: 0 var(--spacing-3);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .btn {
+                padding: var(--spacing-2) var(--spacing-4);
+                font-size: var(--font-size-sm);
+            }
+        }
+        
+        /* Utility Classes */
+        .hidden { display: none !important; }
+        .block { display: block; }
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .w-full { width: 100%; }
+        .h-full { height: 100%; }
+        .max-w-4xl { max-width: 56rem; }
+        .cursor-pointer { cursor: pointer; }
+        .transition-all { transition: all 0.2s ease; }
+        
+        /* Loading State */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        /* Skip Link */
+        .skip-to-content {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-blue);
+            color: white;
+            padding: var(--spacing-2) var(--spacing-4);
+            text-decoration: none;
+            z-index: 200;
+        }
+        
+        .skip-to-content:focus {
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to content link -->
+    <a href="#main" class="skip-to-content">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a class="nav-brand" onclick="navigateTo('home')" data-i18n-key="brand">
+                WCAG Testing Platform
+            </a>
+            
+            <!-- Desktop Menu -->
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a class="nav-link" onclick="navigateTo('home')" data-page="home">
+                        🏠 <span data-i18n-key="nav.home">Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="navigateTo('creativeflow')" data-page="creativeflow">
+                        🎨 <span data-i18n-key="nav.creativeflow">CreativeFlow</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="navigateTo('taskflow')" data-page="taskflow">
+                        📊 <span data-i18n-key="nav.taskflow">TaskFlow</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="navigateTo('techdaily')" data-page="techdaily">
+                        📰 <span data-i18n-key="nav.techdaily">TechDaily</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="navigateTo('electroshop')" data-page="electroshop">
+                        🛒 <span data-i18n-key="nav.electroshop">ElectroShop</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="navigateTo('securebank')" data-page="securebank">
+                        🏦 <span data-i18n-key="nav.securebank">SecureBank</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="navigateTo('innovatecorp')" data-page="innovatecorp">
+                        🏢 <span data-i18n-key="nav.innovatecorp">InnovateCorp</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <!-- Language Switcher -->
+            <div class="language-switcher">
+                <label for="language-select-header" class="text-sm text-gray-600" data-i18n-key="footer.language">
+                    Language:
+                </label>
+                <select id="language-select-header" onchange="switchLanguage(this.value)" aria-label="Select Language">
+                    <option value="de">Deutsch</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Open mobile menu">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Main Content Container -->
+    <main id="main">
+        <!-- Homepage -->
+        <div id="home" class="page active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1 data-i18n-key="home.title">WCAG Testing Platform - Practice with Real Business Websites</h1>
+                        <p data-i18n-key="home.subtitle">Test your WCAG knowledge on authentic business websites</p>
+                        <p class="mt-4" data-i18n-key="home.description">Practice identifying accessibility issues on realistic business websites. Each site represents a real company with typical web functionality.</p>
+                        <a class="btn btn-secondary mt-6" onclick="document.getElementById('businesses').scrollIntoView({behavior: 'smooth'})" data-i18n-key="home.getStarted">Start Analysis</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Purpose Section -->
+            <section class="py-12 bg-gray-50">
+                <div class="container">
+                    <div class="max-w-4xl mx-auto">
+                        <h2 class="text-3xl font-bold mb-6" data-i18n-key="home.purpose.title">Platform Purpose</h2>
+                        <p class="text-lg" data-i18n-key="home.purpose.content">Develop practical WCAG testing skills by analyzing real business scenarios. Learn to identify accessibility issues in real-world applications.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Business Examples -->
+            <section id="businesses" class="py-12">
+                <div class="container">
+                    <h2 class="text-3xl font-bold text-center mb-4" data-i18n-key="home.businessExamples.title">Business Examples for Analysis</h2>
+                    <p class="text-center text-gray-600 mb-8" data-i18n-key="home.businessExamples.subtitle">Choose a website to test</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- CreativeFlow -->
+                        <div class="business-card">
+                            <h3 class="text-xl font-semibold mb-2" data-i18n-key="businesses.creativeflow.title">CreativeFlow Marketing</h3>
+                            <p class="text-gray-600 mb-4" data-i18n-key="businesses.creativeflow.description">Digital marketing agency - Portfolio and services</p>
+                            <p class="text-sm text-gray-500 mb-4" data-i18n-key="businesses.creativeflow.industry">Marketing & Advertising</p>
+                            <a class="btn btn-primary" onclick="navigateTo('creativeflow')" data-i18n-key="home.businessExamples.visitSite">Visit Site →</a>
+                        </div>
+                        
+                        <!-- TaskFlow -->
+                        <div class="business-card">
+                            <h3 class="text-xl font-semibold mb-2" data-i18n-key="businesses.taskflow.title">TaskFlow Pro</h3>
+                            <p class="text-gray-600 mb-4" data-i18n-key="businesses.taskflow.description">SaaS project management tool - Dashboard demo</p>
+                            <p class="text-sm text-gray-500 mb-4" data-i18n-key="businesses.taskflow.industry">Software & Technology</p>
+                            <a class="btn btn-primary" onclick="navigateTo('taskflow')" data-i18n-key="home.businessExamples.visitSite">Visit Site →</a>
+                        </div>
+                        
+                        <!-- TechDaily -->
+                        <div class="business-card">
+                            <h3 class="text-xl font-semibold mb-2" data-i18n-key="businesses.techdaily.title">TechDaily News</h3>
+                            <p class="text-gray-600 mb-4" data-i18n-key="businesses.techdaily.description">Technology news portal with articles and blog</p>
+                            <p class="text-sm text-gray-500 mb-4" data-i18n-key="businesses.techdaily.industry">Media & News</p>
+                            <a class="btn btn-primary" onclick="navigateTo('techdaily')" data-i18n-key="home.businessExamples.visitSite">Visit Site →</a>
+                        </div>
+                        
+                        <!-- ElectroShop -->
+                        <div class="business-card">
+                            <h3 class="text-xl font-semibold mb-2" data-i18n-key="businesses.electroshop.title">ElectroShop</h3>
+                            <p class="text-gray-600 mb-4" data-i18n-key="businesses.electroshop.description">Online electronics store - Product catalog and shop</p>
+                            <p class="text-sm text-gray-500 mb-4" data-i18n-key="businesses.electroshop.industry">E-Commerce & Retail</p>
+                            <a class="btn btn-primary" onclick="navigateTo('electroshop')" data-i18n-key="home.businessExamples.visitSite">Visit Site →</a>
+                        </div>
+                        
+                        <!-- SecureBank -->
+                        <div class="business-card">
+                            <h3 class="text-xl font-semibold mb-2" data-i18n-key="businesses.securebank.title">SecureBank</h3>
+                            <p class="text-gray-600 mb-4" data-i18n-key="businesses.securebank.description">Online banking portal - Account management and transactions</p>
+                            <p class="text-sm text-gray-500 mb-4" data-i18n-key="businesses.securebank.industry">Financial Services</p>
+                            <a class="btn btn-primary" onclick="navigateTo('securebank')" data-i18n-key="home.businessExamples.visitSite">Visit Site →</a>
+                        </div>
+                        
+                        <!-- InnovateCorp -->
+                        <div class="business-card">
+                            <h3 class="text-xl font-semibold mb-2" data-i18n-key="businesses.innovatecorp.title">Innovate Corp</h3>
+                            <p class="text-gray-600 mb-4" data-i18n-key="businesses.innovatecorp.description">Corporate website - About us and services</p>
+                            <p class="text-sm text-gray-500 mb-4" data-i18n-key="businesses.innovatecorp.industry">Consulting & Services</p>
+                            <a class="btn btn-primary" onclick="navigateTo('innovatecorp')" data-i18n-key="home.businessExamples.visitSite">Visit Site →</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+<!-- Resources Section -->
+            <section class="py-12">
+                <div class="container">
+                    <div class="max-w-4xl mx-auto text-center">
+                        <h2 class="text-3xl font-bold mb-6" data-i18n-key="home.resources.title">WCAG References</h2>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-i18n-key="home.resources.wcag21">
+                                WCAG 2.1 Guidelines
+                            </a>
+                            <a href="https://www.w3.org/WAI/WCAG22/quickref/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-i18n-key="home.resources.wcag22">
+                                WCAG 2.2 Guidelines
+                            </a>
+                            <a href="https://www.w3.org/WAI/WCAG21/Techniques/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-i18n-key="home.resources.techniques">
+                                WCAG Techniques
+                            </a>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-i18n-key="home.resources.understanding">
+                                Understanding WCAG
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- CreativeFlow Marketing Page -->
+        <div id="creativeflow" class="page">
+            <div class="min-h-screen bg-gray-900 text-white">
+                <!-- Header -->
+                <header class="py-12">
+                    <div class="container">
+                        <div class="flex justify-between items-center mb-8">
+                            <div>
+                                <!-- VIOLATION 1.4.5: Images of Text in logo -->
+                                <img 
+                                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIi8+CiAgPHRleHQgeD0iMTAiIHk9IjM1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmZmZmYiIGZvbnQtd2VpZ2h0PSJib2xkIj4KICAgIENyZWF0aXZlRmxvdyBNYXJrZXRpbmcKICA8L3RleHQ+Cjwvc3ZnPg=="
+                                    alt="CreativeFlow Marketing logo"
+                                    class="mb-8"
+                                />
+                                <h1 class="text-4xl font-bold mb-4">Digital Marketing Excellence</h1>
+                                <p class="text-xl" style="color: #b0b0b0;">
+                                    We transform brands through innovative digital strategies and creative solutions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                
+                <!-- Portfolio Section -->
+                <section class="py-12 bg-gray-800">
+                    <div class="container">
+                        <h2 class="text-3xl font-bold mb-8">Our Portfolio</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <!-- Project 1 -->
+                            <div class="bg-gray-700 rounded-lg overflow-hidden">
+                                <!-- Status indicator using only color (VIOLATION 1.4.1) -->
+                                <div class="relative">
+                                    <div class="absolute top-4 right-4 w-4 h-4 rounded-full bg-green-500"></div>
+                                </div>
+                                
+                                <div class="h-48 rounded-lg mb-4 overflow-hidden">
+                                    <img 
+                                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2Y4ZmFmYyIvPgogIDxyZWN0IHg9IjUwIiB5PSI1MCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNlMmU4ZjAiIHJ4PSI4Ii8+CiAgPGNpcmNsZSBjeD0iMTUwIiBjeT0iMTIwIiByPSIzMCIgZmlsbD0iIzNiODJmNiIvPgogIDxjaXJjbGUgY3g9IjI1MCIgY3k9IjEyMCIgcj0iMzAiIGZpbGw9IiMxMGI5ODEiLz4KICA8cmVjdCB4PSIxMjAiIHk9IjkwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiMxZjI5MzciIHJ4PSI0Ii8+CiAgPHJlY3QgeD0iMjIwIiB5PSI5MCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMWYyOTM3IiByeD0iNCIvPgogIDxyZWN0IHg9IjEwMCIgeT0iMTYwIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjOGI1Y2Y2IiByeD0iNSIvPgogIDxyZWN0IHg9IjEyMCIgeT0iMTgwIiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjYiIGZpbGw9IiNmNTllMGIiIHJ4PSIzIi8+CiAgPHJlY3QgeD0iMTQwIiB5PSIxOTUiIHdpZHRoPSIxMjAiIGhlaWdodD0iNiIgZmlsbD0iI2VmNDQ0NCIgcng9IjMiLz4KICA8cmVjdCB4PSI4MCIgeT0iMjIwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjMiIGZpbGw9IiM2Yjcy4OCI+PC9yZWN0PgogIDxyZWN0IHg9IjgwIiB5PSIyMzAiIHdpZHRoPSIxODAiIGhlaWdodD0iMyIgZmlsbD0iIzZiNzI4MCIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMjcwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkJyYW5kIElkZW50aXR5IERlc2lnbjwvdGV4dD4KPC9zdmc+"
+                                        alt="Brand Identity Design project preview"
+                                        class="w-full h-full object-cover"
+                                    />
+                                </div>
+                                
+                                <h3 class="text-xl font-semibold mb-2">Tech Startup Rebrand</h3>
+                                <p class="text-gray-500 text-sm violation-low-contrast">
+                                    Complete visual identity redesign for emerging tech company.
+                                </p>
+                            </div>
+                            
+                            <!-- Project 2 -->
+                            <div class="bg-gray-700 rounded-lg overflow-hidden">
+                                <!-- Status indicator using only color (VIOLATION 1.4.1) -->
+                                <div class="relative">
+                                    <div class="absolute top-4 right-4 w-4 h-4 rounded-full bg-yellow-500"></div>
+                                </div>
+                                
+                                <div class="h-48 rounded-lg mb-4 overflow-hidden">
+                                    <img 
+                                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2Y4ZmFmYyIvPgogIDxyZWN0IHg9IjUwIiB5PSI1MCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzNzQxNTEiIHJ4PSI4Ii8+CiAgPHJlY3QgeD0iNjAiIHk9IjgwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE2MCIgZmlsbD0iI2ZmZmZmZiIgcng9IjQiLz4KICA8cmVjdCB4PSI2MCIgeT0iNjAiIHdpZHRoPSIyODAiIGhlaWdodD0iMjAiIGZpbGw9IiM2Yjcy4OIi8+CiAgPGNpcmNsZSBjeD0iNzUiIGN5PSI3MCIgcj0iMyIgZmlsbD0iI2VmNDQ0NCIvPgogIDxjaXJjbGUgY3g9IjkwIiBjeT0iNzAiIHI9IjMiIGZpbGw9IiNmNTllMGIiLz4KICA8Y2lyY2xlIGN4PSIxMDUiIGN5PSI3MCIgcj0iMyIgZmlsbD0iIzEwYjk4MSIvPgogIDxyZWN0IHg9IjgwIiB5PSIxMDAiIHdpZHRoPSIyNjAiIGhlaWdodD0iMzAiIGZpbGw9IiMzYjgyZjYiIHJ4PSI0Ii8+CiAgPHJlY3QgeD0iOTAiIHk9IjE0MCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjZTVlN2ViIiByeD0iMyIvPgogIDxyZWN0IHg9IjE2MCIgeT0iMTQwIiB3aWR0aD0iNjAiIGhlaWdodD0iNDAiIGZpbGw9IiNlNWU3ZWIiIHJ4PSIzIi8+CiAgPHJlY3QgeD0iMjMwIiB5PSIxNDAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI0MCIgZmlsbD0iI2U1ZTdlYiIgcng9IjMiLz4KICA8cmVjdCB4PSIyODAiIHk9IjEwMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjMTBiOTgxIiByeD0iMiIvPgogIDxyZWN0IHg9IjkwIiB5PSIxOTAiIHdpZHRoPSIyMDAiIGhlaWdodD0iOCIgZmlsbD0iI2QxZDVkYiIvPgogIDxyZWN0IHg9IjkwIiB5PSIyMDUiIHdpZHRoPSIxNTAiIGhlaWdodD0iNiIgZmlsbD0iI2QxZDVkYiIvPgogIDxyZWN0IHg9IjkwIiB5PSIyMTgiIHdpZHRoPSIxODAiIGhlaWdodD0iNiIgZmlsbD0iI2QxZDVkYiIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMjcwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkUtY29tbWVyY2UgUGxhdGZvcm08L3RleHQ+Cjwvc3ZnPg=="
+                                        alt="E-commerce Platform project preview"
+                                        class="w-full h-full object-cover"
+                                    />
+                                </div>
+                                
+                                <h3 class="text-xl font-semibold mb-2">E-commerce Platform</h3>
+                                <p class="text-gray-500 text-sm">
+                                    Modern e-commerce platform with seamless user experience.
+                                </p>
+                            </div>
+                            
+                            <!-- Project 3 -->
+                            <div class="bg-gray-700 rounded-lg overflow-hidden">
+                                <!-- Status indicator using only color (VIOLATION 1.4.1) -->
+                                <div class="relative">
+                                    <div class="absolute top-4 right-4 w-4 h-4 rounded-full bg-blue-500"></div>
+                                </div>
+                                
+                                <div class="h-48 rounded-lg mb-4 overflow-hidden">
+                                    <img 
+                                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2Y4ZmFmYyIvPgogIDxyZWN0IHg9IjUwIiB5PSI1MCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNmZmZmZmYiIHN0cm9rZT0iI2UyZThmMCIgcng9IjgiLz4KICA8cmVjdCB4PSI3MCIgeT0iNzAiIHdpZHRoPSIyNjAiIGhlaWdodD0iMjUiIGZpbGw9IiMxZjI5MzciIHJ4PSI0Ii8+CiAgPHRleHQgeD0iMjAwIiB5PSI4NyIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5BTk5VQUwgUkVQT1JUIDIwMjQ8L3RleHQ+CiAgPHJlY3QgeD0iODAiIHk9IjExMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSI2MCIgZmlsbD0iI2U1ZTdlYiIgcng9IjQiLz4KICA8cmVjdCB4PSI5MCIgeT0iMTQwIiB3aWR0aD0iOCIgaGVpZ2h0PSIyMCIgZmlsbD0iIzNiODJmNiIvPgogIDxyZWN0IHg9IjEwNSIgeT0iMTMwIiB3aWR0aD0iOCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzNiODJmNiIvPgogIDxyZWN0IHg9IjEyMCIgeT0iMTI1IiB3aWR0aD0iOCIgaGVpZ2h0PSIzNSIgZmlsbD0iIzNiODJmNiIvPgogIDxyZWN0IHg9IjEzNSIgeT0iMTM1IiB3aWR0aD0iOCIgaGVpZ2h0PSIyNSIgZmlsbD0iIzNiODJmNiIvPgogIDxyZWN0IHg9IjE1MCIgeT0iMTIwIiB3aWR0aD0iOCIgaGVpZ2h0PSI0MCIgZmlsbD0iIzNiODJmNiIvPgogIDxjaXJjbGUgY3g9IjI1MCIgY3k9IjE0MCIgcj0iMjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzEwYjk4MSIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtZGFzaGFycmF5PSI1MCAxMDAiLz4KICA8Y2lyY2xlIGN4PSIyNTAiIGN5PSIxNDAiIHI9IjI1IiBmaWxsPSJub25lIiBzdHJva2U9IiNmNTllMGIiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWRhc2hhcnJheT0iMzAgMTAwIiBzdHJva2UtZGFzaG9mZnNldD0iLTUwIi8+CiAgPGNpcmNsZSBjeD0iMjUwIiBjeT0iMTQwIiByPSIyNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWY0NDQ0IiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1kYXNoYXJyYXk9IjIwIDEwMCIgc3Ryb2tlLWRhc2hvZmZzZXQ9Ii04MCIvPgogIDxyZWN0IHg9IjgwIiB5PSIxODUiIHdpZHRoPSIyNDAiIGhlaWdodD0iNCIgZmlsbD0iIzZiNzI4MCIvPgogIDxyZWN0IHg9IjgwIiB5PSIxOTUiIHdpZHRoPSIyMDAiIGhlaWdodD0iNCIgZmlsbD0iIzZiNzI4MCIvPgogIDxyZWN0IHg9IjgwIiB5PSIyMDUiIHdpZHRoPSIyMjAiIGhlaWdodD0iNCIgZmlsbD0iIzZiNzI4MCIvPgogIDxyZWN0IHg9IjgwIiB5PSIyMTUiIHdpZHRoPSIxODAiIGhlaWdodD0iNCIgZmlsbD0iIzZiNzI4MCIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMjcwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNvcnBvcmF0ZSBBbm51YWwgUmVwb3J0PC90ZXh0Pgo8L3N2Zz4K"
+                                        alt="Corporate Annual Report project preview"
+                                        class="w-full h-full object-cover"
+                                    />
+                                </div>
+                                
+                                <h3 class="text-xl font-semibold mb-2">Annual Report Design</h3>
+                                <p class="text-gray-500 text-sm">
+                                    Corporate annual report with data visualization.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- TaskFlow Pro Page -->
+        <div id="taskflow" class="page">
+            <div class="min-h-screen bg-gray-50">
+                <!-- Header -->
+                <header class="bg-white border-b border-gray-200">
+                    <div class="container py-6">
+                        <div class="flex justify-between items-center">
+                            <h1 class="text-3xl font-bold text-gray-900" data-i18n-key="taskflow.title">TaskFlow Pro</h1>
+                            <div class="flex items-center gap-4">
+                                <span class="text-sm text-gray-600" data-i18n-key="taskflow.welcome">Willkommen, Sarah</span>
+                                <button class="btn btn-primary" data-i18n-key="taskflow.newTask">Neue Aufgabe</button>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                
+                <!-- Dashboard -->
+                <main class="container py-8">
+                    <!-- Quick Stats Row -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                        <div class="business-card text-center">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">12</div>
+                            <div class="text-sm text-gray-600" data-i18n-key="taskflow.activeProjects">Aktive Projekte</div>
+                        </div>
+                        <div class="business-card text-center">
+                            <div class="text-3xl font-bold text-green-600 mb-2">247</div>
+                            <div class="text-sm text-gray-600" data-i18n-key="taskflow.completedTasks">Erledigte Aufgaben</div>
+                        </div>
+                        <div class="business-card text-center">
+                            <div class="text-3xl font-bold text-purple-600 mb-2">18</div>
+                            <div class="text-sm text-gray-600" data-i18n-key="taskflow.teamMembers">Teammitglieder</div>
+                        </div>
+                        <div class="business-card text-center">
+                            <div class="text-3xl font-bold text-red-600 mb-2">3</div>
+                            <div class="text-sm text-gray-600" data-i18n-key="taskflow.deadlines">Fristen heute</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                        <!-- Project Overview -->
+                        <div class="lg:col-span-3">
+                            <h2 class="text-2xl font-bold mb-6" data-i18n-key="taskflow.projectProgress">Projektfortschritt</h2>
+                            
+                            <!-- Project Cards -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                                <div class="business-card">
+                                    <h3 class="font-semibold mb-2" data-i18n-key="taskflow.projects.websiteRedesign">Website-Redesign</h3>
+                                    <p class="text-sm text-gray-600 mb-4">18/24 Aufgaben erledigt</p>
+                                    <!-- WCAG VIOLATION: Missing label for progress bar -->
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-blue-600 h-2 rounded-full" style="width: 75%"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500 mt-2">
+                                        <span>Fällig: 15. Sep</span>
+                                        <span style="color: #ff0000;">Hoch</span> <!-- VIOLATION: Color only indicator -->
+                                    </div>
+                                </div>
+                                
+                                <div class="business-card">
+                                    <h3 class="font-semibold mb-2" data-i18n-key="taskflow.projects.mobileApp">Mobile App</h3>
+                                    <p class="text-sm text-gray-600 mb-4">12/32 Aufgaben erledigt</p>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-green-500 h-2 rounded-full" style="width: 37%"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500 mt-2">
+                                        <span>Fällig: 30. Sep</span>
+                                        <span style="color: #ffaa00;">Mittel</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="business-card">
+                                    <h3 class="font-semibold mb-2" data-i18n-key="taskflow.projects.marketing">Marketing-Kampagne</h3>
+                                    <p class="text-sm text-gray-600 mb-4">14/16 Aufgaben erledigt</p>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 87%"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500 mt-2">
+                                        <span>Fällig: 8. Sep</span>
+                                        <span style="color: #00aa00;">Niedrig</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Task List -->
+                            <div class="business-card">
+                                <h3 class="text-xl font-semibold mb-4">Aktuelle Aufgaben</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                                        <!-- VIOLATION: Missing form labels -->
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="w-4 h-4">
+                                            <div>
+                                                <div class="font-medium">Homepage Mockup erstellen</div>
+                                                <div class="text-sm text-gray-600">Website-Redesign • Sarah Weber</div>
+                                            </div>
+                                        </div>
+                                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded" data-i18n-key="taskflow.taskStatus.inProgress">In Bearbeitung</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="w-4 h-4">
+                                            <div>
+                                                <div class="font-medium">API Dokumentation überprüfen</div>
+                                                <div class="text-sm text-gray-600">Mobile App • Michael Schmidt</div>
+                                            </div>
+                                        </div>
+                                        <span class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded" data-i18n-key="taskflow.taskStatus.review">Überprüfung</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="w-4 h-4" checked>
+                                            <div class="line-through text-gray-500">
+                                                <div class="font-medium">Social Media Grafiken finalisieren</div>
+                                                <div class="text-sm text-gray-600">Marketing-Kampagne • Lisa Müller</div>
+                                            </div>
+                                        </div>
+                                        <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded" data-i18n-key="taskflow.taskStatus.done">Fertig</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sidebar -->
+                        <div class="lg:col-span-1">
+                            <div class="space-y-6">
+                                <!-- Team Activity -->
+                                <div class="business-card">
+                                    <h3 class="text-lg font-semibold mb-4" data-i18n-key="taskflow.recentActivity">Letzte Aktivitäten</h3>
+                                    <div class="space-y-3">
+                                        <div class="flex items-start gap-3">
+                                            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs">SW</div>
+                                            <div class="flex-1">
+                                                <div class="text-sm font-medium">Sarah Weber</div>
+                                                <div class="text-xs text-gray-600">Mockup hochgeladen • vor 2 Std.</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-xs">MS</div>
+                                            <div class="flex-1">
+                                                <div class="text-sm font-medium">Michael Schmidt</div>
+                                                <div class="text-xs text-gray-600">Aufgabe abgeschlossen • vor 4 Std.</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-xs">LM</div>
+                                            <div class="flex-1">
+                                                <div class="text-sm font-medium">Lisa Müller</div>
+                                                <div class="text-xs text-gray-600">Kommentar hinzugefügt • vor 6 Std.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Upcoming Deadlines -->
+                                <div class="business-card">
+                                    <h3 class="text-lg font-semibold mb-4">Anstehende Fristen</h3>
+                                    <div class="space-y-3">
+                                        <div class="p-3 bg-red-50 border-l-4 border-red-400">
+                                            <div class="font-medium text-red-800">Marketing Grafiken</div>
+                                            <div class="text-sm text-red-600">Heute fällig</div>
+                                        </div>
+                                        <div class="p-3 bg-yellow-50 border-l-4 border-yellow-400">
+                                            <div class="font-medium text-yellow-800">API Tests</div>
+                                            <div class="text-sm text-yellow-600">Morgen fällig</div>
+                                        </div>
+                                        <div class="p-3 bg-blue-50 border-l-4 border-blue-400">
+                                            <div class="font-medium text-blue-800">Design Review</div>
+                                            <div class="text-sm text-blue-600">3 Tage</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        
+        <!-- TechDaily News Page -->
+        <div id="techdaily" class="page">
+            <div class="min-h-screen bg-white">
+                <!-- Header -->
+                <header class="bg-gray-900 text-white">
+                    <div class="container py-6">
+                        <div class="flex items-center justify-between">
+                            <h1 class="text-3xl font-bold" data-i18n-key="techdaily.title">TechDaily News</h1>
+                            <nav>
+                                <!-- VIOLATION: Navigation items without focus indicators -->
+                                <div class="flex space-x-6">
+                                    <span class="hover:text-blue-400 cursor-pointer" data-i18n-key="techdaily.nav.home">Startseite</span>
+                                    <span class="hover:text-blue-400 cursor-pointer" data-i18n-key="techdaily.nav.technology">Technologie</span>
+                                    <span class="hover:text-blue-400 cursor-pointer" data-i18n-key="techdaily.nav.innovation">Innovation</span>
+                                    <span class="hover:text-blue-400 cursor-pointer" data-i18n-key="techdaily.nav.startup">Startup</span>
+                                    <span class="hover:text-blue-400 cursor-pointer" data-i18n-key="techdaily.nav.reviews">Bewertungen</span>
+                                    <span class="hover:text-blue-400 cursor-pointer" data-i18n-key="techdaily.nav.contact">Kontakt</span>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
+                
+                <div class="container py-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                        <!-- Main Content -->
+                        <main class="lg:col-span-3">
+                            <h2 class="text-2xl font-bold mb-6" data-i18n-key="techdaily.latest">Neueste Artikel</h2>
+                            
+                            <!-- Featured Article -->
+                            <article class="mb-12">
+                                <div class="relative">
+                                    <div class="h-64 rounded-lg mb-4 overflow-hidden">
+                                        <!-- VIOLATION: Image without proper alt text for decorative image -->
+                                        <img 
+                                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzM0ZDM5OSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LSSBpbSBHZXN1bmRoZWl0c3dlc2VuPC90ZXh0Pgo8L3N2Zz4="
+                                            alt=""
+                                            class="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    
+                                    <div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded text-sm" data-i18n-key="techdaily.breaking">
+                                        Eilmeldung
+                                    </div>
+                                </div>
+                                
+                                <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                                    KI-Revolution: Wie maschinelles Lernen das Gesundheitswesen transformiert
+                                </h2>
+                                <p class="text-lg text-gray-700 mb-4">Medizinische Fachkräfte nutzen künstliche Intelligenz, um Patientenergebnisse zu verbessern und Diagnosen zu optimieren.</p>
+                                
+                                <div class="text-sm text-gray-600 mb-4">
+                                    <span data-i18n-key="techdaily.publishedBy">Veröffentlicht von</span>
+                                    <span> Dr. Sarah Mitchell</span>
+                                    <span> | </span>
+                                    <span>17. August 2024</span>
+                                    <span> | </span>
+                                    <span>5 Min. Lesezeit</span>
+                                </div>
+                                
+                                <div class="flex gap-4">
+                                    <button class="btn btn-primary" data-i18n-key="techdaily.readMore">Weiterlesen</button>
+                                    <button class="btn btn-secondary">Teilen</button>
+                                </div>
+                            </article>
+                            
+                            <!-- More Articles -->
+                            <h3 class="text-xl font-semibold mb-6">Weitere Meldungen</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <article class="business-card">
+                                    <div class="h-48 rounded-lg mb-4 overflow-hidden">
+                                        <img 
+                                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI2VmNDQ0NCIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTI1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DeWJlcnNpY2hlcmhlaXQ8L3RleHQ+Cjwvc3ZnPg=="
+                                            alt="Cybersicherheit Illustration"
+                                            class="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    
+                                    <h3 class="text-xl font-semibold mb-3">Cybersicherheit-Warnung</h3>
+                                    <p class="text-gray-600 mb-4">Sicherheitsexperten warnen vor raffinierten Angriffen, die darauf abzielen, Schwachstellen im Homeoffice auszunutzen.</p>
+                                    
+                                    <div class="text-sm text-gray-500">
+                                        <span>Mike Rodriguez</span> · <span>16. August 2024</span>
+                                        <!-- VIOLATION: Missing comments count label -->
+                                        <span> · 47</span>
+                                    </div>
+                                </article>
+                                
+                                <article class="business-card">
+                                    <div class="h-48 rounded-lg mb-4 overflow-hidden">
+                                        <img 
+                                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iIzEwYjk4MSIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTI1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5HcsO8bmUgVGVjaG5vbG9naWU8L3RleHQ+Cjwvc3ZnPg=="
+                                            alt="Nachhaltige Technologie Illustration"
+                                            class="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    
+                                    <h3 class="text-xl font-semibold mb-3">Nachhaltige Technologie</h3>
+                                    <p class="text-gray-600 mb-4">Große Tech-Unternehmen investieren Milliarden in erneuerbare Energien für umweltfreundliches Computing.</p>
+                                    
+                                    <div class="text-sm text-gray-500">
+                                        <span>Elena Chen</span> · <span>15. August 2024</span>
+                                        <span> · 23 <span data-i18n-key="techdaily.commentsCount">Kommentare</span></span>
+                                    </div>
+                                </article>
+                                
+                                <article class="business-card">
+                                    <div class="h-48 rounded-lg mb-4 overflow-hidden">
+                                        <img 
+                                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iIzM5OGNmNCIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTI1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5CbG9ja2NoYWluPC90ZXh0Pgo8L3N2Zz4="
+                                            alt="Blockchain Technologie"
+                                            class="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    
+                                    <h3 class="text-xl font-semibold mb-3">Blockchain-Innovation</h3>
+                                    <p class="text-gray-600 mb-4">Neue Blockchain-Anwendungen revolutionieren das Lieferkettenmanagement und die Produktverfolgung.</p>
+                                    
+                                    <div class="text-sm text-gray-500">
+                                        <span>Thomas Weber</span> · <span>14. August 2024</span>
+                                        <span> · 31 <span data-i18n-key="techdaily.commentsCount">Kommentare</span></span>
+                                    </div>
+                                </article>
+                                
+                                <article class="business-card">
+                                    <div class="h-48 rounded-lg mb-4 overflow-hidden">
+                                        <img 
+                                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iIzhmNGM2MSIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTI1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5RdWFudGVuY29tcHV0ZXI8L3RleHQ+Cjwvc3ZnPg=="
+                                            alt="Quantencomputer Forschung"
+                                            class="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    
+                                    <h3 class="text-xl font-semibold mb-3">Quantencomputer-Durchbruch</h3>
+                                    <p class="text-gray-600 mb-4">Wissenschaftler erreichen neuen Meilenstein in der Quantencomputerforschung mit 1000-Qubit-System.</p>
+                                    
+                                    <div class="text-sm text-gray-500">
+                                        <span>Dr. Anna Hoffmann</span> · <span>13. August 2024</span>
+                                        <span> · 89 <span data-i18n-key="techdaily.commentsCount">Kommentare</span></span>
+                                    </div>
+                                </article>
+                            </div>
+                        </main>
+                        
+                        <!-- Sidebar -->
+                        <aside class="lg:col-span-1">
+                            <div class="business-card mb-8">
+                                <h3 class="text-lg font-semibold mb-4" data-i18n-key="techdaily.newsletter.title">Newsletter abonnieren</h3>
+                                <p class="text-gray-600 mb-4" data-i18n-key="techdaily.newsletter.subtitle">Bleiben Sie auf dem Laufenden mit den neuesten Tech-News.</p>
+                                
+                                <!-- VIOLATION: Form missing labels and proper validation -->
+                                <div class="space-y-4">
+                                    <input 
+                                        type="email" 
+                                        placeholder="E-Mail-Adresse eingeben"
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                                    />
+                                    <button class="btn btn-primary w-full" data-i18n-key="techdaily.newsletter.subscribe">Abonnieren</button>
+                                </div>
+                            </div>
+                            
+                            <div class="business-card mb-8">
+                                <h3 class="text-lg font-semibold mb-4" data-i18n-key="techdaily.categories">Kategorien</h3>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span>Künstliche Intelligenz</span>
+                                        <span class="text-sm text-gray-500">124</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span>Cybersicherheit</span>
+                                        <span class="text-sm text-gray-500">89</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span>Blockchain</span>
+                                        <span class="text-sm text-gray-500">67</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span>Green Tech</span>
+                                        <span class="text-sm text-gray-500">45</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="business-card">
+                                <h3 class="text-lg font-semibold mb-4" data-i18n-key="techdaily.featured">Empfohlen</h3>
+                                
+                                <div class="space-y-4">
+                                    <div class="flex space-x-3">
+                                        <div class="w-16 h-16 rounded flex-shrink-0 overflow-hidden">
+                                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjM2I4MmY2Ii8+CjxjaXJjbGUgY3g9IjMyIiBjeT0iMzIiIHI9IjEyIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="Smartphone Features Miniaturansicht" class="w-full h-full object-cover" />
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-sm">Neue Smartphone-Features 2024</div>
+                                            <div class="text-xs text-gray-500">2.500 Aufrufe</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex space-x-3">
+                                        <div class="w-16 h-16 rounded flex-shrink-0 overflow-hidden">
+                                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMTBiOTgxIi8+CjxyZWN0IHg9IjE2IiB5PSIyNCIgd2lkdGg9IjMyIiBoZWlnaHQ9IjE2IiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="Cloud Computing Miniaturansicht" class="w-full h-full object-cover" />
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-sm">Cloud Computing Trends</div>
+                                            <div class="text-xs text-gray-500">1.800 Aufrufe</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex space-x-3">
+                                        <div class="w-16 h-16 rounded flex-shrink-0 overflow-hidden">
+                                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZjU5ZTBiIi8+CjxjaXJjbGUgY3g9IjMyIiBjeT0iMjQiIHI9IjgiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHg9IjI0IiB5PSIzNiIgd2lkdGg9IjE2IiBoZWlnaHQ9IjEyIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="5G Technology Miniaturansicht" class="w-full h-full object-cover" />
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-sm">5G Technologie Ausblick</div>
+                                            <div class="text-xs text-gray-500">3.200 Aufrufe</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ElectroShop Page -->
+        <div id="electroshop" class="page">
+            <div class="min-h-screen bg-gray-50">
+                <!-- Header -->
+                <header class="bg-white border-b border-gray-200">
+                    <div class="container py-4">
+                        <div class="flex items-center justify-between">
+                            <h1 class="text-3xl font-bold text-gray-900" data-i18n-key="electroshop.title">ElectroShop</h1>
+                            <div class="flex items-center space-x-4">
+                                <!-- VIOLATION: Search input missing label -->
+                                <input 
+                                    type="search" 
+                                    placeholder="Produkte suchen..."
+                                    class="px-4 py-2 border border-gray-300 rounded-lg w-64"
+                                />
+                                <button class="p-2 text-gray-600 hover:text-gray-900">
+                                    🛒 <span class="ml-1" data-i18n-key="electroshop.cart">Warenkorb (0)</span>
+                                </button>
+                                <button class="p-2 text-gray-600 hover:text-gray-900" data-i18n-key="electroshop.account">
+                                    👤 Mein Konto
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Category Navigation -->
+                        <nav class="border-t border-gray-200 pt-4">
+                            <div class="flex space-x-8">
+                                <a href="#" class="text-gray-600 hover:text-blue-600" data-i18n-key="electroshop.categories.smartphones">Smartphones</a>
+                                <a href="#" class="text-gray-600 hover:text-blue-600" data-i18n-key="electroshop.categories.laptops">Laptops</a>
+                                <a href="#" class="text-gray-600 hover:text-blue-600" data-i18n-key="electroshop.categories.audio">Audio & Musik</a>
+                                <a href="#" class="text-gray-600 hover:text-blue-600" data-i18n-key="electroshop.categories.gaming">Gaming</a>
+                                <a href="#" class="text-gray-600 hover:text-blue-600" data-i18n-key="electroshop.categories.accessories">Zubehör</a>
+                            </div>
+                        </nav>
+                    </div>
+                </header>
+                
+                <!-- Main Content -->
+                <main class="container py-8">
+                    <!-- Featured Banner -->
+                    <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-8 mb-8">
+                        <h2 class="text-3xl font-bold mb-2">Sommer-Sale 2024</h2>
+                        <p class="text-xl mb-4">Bis zu 50% Rabatt auf ausgewählte Elektronik</p>
+                        <button class="bg-white text-blue-600 px-6 py-2 rounded font-semibold">Jetzt shoppen</button>
+                    </div>
+                    
+                    <!-- Product Filter Bar -->
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold" data-i18n-key="electroshop.featured">Empfohlene Produkte</h2>
+                        <div class="flex items-center space-x-4">
+                            <!-- VIOLATION: Dropdown without proper labeling -->
+                            <select class="border border-gray-300 rounded px-3 py-2">
+                                <option>Sortieren nach</option>
+                                <option>Preis: Niedrig zu Hoch</option>
+                                <option>Preis: Hoch zu Niedrig</option>
+                                <option>Bewertung</option>
+                                <option>Neueste</option>
+                            </select>
+                            <button class="border border-gray-300 rounded px-3 py-2">Filter</button>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Product 1 - Smartphone -->
+                        <div class="business-card">
+                            <div class="h-48 flex items-center justify-center overflow-hidden mb-4">
+                                <img 
+                                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTUwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzFmMjkzNyIgcng9IjE1Ii8+CiAgPHJlY3QgeD0iMTAiIHk9IjIwIiB3aWR0aD0iMTMwIiBoZWlnaHQ9IjE2MCIgZmlsbD0iIzAwMDAwMCIgcng9IjgiLz4KICA8cmVjdCB4PSIyMCIgeT0iMzAiIHdpZHRoPSIxMTAiIGhlaWdodD0iMjAiIGZpbGw9IiMzYjgyZjYiIHJ4PSIzIi8+CiAgPHRleHQgeD0iNzUiIHk9IjIyMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TbWFydHBob25lPC90ZXh0Pgo8L3N2Zz4K"
+                                    alt="Premium Smartphone ProMax 256GB"
+                                    class="w-full h-full object-contain"
+                                />
+                            </div>
+                            
+                            <h3 class="text-lg font-semibold mb-2">Smartphone ProMax 256GB</h3>
+                            <p class="text-sm text-gray-600 mb-3">6,7" Display, 48MP Kamera, 5G-fähig</p>
+                            
+                            <div class="flex items-center mb-2">
+                                <!-- VIOLATION: Price without currency announcement for screen readers -->
+                                <span class="text-2xl font-bold text-blue-600">899,99€</span>
+                                <span class="text-sm text-gray-500 line-through ml-2">1.199,99€</span>
+                                <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded ml-2">-25%</span>
+                            </div>
+                            
+                            <div class="flex items-center mb-4">
+                                <!-- VIOLATION: Star rating without accessible text -->
+                                <div class="text-yellow-500">★★★★★</div>
+                                <span class="text-sm text-gray-600 ml-2">(1.247 Bewertungen)</span>
+                            </div>
+                            
+                            <div class="text-sm text-green-600 mb-3" data-i18n-key="electroshop.inStock">✓ Auf Lager</div>
+                            <button class="btn btn-primary w-full" data-i18n-key="electroshop.addToCart">In den Warenkorb</button>
+                        </div>
+                        
+                        <!-- Product 2 - Laptop -->
+                        <div class="business-card">
+                            <div class="h-48 flex items-center justify-center overflow-hidden mb-4">
+                                <img 
+                                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzM3NDE1MSIgcng9IjgiLz4KICA8cmVjdCB4PSIxMCIgeT0iMTAiIHdpZHRoPSIxODAiIGhlaWdodD0iODAiIGZpbGw9IiMwMDAwMDAiIHJ4PSI0Ii8+CiAgPHJlY3QgeD0iMjAiIHk9IjIwIiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZTVlN2ViIiByeD0iMiIvPgogIDxyZWN0IHg9IjIwIiB5PSI0MCIgd2lkdGg9IjEyMCIgaGVpZ2h0PSI4IiBmaWxsPSIjZTVlN2ViIiByeD0iMiIvPgogIDxyZWN0IHg9IjIwIiB5PSI1NSIgd2lkdGg9IjE0MCIgaGVpZ2h0PSI4IiBmaWxsPSIjZTVlN2ViIiByeD0iMiIvPgogIDxyZWN0IHg9IjAiIHk9IjEwMCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIxNSIgZmlsbD0iIzM3NDE1MSIgcng9IjgiLz4KICA8dGV4dCB4PSIxMDAiIHk9IjE3NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MYXB0b3A8L3RleHQ+Cjwvc3ZnPgo="
+                                    alt="Gaming Laptop UltraBook 15 Zoll"
+                                    class="w-full h-full object-contain"
+                                />
+                            </div>
+                            
+                            <h3 class="text-lg font-semibold mb-2">Gaming Laptop UltraBook 15"</h3>
+                            <p class="text-sm text-gray-600 mb-3">Intel i7, 16GB RAM, RTX 4060, 512GB SSD</p>
+                            
+                            <div class="flex items-center mb-2">
+                                <span class="text-2xl font-bold text-blue-600">1.299,99€</span>
+                                <span class="text-sm text-gray-500 line-through ml-2">1.599,99€</span>
+                                <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded ml-2">-19%</span>
+                            </div>
+                            
+                            <div class="flex items-center mb-4">
+                                <div class="text-yellow-500">★★★★☆</div>
+                                <span class="text-sm text-gray-600 ml-2">(892 Bewertungen)</span>
+                            </div>
+                            
+                            <div class="text-sm text-green-600 mb-3" data-i18n-key="electroshop.freeShipping">🚚 Kostenloser Versand</div>
+                            <button class="btn btn-primary w-full" data-i18n-key="electroshop.addToCart">In den Warenkorb</button>
+                        </div>
+                        
+                        <!-- Product 3 - Headphones -->
+                        <div class="business-card">
+                            <div class="h-48 flex items-center justify-center overflow-hidden mb-4">
+                                <img 
+                                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSI0NSIgY3k9IjkwIiByPSI0MCIgZmlsbD0iIzM3NDE1MSIvPgogIDxjaXJjbGUgY3g9IjEzNSIgY3k9IjkwIiByPSI0MCIgZmlsbD0iIzM3NDE1MSIvPgogIDxwYXRoIGQ9Ik00NSA1MEM0NSA0NCA3NCA0MCA5MCA0MFMxMzUgNDQgMTM1IDUwIiBzdHJva2U9IiMzNzQxNTEiIHN0cm9rZS13aWR0aD0iOCIgZmlsbD0ibm9uZSIvPgogIDx0ZXh0IHg9IjkwIiB5PSIyMDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+S29wZmjDtnJlcjwvdGV4dD4KPC9zdmc+"
+                                    alt="Wireless Kopfhörer Pro Noise-Cancelling"
+                                    class="w-full h-full object-contain"
+                                />
+                            </div>
+                            
+                            <h3 class="text-lg font-semibold mb-2">Wireless Kopfhörer Pro</h3>
+                            <p class="text-sm text-gray-600 mb-3">Noise-Cancelling, 30h Akku, Bluetooth 5.3</p>
+                            
+                            <div class="flex items-center mb-2">
+                                <span class="text-2xl font-bold text-blue-600">199,99€</span>
+                                <span class="text-sm text-gray-500 line-through ml-2">249,99€</span>
+                                <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded ml-2">-20%</span>
+                            </div>
+                            
+                            <div class="flex items-center mb-4">
+                                <div class="text-yellow-500">★★★★★</div>
+                                <span class="text-sm text-gray-600 ml-2">(2.156 Bewertungen)</span>
+                            </div>
+                            
+                            <div class="text-sm text-green-600 mb-3">✓ Bestseller</div>
+                            <button class="btn btn-primary w-full" data-i18n-key="electroshop.addToCart">In den Warenkorb</button>
+                        </div>
+                        
+                        <!-- Product 4 - Tablet -->
+                        <div class="business-card">
+                            <div class="h-48 flex items-center justify-center overflow-hidden mb-4">
+                                <img 
+                                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE4MCIgZmlsbD0iIzM3NDE1MSIgcng9IjEwIi8+CiAgPHJlY3QgeD0iMTAiIHk9IjE1IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iIzAwMDAwMCIgcng9IjUiLz4KICA8cmVjdCB4PSIyMCIgeT0iMjUiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTUiIGZpbGw9IiMzYjgyZjYiIHJ4PSIzIi8+CiAgPHJlY3QgeD0iMjAiIHk9IjUwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgiIGZpbGw9IiNlNWU3ZWIiIHJ4PSIyIi8+CiAgPHJlY3QgeD0iMjAiIHk9IjY1IiB3aWR0aD0iODAiIGhlaWdodD0iOCIgZmlsbD0iI2U1ZTdlYiIgcng9IjIiLz4KICA8cmVjdCB4PSIyMCIgeT0iODAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI4IiBmaWxsPSIjZTVlN2ViIiByeD0iMiIvPgogIDx0ZXh0IHg9IjcwIiB5PSIyMDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VGFibGV0PC90ZXh0Pgo8L3N2Zz4K"
+                                    alt="Tablet Air 11 Zoll WiFi 128GB"
+                                    class="w-full h-full object-contain"
+                                />
+                            </div>
+                            
+                            <h3 class="text-lg font-semibold mb-2">Tablet Air 11" WiFi</h3>
+                            <p class="text-sm text-gray-600 mb-3">128GB, A15 Chip, 10h Akku, Face ID</p>
+                            
+                            <div class="flex items-center mb-2">
+                                <span class="text-2xl font-bold text-blue-600">649,99€</span>
+                                <span class="text-sm text-gray-500 line-through ml-2">749,99€</span>
+                                <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded ml-2">-13%</span>
+                            </div>
+                            
+                            <div class="flex items-center mb-4">
+                                <div class="text-yellow-500">★★★★☆</div>
+                                <span class="text-sm text-gray-600 ml-2">(634 Bewertungen)</span>
+                            </div>
+                            
+                            <div class="text-sm text-orange-600 mb-3">⚠ Nur noch 3 auf Lager</div>
+                            <button class="btn btn-primary w-full" data-i18n-key="electroshop.addToCart">In den Warenkorb</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Product Categories -->
+                    <div class="mt-12">
+                        <h2 class="text-2xl font-bold mb-6" data-i18n-key="electroshop.bestsellers">Bestseller</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Gaming Console -->
+                            <div class="business-card">
+                                <div class="h-40 flex items-center justify-center overflow-hidden mb-4">
+                                    <img 
+                                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzM3NDE1MSIgcng9IjgiLz4KICA8cmVjdCB4PSIxMCIgeT0iMTAiIHdpZHRoPSIxODAiIGhlaWdodD0iODAiIGZpbGw9IiMxZjI5MzciIHJ4PSI0Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMTUiIGZpbGw9IiNlNWU3ZWIiLz4KICA8Y2lyY2xlIGN4PSIxNTAiIGN5PSI1MCIgcj0iMTUiIGZpbGw9IiNlNWU3ZWIiLz4KICA8dGV4dCB4PSIxMDAiIHk9IjEzMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5HYW1pbmcgS29uc29sZTwvdGV4dD4KPC9zdmc+"
+                                        alt="Gaming Konsole NextGen 512GB"
+                                        class="w-full h-full object-contain"
+                                    />
+                                </div>
+                                <h3 class="text-lg font-semibold mb-2">Gaming Konsole NextGen</h3>
+                                <div class="text-sm text-gray-600 mb-3">512GB SSD, 4K Gaming, Ray Tracing</div>
+                                <div class="text-2xl font-bold text-blue-600 mb-3">499,99€</div>
+                                <button class="btn btn-primary w-full" data-i18n-key="electroshop.addToCart">In den Warenkorb</button>
+                            </div>
+                            
+                            <!-- Smart Watch -->
+                            <div class="business-card">
+                                <div class="h-40 flex items-center justify-center overflow-hidden mb-4">
+                                    <img 
+                                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSIzMCIgeT0iNDAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI3MCIgZmlsbD0iIzM3NDE1MSIgcng9IjEwIi8+CiAgPHJlY3QgeD0iMzUiIHk9IjQ1IiB3aWR0aD0iNTAiIGhlaWdodD0iNjAiIGZpbGw9IiMwMDAwMDAiIHJ4PSI4Ii8+CiAgPGNpcmNsZSBjeD0iNjAiIGN5PSI3NSIgcj0iMTUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzNiODJmNiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHJlY3QgeD0iNTUiIHk9IjIwIiB3aWR0aD0iMTAiIGhlaWdodD0iMjAiIGZpbGw9IiMzNzQxNTEiLz4KICA8cmVjdCB4PSI1NSIgeT0iMTEwIiB3aWR0aD0iMTAiIGhlaWdodD0iMjAiIGZpbGw9IiMzNzQxNTEiLz4KICA8dGV4dCB4PSI2MCIgeT0iMTcwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNtYXJ0IFdhdGNoPC90ZXh0Pgo8L3N2Zz4K"
+                                        alt="Smart Watch Fitness Pro GPS"
+                                        class="w-full h-full object-contain"
+                                    />
+                                </div>
+                                <h3 class="text-lg font-semibold mb-2">Smart Watch Fitness Pro</h3>
+                                <div class="text-sm text-gray-600 mb-3">GPS, Herzfrequenz, 7 Tage Akku</div>
+                                <div class="text-2xl font-bold text-blue-600 mb-3">299,99€</div>
+                                <button class="btn btn-primary w-full" data-i18n-key="electroshop.addToCart">In den Warenkorb</button>
+                            </div>
+                            
+                            <!-- Bluetooth Speaker -->
+                            <div class="business-card">
+                                <div class="h-40 flex items-center justify-center overflow-hidden mb-4">
+                                    <img 
+                                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTgwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzM3NDE1MSIgcng9IjIwIi8+CiAgPGNpcmNsZSBjeD0iNDUiIGN5PSI1MCIgcj0iMjAiIGZpbGw9IiM2YjcyODAiLz4KICA8Y2lyY2xlIGN4PSI5MCIgY3k9IjUwIiByPSIyMCIgZmlsbD0iIzZiNzI4MCIvPgogIDxjaXJjbGUgY3g9IjEzNSIgY3k9IjUwIiByPSIyMCIgZmlsbD0iIzZiNzI4MCIvPgogIDx0ZXh0IHg9IjkwIiB5PSIxMzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Qmx1ZXRvb3RoIFNwZWFrZXI8L3RleHQ+Cjwvc3ZnPgo="
+                                        alt="Bluetooth Lautsprecher Portable Wasserdicht"
+                                        class="w-full h-full object-contain"
+                                    />
+                                </div>
+                                <h3 class="text-lg font-semibold mb-2">Bluetooth Lautsprecher Portable</h3>
+                                <div class="text-sm text-gray-600 mb-3">Wasserdicht, 360° Sound, 20h Akku</div>
+                                <div class="text-2xl font-bold text-blue-600 mb-3">79,99€</div>
+                                <button class="btn btn-primary w-full" data-i18n-key="electroshop.addToCart">In den Warenkorb</button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        
+        <!-- SecureBank Page -->
+        <div id="securebank" class="page">
+            <div class="min-h-screen bg-blue-900 text-white">
+                <!-- Header -->
+                <header class="py-6">
+                    <div class="container">
+                        <div class="flex items-center justify-between">
+                            <h1 class="text-3xl font-bold" data-i18n-key="securebank.title">SecureBank</h1>
+                            <div class="flex items-center gap-4">
+                                <span class="text-sm" data-i18n-key="securebank.welcome">Willkommen, John Doe</span>
+                                <button class="btn btn-outline" data-i18n-key="securebank.logout">Abmelden</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Menu -->
+                        <nav class="mt-6">
+                            <div class="flex space-x-8">
+                                <a href="#" class="text-white hover:text-blue-200 border-b-2 border-white pb-2" data-i18n-key="securebank.dashboard">Dashboard</a>
+                                <a href="#" class="text-blue-200 hover:text-white" data-i18n-key="securebank.accounts">Konten</a>
+                                <a href="#" class="text-blue-200 hover:text-white" data-i18n-key="securebank.transfers">Überweisungen</a>
+                                <a href="#" class="text-blue-200 hover:text-white" data-i18n-key="securebank.payments">Zahlungen</a>
+                                <a href="#" class="text-blue-200 hover:text-white" data-i18n-key="securebank.services">Dienstleistungen</a>
+                            </div>
+                        </nav>
+                    </div>
+                </header>
+                
+                <!-- Banking Dashboard -->
+                <main class="container py-8">
+                    <!-- Security Alert Banner -->
+                    <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6 rounded">
+                        <!-- VIOLATION: Time-sensitive notification without proper announcement -->
+                        <div class="flex">
+                            <div class="ml-3">
+                                <p class="text-sm">
+                                    ⚠️ Sicherheitshinweis: Ihre Sitzung läuft in 5 Minuten ab. Aktivität erforderlich.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-2xl font-bold mb-6" data-i18n-key="securebank.accountOverview">Kontoübersicht</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <!-- Girokonto -->
+                        <div class="bg-white text-gray-900 p-6 rounded-lg">
+                            <h3 class="text-lg font-semibold mb-2">Girokonto</h3>
+                            <div class="text-sm text-gray-600 mb-2">DE89 3704 0044 0532 0130 00</div>
+                            <!-- VIOLATION: Balance without proper currency announcement -->
+                            <p class="text-3xl font-bold text-green-600 mb-2">12.345,67€</p>
+                            <p class="text-sm text-gray-600" data-i18n-key="securebank.available">Verfügbar</p>
+                            <button class="mt-4 text-blue-600 text-sm hover:underline">Details anzeigen</button>
+                        </div>
+                        
+                        <!-- Sparbuch -->
+                        <div class="bg-white text-gray-900 p-6 rounded-lg">
+                            <h3 class="text-lg font-semibold mb-2">Sparbuch Plus</h3>
+                            <div class="text-sm text-gray-600 mb-2">DE89 3704 0044 0532 0130 01</div>
+                            <p class="text-3xl font-bold text-green-600 mb-2">25.890,12€</p>
+                            <p class="text-sm text-gray-600" data-i18n-key="securebank.available">Verfügbar</p>
+                            <div class="text-xs text-gray-500 mt-2">Zinssatz: 2,5% p.a.</div>
+                            <button class="mt-4 text-blue-600 text-sm hover:underline">Details anzeigen</button>
+                        </div>
+                        
+                        <!-- Kreditkarte -->
+                        <div class="bg-white text-gray-900 p-6 rounded-lg">
+                            <h3 class="text-lg font-semibold mb-2">Kreditkarte Visa Gold</h3>
+                            <div class="text-sm text-gray-600 mb-2">**** **** **** 4567</div>
+                            <p class="text-3xl font-bold text-red-600 mb-2">1.567,89€</p>
+                            <p class="text-sm text-gray-600">Aktueller Saldo</p>
+                            <div class="text-xs text-gray-500 mt-2">Limit: 5.000,00€</div>
+                            <button class="mt-4 text-blue-600 text-sm hover:underline">Zahlung vornehmen</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-white text-gray-900 p-6 rounded-lg">
+                            <h3 class="text-xl font-semibold mb-4" data-i18n-key="securebank.transfer">Überweisung</h3>
+                            <!-- VIOLATION: Form with missing labels and poor error handling -->
+                            <form class="space-y-4">
+                                <div>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Empfänger IBAN"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded"
+                                    />
+                                </div>
+                                <div>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Empfängername"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded"
+                                    />
+                                </div>
+                                <div>
+                                    <input 
+                                        type="number" 
+                                        placeholder="Betrag in €"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded"
+                                    />
+                                </div>
+                                <div>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Verwendungszweck"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded"
+                                    />
+                                </div>
+                                <button class="btn btn-primary w-full">Überweisung ausführen</button>
+                            </form>
+                        </div>
+                        
+                        <div class="bg-white text-gray-900 p-6 rounded-lg">
+                            <h3 class="text-xl font-semibold mb-4" data-i18n-key="securebank.recentTransactions">Letzte Transaktionen</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                                    <div>
+                                        <div class="font-medium">Supermarkt Kaufland</div>
+                                        <div class="text-sm text-gray-600">16. August 2024</div>
+                                    </div>
+                                    <div class="text-red-600 font-semibold">-45,67€</div>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                                    <div>
+                                        <div class="font-medium">Gehalt - Muster GmbH</div>
+                                        <div class="text-sm text-gray-600">15. August 2024</div>
+                                    </div>
+                                    <div class="text-green-600 font-semibold">+3.200,00€</div>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                                    <div>
+                                        <div class="font-medium">Miete - Hausverwaltung Schmidt</div>
+                                        <div class="text-sm text-gray-600">14. August 2024</div>
+                                    </div>
+                                    <div class="text-red-600 font-semibold">-850,00€</div>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                                    <div>
+                                        <div class="font-medium">Tankstelle Shell</div>
+                                        <div class="text-sm text-gray-600">13. August 2024</div>
+                                    </div>
+                                    <div class="text-red-600 font-semibold">-72,45€</div>
+                                </div>
+                                <div class="flex justify-between items-center py-2">
+                                    <div>
+                                        <div class="font-medium">Rückerstattung - Amazon</div>
+                                        <div class="text-sm text-gray-600">12. August 2024</div>
+                                    </div>
+                                    <div class="text-green-600 font-semibold">+29,99€</div>
+                                </div>
+                            </div>
+                            <button class="mt-4 text-blue-600 text-sm hover:underline">Alle Transaktionen anzeigen</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Action Buttons -->
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold mb-4" data-i18n-key="securebank.quickActions">Schnellaktionen</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <button class="bg-white text-gray-900 p-4 rounded-lg text-center hover:bg-gray-50">
+                                <div class="text-2xl mb-2">💳</div>
+                                <div class="text-sm" data-i18n-key="securebank.payBills">Rechnungen bezahlen</div>
+                            </button>
+                            <button class="bg-white text-gray-900 p-4 rounded-lg text-center hover:bg-gray-50">
+                                <div class="text-2xl mb-2">📄</div>
+                                <div class="text-sm" data-i18n-key="securebank.statements">Kontoauszüge</div>
+                            </button>
+                            <button class="bg-white text-gray-900 p-4 rounded-lg text-center hover:bg-gray-50">
+                                <div class="text-2xl mb-2">🔒</div>
+                                <div class="text-sm" data-i18n-key="securebank.security">Sicherheit</div>
+                            </button>
+                            <button class="bg-white text-gray-900 p-4 rounded-lg text-center hover:bg-gray-50">
+                                <div class="text-2xl mb-2">☎️</div>
+                                <div class="text-sm">Kontakt</div>
+                            </button>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        
+        <!-- InnovateCorp Page -->
+        <div id="innovatecorp" class="page">
+            <div class="min-h-screen bg-gray-50">
+                <!-- Header -->
+                <header class="bg-white shadow-sm">
+                    <div class="container py-6">
+                        <div class="flex items-center justify-between">
+                            <h1 class="text-3xl font-bold text-gray-900" data-i18n-key="innovatecorp.title">Innovate Corp</h1>
+                            <nav>
+                                <!-- VIOLATION: Navigation without skip links -->
+                                <div class="flex space-x-6">
+                                    <a href="#" class="text-gray-600 hover:text-blue-600" data-i18n-key="innovatecorp.nav.about">Über uns</a>
+                                    <a href="#" class="text-gray-600 hover:text-blue-600" data-i18n-key="innovatecorp.nav.services">Dienstleistungen</a>
+                                    <a href="#" class="text-gray-600 hover:text-blue-600" data-i18n-key="innovatecorp.nav.portfolio">Portfolio</a>
+                                    <a href="#" class="text-gray-600 hover:text-blue-600" data-i18n-key="innovatecorp.nav.team">Team</a>
+                                    <a href="#" class="text-gray-600 hover:text-blue-600" data-i18n-key="innovatecorp.nav.contact">Kontakt</a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
+                
+                <!-- Hero Section -->
+                <section class="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20">
+                    <div class="container">
+                        <div class="max-w-4xl">
+                            <h2 class="text-5xl font-bold mb-6" data-i18n-key="innovatecorp.hero.title">Wir bringen Ihr Unternehmen voran</h2>
+                            <p class="text-xl mb-8" data-i18n-key="innovatecorp.hero.subtitle">Strategische Beratung für digitale Transformation und nachhaltiges Wachstum. Seit über 15 Jahren Ihr vertrauensvoller Partner für Unternehmensberatung.</p>
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <button class="btn btn-secondary" data-i18n-key="innovatecorp.hero.cta">Beratung anfragen</button>
+                                <button class="btn btn-outline text-white border-white hover:bg-white hover:text-blue-600">Referenzen ansehen</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Services -->
+                <section class="py-16">
+                    <div class="container">
+                        <div class="text-center mb-12">
+                            <h2 class="text-3xl font-bold mb-4" data-i18n-key="innovatecorp.services.title">Unsere Dienstleistungen</h2>
+                            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Maßgeschneiderte Lösungen für Ihre Geschäftsherausforderungen</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            <div class="business-card text-center">
+                                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-2xl">💡</span>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-4" data-i18n-key="innovatecorp.services.strategy">Strategie & Beratung</h3>
+                                <p class="text-gray-600">Entwicklung umfassender Geschäftsstrategien für nachhaltiges Wachstum und Wettbewerbsvorteile.</p>
+                            </div>
+                            
+                            <div class="business-card text-center">
+                                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-2xl">🚀</span>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-4" data-i18n-key="innovatecorp.services.digital">Digitale Transformation</h3>
+                                <p class="text-gray-600">Modernisierung Ihrer Geschäftsprozesse mit innovativen Technologien und digitalen Lösungen.</p>
+                            </div>
+                            
+                            <div class="business-card text-center">
+                                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-2xl">📊</span>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-4" data-i18n-key="innovatecorp.services.innovation">Innovationsmanagement</h3>
+                                <p class="text-gray-600">Systematische Entwicklung und Umsetzung von Innovationsprozessen in Ihrem Unternehmen.</p>
+                            </div>
+                            
+                            <div class="business-card text-center">
+                                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-2xl">⚙️</span>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-4" data-i18n-key="innovatecorp.services.implementation">Umsetzung & Support</h3>
+                                <p class="text-gray-600">Professionelle Projektbegleitung und kontinuierlicher Support bei der Umsetzung Ihrer Ziele.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Statistics Section -->
+                <section class="py-16 bg-white">
+                    <div class="container">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                            <div>
+                                <div class="text-4xl font-bold text-blue-600 mb-2">250+</div>
+                                <div class="text-gray-600">Erfolgreich abgeschlossene Projekte</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-green-600 mb-2">15+</div>
+                                <div class="text-gray-600">Jahre Erfahrung</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-purple-600 mb-2">98%</div>
+                                <div class="text-gray-600">Kundenzufriedenheit</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-orange-600 mb-2">50+</div>
+                                <div class="text-gray-600">Experten im Team</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- About Section -->
+                <section class="py-16 bg-gray-100">
+                    <div class="container">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <h2 class="text-3xl font-bold mb-6" data-i18n-key="innovatecorp.about.title">Über Innovate Corp</h2>
+                                <p class="text-lg text-gray-700 mb-6" data-i18n-key="innovatecorp.about.content">
+                                    Seit über 15 Jahren sind wir führend in der Unternehmenstransformation und helfen 
+                                    Organisationen dabei, komplexe Herausforderungen zu meistern und nachhaltiges Wachstum zu erreichen.
+                                </p>
+                                <p class="text-gray-600 mb-8">
+                                    Unser Team aus erfahrenen Beratern kombiniert tiefes Branchenwissen mit innovativem 
+                                    Denken, um Lösungen zu entwickeln, die dauerhaften Wert für unsere Kunden schaffen.
+                                </p>
+                                <button class="btn btn-primary">Mehr über uns erfahren</button>
+                            </div>
+                            
+                            <div class="bg-white p-8 rounded-lg shadow-sm">
+                                <h3 class="text-xl font-semibold mb-6" data-i18n-key="innovatecorp.contact.title">Kontakt aufnehmen</h3>
+                                <!-- VIOLATION: Contact form without proper labels and validation -->
+                                <form class="space-y-4">
+                                    <input 
+                                        type="text" 
+                                        placeholder="Ihr Name"
+                                        class="w-full px-4 py-2 border border-gray-300 rounded"
+                                    />
+                                    <input 
+                                        type="email" 
+                                        placeholder="E-Mail-Adresse"
+                                        class="w-full px-4 py-2 border border-gray-300 rounded"
+                                    />
+                                    <input 
+                                        type="text" 
+                                        placeholder="Unternehmen"
+                                        class="w-full px-4 py-2 border border-gray-300 rounded"
+                                    />
+                                    <textarea 
+                                        placeholder="Ihre Nachricht"
+                                        rows="4"
+                                        class="w-full px-4 py-2 border border-gray-300 rounded"
+                                    ></textarea>
+                                    <button class="btn btn-primary w-full">Anfrage senden</button>
+                                </form>
+                                
+                                <div class="mt-6 pt-6 border-t border-gray-200">
+                                    <div class="space-y-3 text-sm text-gray-600">
+                                        <div class="flex items-center gap-3">
+                                            <span>📞</span>
+                                            <span data-i18n-key="innovatecorp.contact.phone">+49 (0) 30 123 456 78</span>
+                                        </div>
+                                        <div class="flex items-center gap-3">
+                                            <span>✉️</span>
+                                            <span>info@innovate-corp.de</span>
+                                        </div>
+                                        <div class="flex items-center gap-3">
+                                            <span>📍</span>
+                                            <span data-i18n-key="innovatecorp.contact.address">Berlin, Deutschland</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Client Testimonials -->
+                <section class="py-16 bg-white">
+                    <div class="container">
+                        <h2 class="text-3xl font-bold text-center mb-12">Was unsere Kunden sagen</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="business-card">
+                                <!-- VIOLATION: Missing heading structure -->
+                                <div class="text-lg font-semibold mb-4">"Innovate Corp hat unsere digitale Transformation erfolgreich begleitet."</div>
+                                <p class="text-gray-600 mb-4">
+                                    Die Zusammenarbeit war professionell und zielorientiert. 
+                                    Wir konnten unsere Effizienz um 40% steigern.
+                                </p>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <span class="font-semibold text-blue-600">MW</span>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium">Maria Weber</div>
+                                        <div class="text-sm text-gray-600">CEO, TechStart GmbH</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="business-card">
+                                <div class="text-lg font-semibold mb-4">"Exzellente Beratung mit nachhaltigen Ergebnissen."</div>
+                                <p class="text-gray-600 mb-4">
+                                    Das Team von Innovate Corp versteht unsere Branche und 
+                                    liefert maßgeschneiderte Lösungen.
+                                </p>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                        <span class="font-semibold text-green-600">TS</span>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium">Thomas Schmidt</div>
+                                        <div class="text-sm text-gray-600">Geschäftsführer, GlobalTrade AG</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="business-card">
+                                <div class="text-lg font-semibold mb-4">"Innovativ, kompetent und zuverlässig."</div>
+                                <p class="text-gray-600 mb-4">
+                                    Von der ersten Beratung bis zur Umsetzung - 
+                                    ein rundum professioneller Service.
+                                </p>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                        <span class="font-semibold text-purple-600">AH</span>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium">Anna Hoffmann</div>
+                                        <div class="text-sm text-gray-600">Leiterin IT, MedCorp Deutschland</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-16">
+        <div class="container">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span data-i18n-key="footer.platform">WCAG Testing Platform</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <label for="language-select-footer" class="text-sm text-gray-300" data-i18n-key="footer.language">Sprache:</label>
+                    <select id="language-select-footer" onchange="switchLanguage(this.value)" class="bg-gray-800 text-white border border-gray-600 rounded px-3 py-1">
+                        <option value="de">Deutsch</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /*
+         * WCAG Testing Platform - German Translation Enhanced
+         * Educational platform for learning accessibility with intentional violations
+         * Focus: German language support and realistic business content
+         */
+        
+        // Global application state
+        window.WCAGApp = {
+            currentLang: 'de',
+            currentPage: 'home',
+            mobileMenuOpen: false,
+            
+            // Embedded translations
+            translations: {
+                de: {
+                    "brand": "WCAG Testing Platform",
+                    "nav": {
+                        "home": "Startseite",
+                        "creativeflow": "CreativeFlow",
+                        "taskflow": "TaskFlow",
+                        "techdaily": "TechDaily",
+                        "electroshop": "ElectroShop",
+                        "securebank": "SecureBank",
+                        "innovatecorp": "InnovateCorp"
+                    },
+                    "home": {
+                        "title": "WCAG Testing Platform - Üben Sie mit echten Geschäfts-Websites",
+                        "subtitle": "Testen Sie Ihr WCAG-Wissen an authentischen Geschäfts-Websites",
+                        "description": "Üben Sie die Identifizierung von Barrierefreiheitsproblemen an realistischen Geschäfts-Websites. Jede Website stellt ein echtes Unternehmen mit typischer Web-Funktionalität dar.",
+                        "getStarted": "Analyse starten",
+                        "purpose": {
+                            "title": "Plattform-Zweck",
+                            "content": "Entwickeln Sie praktische WCAG-Testfähigkeiten durch die Analyse realer Geschäftsszenarien. Lernen Sie, Barrierefreiheitsprobleme in realen Anwendungen zu identifizieren."
+                        },
+                        "businessExamples": {
+                            "title": "Geschäftsbeispiele zur Analyse",
+                            "subtitle": "Wählen Sie eine Website zum Testen aus",
+                            "visitSite": "Website besuchen →"
+                        },
+                        "resources": {
+                            "title": "WCAG-Referenzen",
+                            "wcag21": "WCAG 2.1 Richtlinien",
+                            "wcag22": "WCAG 2.2 Richtlinien",
+                            "techniques": "WCAG-Techniken",
+                            "understanding": "WCAG verstehen"
+                        }
+                    },
+                    "businesses": {
+                        "creativeflow": {
+                            "title": "CreativeFlow Marketing",
+                            "description": "Digitale Marketing-Agentur - Portfolio und Dienstleistungen",
+                            "industry": "Marketing & Werbung"
+                        },
+                        "taskflow": {
+                            "title": "TaskFlow Pro",
+                            "description": "SaaS Projektmanagement-Tool - Dashboard-Demo",
+                            "industry": "Software & Technologie"
+                        },
+                        "techdaily": {
+                            "title": "TechDaily News",
+                            "description": "Technologie-Nachrichtenportal mit Artikeln und Blog",
+                            "industry": "Medien & Nachrichten"
+                        },
+                        "electroshop": {
+                            "title": "ElectroShop",
+                            "description": "Online-Elektronikgeschäft - Produktkatalog und Shop",
+                            "industry": "E-Commerce & Einzelhandel"
+                        },
+                        "securebank": {
+                            "title": "SecureBank",
+                            "description": "Online-Banking-Portal - Kontoverwaltung und Transaktionen",
+                            "industry": "Finanzdienstleistungen"
+                        },
+                        "innovatecorp": {
+                            "title": "Innovate Corp",
+                            "description": "Unternehmens-Website - Über uns und Dienstleistungen",
+                            "industry": "Beratung & Dienstleistungen"
+                        }
+                    },
+                    "taskflow": {
+                        "title": "TaskFlow Pro",
+                        "subtitle": "Projektmanagement-Dashboard",
+                        "welcome": "Willkommen, Sarah",
+                        "newTask": "Neue Aufgabe",
+                        "quickStats": "Schnelle Statistiken",
+                        "activeProjects": "Aktive Projekte",
+                        "completedTasks": "Erledigte Aufgaben",
+                        "teamMembers": "Teammitglieder",
+                        "deadlines": "Fristen",
+                        "recentActivity": "Letzte Aktivitäten",
+                        "projectProgress": "Projektfortschritt",
+                        "taskStatus": {
+                            "todo": "Zu erledigen",
+                            "inProgress": "In Bearbeitung",
+                            "review": "Überprüfung",
+                            "done": "Fertig"
+                        },
+                        "projects": {
+                            "websiteRedesign": "Website-Redesign",
+                            "mobileApp": "Mobile App",
+                            "marketing": "Marketing-Kampagne"
+                        }
+                    },
+                    "techdaily": {
+                        "title": "TechDaily News",
+                        "subtitle": "Ihre tägliche Dosis Technologie-News",
+                        "nav": {
+                            "home": "Startseite",
+                            "technology": "Technologie",
+                            "innovation": "Innovation",
+                            "startup": "Startup",
+                            "reviews": "Bewertungen",
+                            "contact": "Kontakt"
+                        },
+                        "breaking": "Eilmeldung",
+                        "featured": "Empfohlen",
+                        "latest": "Neueste Artikel",
+                        "categories": "Kategorien",
+                        "readMore": "Weiterlesen",
+                        "publishedBy": "Veröffentlicht von",
+                        "commentsCount": "Kommentare",
+                        "newsletter": {
+                            "title": "Newsletter abonnieren",
+                            "subtitle": "Bleiben Sie auf dem Laufenden",
+                            "email": "E-Mail-Adresse",
+                            "subscribe": "Abonnieren"
+                        }
+                    },
+                    "electroshop": {
+                        "title": "ElectroShop",
+                        "subtitle": "Ihr Online-Elektronikfachgeschäft",
+                        "search": "Produkte suchen...",
+                        "cart": "Warenkorb",
+                        "account": "Mein Konto",
+                        "categories": {
+                            "smartphones": "Smartphones",
+                            "laptops": "Laptops",
+                            "audio": "Audio & Musik",
+                            "gaming": "Gaming",
+                            "accessories": "Zubehör"
+                        },
+                        "featured": "Empfohlene Produkte",
+                        "bestsellers": "Bestseller",
+                        "newArrivals": "Neuheiten",
+                        "price": "Preis",
+                        "addToCart": "In den Warenkorb",
+                        "compare": "Vergleichen",
+                        "rating": "Bewertung",
+                        "inStock": "Auf Lager",
+                        "outOfStock": "Nicht verfügbar",
+                        "freeShipping": "Kostenloser Versand"
+                    },
+                    "securebank": {
+                        "title": "SecureBank",
+                        "subtitle": "Ihr vertrauenswürdiger Banking-Partner",
+                        "welcome": "Willkommen, John Doe",
+                        "logout": "Abmelden",
+                        "dashboard": "Dashboard",
+                        "accounts": "Konten",
+                        "transfers": "Überweisungen",
+                        "payments": "Zahlungen",
+                        "services": "Dienstleistungen",
+                        "accountOverview": "Kontoübersicht",
+                        "recentTransactions": "Letzte Transaktionen",
+                        "quickActions": "Schnellaktionen",
+                        "balance": "Kontostand",
+                        "available": "Verfügbar",
+                        "pending": "Ausstehend",
+                        "transfer": "Überweisung",
+                        "payBills": "Rechnungen bezahlen",
+                        "statements": "Kontoauszüge",
+                        "security": "Sicherheit"
+                    },
+                    "innovatecorp": {
+                        "title": "Innovate Corp",
+                        "subtitle": "Innovation durch Beratung",
+                        "nav": {
+                            "about": "Über uns",
+                            "services": "Dienstleistungen",
+                            "portfolio": "Portfolio",
+                            "team": "Team",
+                            "contact": "Kontakt"
+                        },
+                        "hero": {
+                            "title": "Wir bringen Ihr Unternehmen voran",
+                            "subtitle": "Strategische Beratung für digitale Transformation",
+                            "cta": "Beratung anfragen"
+                        },
+                        "services": {
+                            "title": "Unsere Dienstleistungen",
+                            "strategy": "Strategie & Beratung",
+                            "digital": "Digitale Transformation",
+                            "innovation": "Innovationsmanagement",
+                            "implementation": "Umsetzung & Support"
+                        },
+                        "about": {
+                            "title": "Über Innovate Corp",
+                            "content": "Seit über 15 Jahren helfen wir Unternehmen dabei, ihre Geschäftsziele zu erreichen."
+                        },
+                        "contact": {
+                            "title": "Kontakt aufnehmen",
+                            "phone": "Telefon",
+                            "email": "E-Mail",
+                            "address": "Adresse"
+                        }
+                    },
+                    "footer": {
+                        "language": "Sprache",
+                        "selectLanguage": "Sprache auswählen",
+                        "platform": "WCAG Testing Platform"
+                    }
+                },
+                en: {
+                    "brand": "WCAG Testing Platform",
+                    "nav": {
+                        "home": "Home",
+                        "creativeflow": "CreativeFlow",
+                        "taskflow": "TaskFlow",
+                        "techdaily": "TechDaily",
+                        "electroshop": "ElectroShop",
+                        "securebank": "SecureBank",
+                        "innovatecorp": "InnovateCorp"
+                    },
+                    "home": {
+                        "title": "WCAG Testing Platform - Practice with Real Business Websites",
+                        "subtitle": "Test your WCAG knowledge on authentic business websites",
+                        "description": "Practice identifying accessibility issues on realistic business websites. Each site represents a real company with typical web functionality.",
+                        "getStarted": "Start Analysis",
+                        "purpose": {
+                            "title": "Platform Purpose",
+                            "content": "Develop practical WCAG testing skills by analyzing real business scenarios. Learn to identify accessibility issues in real-world applications."
+                        },
+                        "businessExamples": {
+                            "title": "Business Examples for Analysis",
+                            "subtitle": "Choose a website to test",
+                            "visitSite": "Visit Site →"
+                        },
+                        "resources": {
+                            "title": "WCAG References",
+                            "wcag21": "WCAG 2.1 Guidelines",
+                            "wcag22": "WCAG 2.2 Guidelines",
+                            "techniques": "WCAG Techniques",
+                            "understanding": "Understanding WCAG"
+                        }
+                    },
+                    "businesses": {
+                        "creativeflow": {
+                            "title": "CreativeFlow Marketing",
+                            "description": "Digital marketing agency - Portfolio and services",
+                            "industry": "Marketing & Advertising"
+                        },
+                        "taskflow": {
+                            "title": "TaskFlow Pro",
+                            "description": "SaaS project management tool - Dashboard demo",
+                            "industry": "Software & Technology"
+                        },
+                        "techdaily": {
+                            "title": "TechDaily News",
+                            "description": "Technology news portal with articles and blog",
+                            "industry": "Media & News"
+                        },
+                        "electroshop": {
+                            "title": "ElectroShop",
+                            "description": "Online electronics store - Product catalog and shop",
+                            "industry": "E-Commerce & Retail"
+                        },
+                        "securebank": {
+                            "title": "SecureBank",
+                            "description": "Online banking portal - Account management and transactions",
+                            "industry": "Financial Services"
+                        },
+                        "innovatecorp": {
+                            "title": "Innovate Corp",
+                            "description": "Corporate website - About us and services",
+                            "industry": "Consulting & Services"
+                        }
+                    },
+                    "taskflow": {
+                        "title": "TaskFlow Pro",
+                        "subtitle": "Project Management Dashboard",
+                        "welcome": "Welcome, Sarah",
+                        "newTask": "New Task",
+                        "quickStats": "Quick Stats",
+                        "activeProjects": "Active Projects",
+                        "completedTasks": "Completed Tasks",
+                        "teamMembers": "Team Members",
+                        "deadlines": "Deadlines",
+                        "recentActivity": "Recent Activity",
+                        "projectProgress": "Project Progress",
+                        "taskStatus": {
+                            "todo": "To Do",
+                            "inProgress": "In Progress",
+                            "review": "Review",
+                            "done": "Done"
+                        },
+                        "projects": {
+                            "websiteRedesign": "Website Redesign",
+                            "mobileApp": "Mobile App",
+                            "marketing": "Marketing Campaign"
+                        }
+                    },
+                    "techdaily": {
+                        "title": "TechDaily News",
+                        "subtitle": "Your daily dose of technology news",
+                        "nav": {
+                            "home": "Home",
+                            "technology": "Technology",
+                            "innovation": "Innovation",
+                            "startup": "Startup",
+                            "reviews": "Reviews",
+                            "contact": "Contact"
+                        },
+                        "breaking": "Breaking News",
+                        "featured": "Featured",
+                        "latest": "Latest Articles",
+                        "categories": "Categories",
+                        "readMore": "Read More",
+                        "publishedBy": "Published by",
+                        "commentsCount": "Comments",
+                        "newsletter": {
+                            "title": "Subscribe to Newsletter",
+                            "subtitle": "Stay up to date",
+                            "email": "Email address",
+                            "subscribe": "Subscribe"
+                        }
+                    },
+                    "electroshop": {
+                        "title": "ElectroShop",
+                        "subtitle": "Your online electronics store",
+                        "search": "Search products...",
+                        "cart": "Cart",
+                        "account": "My Account",
+                        "categories": {
+                            "smartphones": "Smartphones",
+                            "laptops": "Laptops",
+                            "audio": "Audio & Music",
+                            "gaming": "Gaming",
+                            "accessories": "Accessories"
+                        },
+                        "featured": "Featured Products",
+                        "bestsellers": "Bestsellers",
+                        "newArrivals": "New Arrivals",
+                        "price": "Price",
+                        "addToCart": "Add to Cart",
+                        "compare": "Compare",
+                        "rating": "Rating",
+                        "inStock": "In Stock",
+                        "outOfStock": "Out of Stock",
+                        "freeShipping": "Free Shipping"
+                    },
+                    "securebank": {
+                        "title": "SecureBank",
+                        "subtitle": "Your trusted banking partner",
+                        "welcome": "Welcome, John Doe",
+                        "logout": "Logout",
+                        "dashboard": "Dashboard",
+                        "accounts": "Accounts",
+                        "transfers": "Transfers",
+                        "payments": "Payments",
+                        "services": "Services",
+                        "accountOverview": "Account Overview",
+                        "recentTransactions": "Recent Transactions",
+                        "quickActions": "Quick Actions",
+                        "balance": "Balance",
+                        "available": "Available",
+                        "pending": "Pending",
+                        "transfer": "Transfer",
+                        "payBills": "Pay Bills",
+                        "statements": "Statements",
+                        "security": "Security"
+                    },
+                    "innovatecorp": {
+                        "title": "Innovate Corp",
+                        "subtitle": "Innovation through consulting",
+                        "nav": {
+                            "about": "About",
+                            "services": "Services",
+                            "portfolio": "Portfolio",
+                            "team": "Team",
+                            "contact": "Contact"
+                        },
+                        "hero": {
+                            "title": "We advance your business",
+                            "subtitle": "Strategic consulting for digital transformation",
+                            "cta": "Request Consultation"
+                        },
+                        "services": {
+                            "title": "Our Services",
+                            "strategy": "Strategy & Consulting",
+                            "digital": "Digital Transformation",
+                            "innovation": "Innovation Management",
+                            "implementation": "Implementation & Support"
+                        },
+                        "about": {
+                            "title": "About Innovate Corp",
+                            "content": "For over 15 years, we've helped companies achieve their business goals."
+                        },
+                        "contact": {
+                            "title": "Get in Touch",
+                            "phone": "Phone",
+                            "email": "Email",
+                            "address": "Address"
+                        }
+                    },
+                    "footer": {
+                        "language": "Language",
+                        "selectLanguage": "Select Language",
+                        "platform": "WCAG Testing Platform"
+                    }
+                }
+            },
+            
+            // Initialize the application
+            init() {
+                this.setupNavigation();
+                this.loadLanguageFromURL();
+                this.updateAllTranslations();
+                this.setupKeyboardShortcuts();
+                console.log('WCAG Testing Platform initialized');
+            },
+            
+            // Get translation by key
+            t(key) {
+                const keys = key.split('.');
+                let value = this.translations[this.currentLang];
+                
+                for (let i = 0; i < keys.length; i++) {
+                    if (value && value[keys[i]]) {
+                        value = value[keys[i]];
+                    } else {
+                        return key; // Return key if translation not found
+                    }
+                }
+                
+                return value;
+            },
+            
+            // Update all translations in the DOM
+            updateAllTranslations() {
+                document.querySelectorAll('[data-i18n-key]').forEach(element => {
+                    const key = element.getAttribute('data-i18n-key');
+                    const translation = this.t(key);
+                    element.textContent = translation;
+                });
+                
+                // Update HTML lang attribute
+                document.documentElement.lang = this.currentLang;
+                
+                // Update select values
+                const langSelectHeader = document.getElementById('language-select-header');
+                const langSelectFooter = document.getElementById('language-select-footer');
+                if (langSelectHeader) {
+                    langSelectHeader.value = this.currentLang;
+                }
+                if (langSelectFooter) {
+                    langSelectFooter.value = this.currentLang;
+                }
+            },
+            
+            // Load language from URL hash
+            loadLanguageFromURL() {
+                const hash = window.location.hash;
+                if (hash.includes('lang=')) {
+                    const langMatch = hash.match(/lang=(\w+)/);
+                    if (langMatch && (langMatch[1] === 'de' || langMatch[1] === 'en')) {
+                        this.currentLang = langMatch[1];
+                    }
+                }
+            },
+            
+            // Setup navigation and routing
+            setupNavigation() {
+                // Handle hash changes for routing
+                window.addEventListener('hashchange', () => {
+                    this.handleRoute();
+                });
+                
+                // Handle initial route
+                this.handleRoute();
+            },
+            
+            // Handle routing
+            handleRoute() {
+                const hash = window.location.hash.slice(1) || 'home';
+                const [page] = hash.split('/');
+                
+                // Remove 'lang=' parameter if present
+                const actualPage = page.replace(/\?.*$/, '').replace(/lang=\w+/, '').replace(/&+$/, '') || 'home';
+                
+                navigateTo(actualPage, false); // Don't update URL since we're already handling a URL change
+            },
+            
+            // Setup keyboard shortcuts (some intentionally problematic for education)
+            setupKeyboardShortcuts() {
+                // VIOLATION 2.1.4: Keyboard shortcuts without disable mechanism
+                document.addEventListener('keypress', (e) => {
+                    if (e.key === 'h') {
+                        navigateTo('home');
+                    }
+                    if (e.key === '1') {
+                        navigateTo('creativeflow');
+                    }
+                    if (e.key === '2') {
+                        navigateTo('taskflow');
+                    }
+                    // These shortcuts can interfere with normal typing
+                });
+            }
+        };
+        
+        // Navigation function
+        function navigateTo(page, updateURL = true) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            
+            // Show target page
+            const targetPage = document.getElementById(page);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                WCAGApp.currentPage = page;
+                
+                // Update navigation
+                updateNavigation(page);
+                
+                // Update URL if needed
+                if (updateURL) {
+                    const newHash = page + (WCAGApp.currentLang !== 'de' ? '?lang=' + WCAGApp.currentLang : '');
+                    window.location.hash = newHash;
+                }
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+        }
+        
+        // Update navigation active state
+        function updateNavigation(activePage) {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const page = link.getAttribute('data-page');
+                if (page === activePage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+        
+        // Switch language
+        function switchLanguage(newLang) {
+            WCAGApp.currentLang = newLang;
+            WCAGApp.updateAllTranslations();
+            
+            // Update URL to include language
+            const currentHash = window.location.hash.slice(1) || 'home';
+            const newHash = currentHash.split('?')[0] + (newLang !== 'de' ? '?lang=' + newLang : '');
+            window.location.hash = newHash;
+        }
+        
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            WCAGApp.mobileMenuOpen = !WCAGApp.mobileMenuOpen;
+            // Implementation would show/hide mobile menu
+            console.log('Mobile menu toggled:', WCAGApp.mobileMenuOpen);
+        }
+        
+        // Initialize app when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                WCAGApp.init();
+            });
+        } else {
+            WCAGApp.init();
+        }
+    </script>
+    </body>
+</html>
