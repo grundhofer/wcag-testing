@@ -723,8 +723,7 @@
                     <div class="container">
                         <div class="flex justify-between items-center mb-8">
                             <div>
-                                <!-- VIOLATION 1.4.5: Images of Text in logo -->
-                                <img 
+                                    <img 
                                     src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIi8+CiAgPHRleHQgeD0iMTAiIHk9IjM1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmZmZmYiIGZvbnQtd2VpZ2h0PSJib2xkIj4KICAgIENyZWF0aXZlRmxvdyBNYXJrZXRpbmcKICA8L3RleHQ+Cjwvc3ZnPg=="
                                     alt="CreativeFlow Marketing logo"
                                     class="mb-8"
@@ -735,7 +734,6 @@
                                 </p>
                             </div>
                             
-                            <!-- VIOLATION 2.4.4: Link purpose not clear from context -->
                             <nav class="hidden md:block">
                                 <ul class="flex space-x-6">
                                     <li><a href="#" class="text-white hover:text-blue-300">Home</a></li>
@@ -750,7 +748,6 @@
                         <!-- CTA Section -->
                         <div class="mt-12 text-center">
                             <h2 class="text-2xl mb-6">Ready to elevate your brand?</h2>
-                            <!-- VIOLATION 2.4.6: Missing descriptive headings and labels -->
                             <button class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold mr-4">
                                 Get Started
                             </button>
@@ -769,7 +766,6 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                             <!-- Service 1 -->
                             <div class="text-center">
-                                <!-- VIOLATION 1.1.1: Missing alt text -->
                                 <div class="w-16 h-16 bg-blue-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
                                     <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTMuMDkgOC4yNkwyMCA5TDEzLjA5IDE1Ljc0TDEyIDIyTDEwLjkxIDE1Ljc0TDQgOUwxMC45MSA4LjI2TDEyIDJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" class="w-8 h-8" />
                                 </div>
@@ -818,7 +814,6 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                             <!-- Project 1 -->
                             <div class="bg-gray-800 rounded-lg overflow-hidden p-6">
-                                <!-- VIOLATION 1.4.1: Status indicator using only color -->
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="w-3 h-3 rounded-full bg-green-500"></div>
                                     <span class="text-xs text-gray-400">Completed</span>
@@ -833,7 +828,6 @@
                                 </div>
                                 
                                 <h3 class="text-xl font-semibold mb-2">TechFlow Startup Rebrand</h3>
-                                <!-- VIOLATION 1.4.3: Low contrast text -->
                                 <p style="color: #666666;" class="text-sm mb-4">
                                     Complete visual identity redesign for emerging fintech company, including logo, color palette, and brand guidelines.
                                 </p>
@@ -845,7 +839,6 @@
                             
                             <!-- Project 2 -->
                             <div class="bg-gray-800 rounded-lg overflow-hidden p-6">
-                                <!-- VIOLATION 1.4.1: Status indicator using only color -->
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                                     <span class="text-xs text-gray-400">In Progress</span>
@@ -871,7 +864,6 @@
                             
                             <!-- Project 3 -->
                             <div class="bg-gray-800 rounded-lg overflow-hidden p-6">
-                                <!-- VIOLATION 1.4.1: Status indicator using only color -->
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="w-3 h-3 rounded-full bg-blue-500"></div>
                                     <span class="text-xs text-gray-400">Planning</span>
@@ -927,7 +919,6 @@
                                 Ready to transform your brand? Let's discuss your project requirements and create something amazing together.
                             </p>
                             
-                            <!-- VIOLATION 3.3.2: Missing form labels and instructions -->
                             <form class="space-y-6">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
@@ -955,7 +946,6 @@
                                 </div>
                                 
                                 <div>
-                                    <!-- VIOLATION 1.3.1: No semantic labeling for select -->
                                     <select class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none">
                                         <option value="">Select Service Type</option>
                                         <option value="brand">Brand Strategy</option>
@@ -973,315 +963,12 @@
                                     ></textarea>
                                 </div>
                                 
-                                <!-- VIOLATION 2.1.1: Button not keyboard accessible -->
                                 <div class="text-center">
                                     <div onclick="submitForm()" class="inline-block bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold cursor-pointer transition-colors">
                                         Send Message
                                     </div>
-                                    <p class="text-xs text-gray-500 mt-2">⚠️ This button demonstrates poor accessibility - not keyboard accessible</p>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-                </section>
-                
-                <!-- WCAG Compliant Version Section -->
-                <section class="py-16 bg-gray-900 border-t-4 border-green-500">
-                    <div class="container">
-                        <div class="bg-green-900 bg-opacity-20 border border-green-500 rounded-lg p-6 mb-8">
-                            <h2 class="text-2xl font-bold text-green-400 mb-4">✅ WCAG Compliant Version</h2>
-                            <p class="text-green-300">
-                                This section demonstrates the same content implemented correctly according to WCAG guidelines. Compare the violations above with the accessible implementations below.
-                            </p>
-                        </div>
-                        
-                        <!-- Corrected Header -->
-                        <header class="py-12 mb-8">
-                            <div class="container">
-                                <div class="flex justify-between items-center mb-8">
-                                    <div>
-                                        <!-- FIXED 1.4.5: Text-based logo instead of image of text -->
-                                        <div class="mb-8">
-                                            <h1 class="text-2xl font-bold text-white">CreativeFlow Marketing</h1>
-                                            <div class="w-12 h-1 bg-blue-500 mt-2"></div>
-                                        </div>
-                                        <h2 class="text-4xl font-bold mb-4">Digital Marketing Excellence</h2>
-                                        <p class="text-xl text-gray-300">
-                                            We transform brands through innovative digital strategies and creative solutions.
-                                        </p>
-                                    </div>
-                                    
-                                    <!-- FIXED 2.4.4: Clear link purposes -->
-                                    <nav class="hidden md:block" aria-label="Main navigation">
-                                        <ul class="flex space-x-6">
-                                            <li><a href="#home" class="text-white hover:text-blue-300" aria-current="page">Home</a></li>
-                                            <li><a href="#services" class="text-white hover:text-blue-300">Our Services</a></li>
-                                            <li><a href="#portfolio" class="text-white hover:text-blue-300">View Portfolio</a></li>
-                                            <li><a href="#about" class="text-white hover:text-blue-300">About Us</a></li>
-                                            <li><a href="#contact" class="text-white hover:text-blue-300">Contact Form</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                                
-                                <!-- FIXED 2.4.6: Descriptive headings and labels -->
-                                <div class="mt-12 text-center">
-                                    <h3 class="text-2xl mb-6">Ready to elevate your brand?</h3>
-                                    <button class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold mr-4" aria-describedby="cta-description">
-                                        Get Started Today
-                                    </button>
-                                    <button class="border border-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-lg font-semibold">
-                                        View Our Portfolio
-                                    </button>
-                                    <p id="cta-description" class="text-sm text-gray-400 mt-2">Start your free consultation to discuss your marketing needs</p>
-                                </div>
-                            </div>
-                        </header>
-                        
-                        <!-- Corrected Services -->
-                        <div class="py-16 bg-gray-800 rounded-lg mb-8">
-                            <div class="container">
-                                <h3 class="text-3xl font-bold text-center mb-12">Our Services - Accessible Version</h3>
-                                
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                                    <!-- Service 1 - FIXED -->
-                                    <div class="text-center">
-                                        <!-- FIXED 1.1.1: Proper alt text -->
-                                        <div class="w-16 h-16 bg-blue-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTMuMDkgOC4yNkwyMCA5TDEzLjA5IDE1Ljc0TDEyIDIyTDEwLjkxIDE1Ljc0TDQgOUwxMC45MSA4LjI2TDEyIDJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" class="w-8 h-8" alt="Brand Strategy icon - star symbol representing strategic excellence" />
-                                        </div>
-                                        <h4 class="text-xl font-semibold mb-2">Brand Strategy</h4>
-                                        <!-- FIXED 1.4.3: Proper contrast -->
-                                        <p class="text-gray-300">Comprehensive brand positioning and messaging development</p>
-                                    </div>
-                                    
-                                    <!-- Services 2-4 with proper alt text -->
-                                    <div class="text-center">
-                                        <div class="w-16 h-16 bg-green-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMNS41IDlINS41VjIwSDEwVjE0SDE0VjIwSDE4LjVWOUwxMiAyWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+" class="w-8 h-8" alt="Digital Marketing icon - house symbol representing online presence"/>
-                                        </div>
-                                        <h4 class="text-xl font-semibold mb-2">Digital Marketing</h4>
-                                        <p class="text-gray-300">Multi-channel campaigns that drive engagement and conversions</p>
-                                    </div>
-                                    
-                                    <div class="text-center">
-                                        <div class="w-16 h-16 bg-purple-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcgN0gxN1YxN0g3VjdaTTkgOVYxNUgxNVY5SDlaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" class="w-8 h-8" alt="Web Design icon - browser window representing website development"/>
-                                        </div>
-                                        <h4 class="text-xl font-semibold mb-2">Web Design</h4>
-                                        <p class="text-gray-300">Responsive websites that convert visitors into customers</p>
-                                    </div>
-                                    
-                                    <div class="text-center">
-                                        <div class="w-16 h-16 bg-red-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTUuMDkgOC4yNkwyMiA5TDE3IDEzTDE4LjE4IDIxTDEyIDE3TDUuODIgMjFMNyAxM0wyIDlMOC45MSA4LjI2TDEyIDJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" class="w-8 h-8" alt="Content Creation icon - star representing award-winning content"/>
-                                        </div>
-                                        <h4 class="text-xl font-semibold mb-2">Content Creation</h4>
-                                        <p class="text-gray-300">Compelling content that tells your brand story effectively</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Corrected Portfolio -->
-                        <div class="py-16 bg-gray-700 rounded-lg mb-8">
-                            <div class="container">
-                                <h3 class="text-3xl font-bold mb-8">Portfolio - Accessible Version</h3>
-                                
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                                    <!-- Project 1 - FIXED -->
-                                    <article class="bg-gray-800 rounded-lg overflow-hidden p-6">
-                                        <!-- FIXED 1.4.1: Status with text and color -->
-                                        <div class="flex justify-between items-start mb-4">
-                                            <div class="flex items-center gap-2">
-                                                <div class="w-3 h-3 rounded-full bg-green-500" aria-hidden="true"></div>
-                                                <span class="text-sm font-medium text-green-400">Completed</span>
-                                            </div>
-                                            <time class="text-xs text-gray-400" datetime="2024-06">June 2024</time>
-                                        </div>
-                                        
-                                        <div class="h-48 rounded-lg mb-4 overflow-hidden bg-gray-600 flex items-center justify-center">
-                                            <div class="text-center text-gray-300">
-                                                <div class="text-4xl mb-2">🎨</div>
-                                                <div class="text-sm font-medium">Brand Identity Design</div>
-                                                <div class="text-xs text-gray-400 mt-1">Logo & Visual Identity</div>
-                                            </div>
-                                        </div>
-                                        
-                                        <h4 class="text-xl font-semibold mb-2">TechFlow Startup Rebrand</h4>
-                                        <!-- FIXED 1.4.3: High contrast text -->
-                                        <p class="text-gray-300 text-sm mb-4">
-                                            Complete visual identity redesign for emerging fintech company, including logo, color palette, and brand guidelines.
-                                        </p>
-                                        <div class="flex justify-between items-center">
-                                            <span class="text-sm text-blue-400">Brand Identity</span>
-                                            <span class="text-sm text-gray-400">6 months</span>
-                                        </div>
-                                    </article>
-                                    
-                                    <!-- Projects 2 & 3 with similar fixes -->
-                                    <article class="bg-gray-800 rounded-lg overflow-hidden p-6">
-                                        <div class="flex justify-between items-start mb-4">
-                                            <div class="flex items-center gap-2">
-                                                <div class="w-3 h-3 rounded-full bg-yellow-500" aria-hidden="true"></div>
-                                                <span class="text-sm font-medium text-yellow-400">In Progress</span>
-                                            </div>
-                                            <time class="text-xs text-gray-400" datetime="2024-09">Sept 2024</time>
-                                        </div>
-                                        
-                                        <div class="h-48 rounded-lg mb-4 overflow-hidden bg-gray-600 flex items-center justify-center">
-                                            <div class="text-center text-gray-300">
-                                                <div class="text-4xl mb-2">🛒</div>
-                                                <div class="text-sm font-medium">E-commerce Platform</div>
-                                                <div class="text-xs text-gray-400 mt-1">Online Shopping Experience</div>
-                                            </div>
-                                        </div>
-                                        
-                                        <h4 class="text-xl font-semibold mb-2">ShopSmart E-commerce Platform</h4>
-                                        <p class="text-gray-300 text-sm mb-4">
-                                            Modern e-commerce platform with seamless user experience, advanced search functionality, and mobile-first design.
-                                        </p>
-                                        <div class="flex justify-between items-center">
-                                            <span class="text-sm text-green-400">Web Development</span>
-                                            <span class="text-sm text-gray-400">8 months</span>
-                                        </div>
-                                    </article>
-                                    
-                                    <article class="bg-gray-800 rounded-lg overflow-hidden p-6">
-                                        <div class="flex justify-between items-start mb-4">
-                                            <div class="flex items-center gap-2">
-                                                <div class="w-3 h-3 rounded-full bg-blue-500" aria-hidden="true"></div>
-                                                <span class="text-sm font-medium text-blue-400">Planning</span>
-                                            </div>
-                                            <time class="text-xs text-gray-400" datetime="2024-12">Dec 2024</time>
-                                        </div>
-                                        
-                                        <div class="h-48 rounded-lg mb-4 overflow-hidden bg-gray-600 flex items-center justify-center">
-                                            <div class="text-center text-gray-300">
-                                                <div class="text-4xl mb-2">📊</div>
-                                                <div class="text-sm font-medium">Annual Report Design</div>
-                                                <div class="text-xs text-gray-400 mt-1">Corporate Communications</div>
-                                            </div>
-                                        </div>
-                                        
-                                        <h4 class="text-xl font-semibold mb-2">GlobalTech Annual Report</h4>
-                                        <p class="text-gray-300 text-sm mb-4">
-                                            Corporate annual report design with interactive data visualization and comprehensive financial analysis.
-                                        </p>
-                                        <div class="flex justify-between items-center">
-                                            <span class="text-sm text-purple-400">Print & Digital</span>
-                                            <span class="text-sm text-gray-400">4 months</span>
-                                        </div>
-                                    </article>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Corrected Contact Form -->
-                        <div class="py-16 bg-gray-800 rounded-lg">
-                            <div class="container">
-                                <div class="max-w-2xl mx-auto">
-                                    <h3 class="text-3xl font-bold text-center mb-8">Start Your Project - Accessible Form</h3>
-                                    <p class="text-gray-300 text-center mb-12">
-                                        Ready to transform your brand? Let's discuss your project requirements and create something amazing together.
-                                    </p>
-                                    
-                                    <!-- FIXED 3.3.2: Proper form labels and instructions -->
-                                    <form class="space-y-6" role="form" aria-labelledby="contact-form-heading" onsubmit="handleContactFormSubmit(event)">
-                                        <h4 id="contact-form-heading" class="sr-only">Contact Information Form</h4>
-                                        
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div>
-                                                <label for="name" class="block text-sm font-medium text-gray-300 mb-2">
-                                                    Full Name <span class="text-red-400" aria-label="required">*</span>
-                                                </label>
-                                                <input 
-                                                    type="text" 
-                                                    id="name"
-                                                    name="name"
-                                                    required
-                                                    aria-describedby="name-help"
-                                                    class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                                />
-                                                <div id="name-help" class="text-xs text-gray-400 mt-1">Please enter your full name</div>
-                                            </div>
-                                            <div>
-                                                <label for="email" class="block text-sm font-medium text-gray-300 mb-2">
-                                                    Email Address <span class="text-red-400" aria-label="required">*</span>
-                                                </label>
-                                                <input 
-                                                    type="email" 
-                                                    id="email"
-                                                    name="email"
-                                                    required
-                                                    aria-describedby="email-help"
-                                                    class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                                />
-                                                <div id="email-help" class="text-xs text-gray-400 mt-1">We'll use this to contact you about your project</div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div>
-                                            <label for="company" class="block text-sm font-medium text-gray-300 mb-2">
-                                                Company Name (Optional)
-                                            </label>
-                                            <input 
-                                                type="text" 
-                                                id="company"
-                                                name="company"
-                                                class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            />
-                                        </div>
-                                        
-                                        <div>
-                                            <!-- FIXED 1.3.1: Proper semantic labeling -->
-                                            <label for="service-type" class="block text-sm font-medium text-gray-300 mb-2">
-                                                Service Type <span class="text-red-400" aria-label="required">*</span>
-                                            </label>
-                                            <select 
-                                                id="service-type"
-                                                name="service-type"
-                                                required
-                                                aria-describedby="service-help"
-                                                class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            >
-                                                <option value="">Please select a service</option>
-                                                <option value="brand">Brand Strategy</option>
-                                                <option value="digital">Digital Marketing</option>
-                                                <option value="web">Web Design</option>
-                                                <option value="content">Content Creation</option>
-                                            </select>
-                                            <div id="service-help" class="text-xs text-gray-400 mt-1">Choose the primary service you're interested in</div>
-                                        </div>
-                                        
-                                        <div>
-                                            <label for="project-details" class="block text-sm font-medium text-gray-300 mb-2">
-                                                Project Details <span class="text-red-400" aria-label="required">*</span>
-                                            </label>
-                                            <textarea 
-                                                id="project-details"
-                                                name="project-details"
-                                                rows="4"
-                                                required
-                                                aria-describedby="details-help"
-                                                class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-                                            ></textarea>
-                                            <div id="details-help" class="text-xs text-gray-400 mt-1">Please describe your project goals and requirements (minimum 10 characters)</div>
-                                        </div>
-                                        
-                                        <!-- FIXED 2.1.1: Proper button element -->
-                                        <div class="text-center">
-                                            <button 
-                                                type="submit" 
-                                                class="bg-blue-600 hover:bg-blue-700 focus:bg-blue-700 px-8 py-3 rounded-lg font-semibold text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800"
-                                                aria-describedby="submit-help"
-                                            >
-                                                Send Message
-                                            </button>
-                                            <div id="submit-help" class="text-xs text-gray-400 mt-2">We'll respond within 24 hours</div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -2924,137 +2611,8 @@
             console.log('Mobile menu toggled:', WCAGApp.mobileMenuOpen);
         }
         
-        // Form submission handler (educational demo - shows feedback)
         function submitForm() {
-            console.log('submitForm called - this is the violation version');
-            
-            // VIOLATION: Using alert() is bad UX and not accessible
-            // This demonstrates poor user feedback
-            alert('Form submitted! (This is a demo showing WCAG violations)\n\nProblems with this approach:\n• Alert interrupts screen readers\n• No form validation\n• Poor user experience\n• Not keyboard accessible\n• No loading states\n\nSee the accessible version below for proper implementation.');
-        }
-        
-        // Accessible form submission handler
-        function handleContactFormSubmit(event) {
-            event.preventDefault();
-            
-            const form = event.target;
-            const submitButton = form.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.textContent;
-            
-            // Show loading state
-            submitButton.disabled = true;
-            submitButton.textContent = 'Sending...';
-            submitButton.setAttribute('aria-busy', 'true');
-            
-            // Remove any existing feedback
-            const existingFeedback = form.querySelector('.form-feedback');
-            if (existingFeedback) {
-                existingFeedback.remove();
-            }
-            
-            // Get form data
-            const formData = new FormData(form);
-            const name = formData.get('name')?.trim();
-            const email = formData.get('email')?.trim();
-            const company = formData.get('company')?.trim();
-            const serviceType = formData.get('service-type');
-            const projectDetails = formData.get('project-details')?.trim();
-            
-            // Validate required fields
-            let isValid = true;
-            const errors = [];
-            
-            if (!name) {
-                errors.push('Full name is required');
-                isValid = false;
-            }
-            
-            if (!email) {
-                errors.push('Email address is required');
-                isValid = false;
-            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                errors.push('Please enter a valid email address');
-                isValid = false;
-            }
-            
-            if (!serviceType) {
-                errors.push('Please select a service type');
-                isValid = false;
-            }
-            
-            if (!projectDetails || projectDetails.length < 10) {
-                errors.push('Project details must be at least 10 characters long');
-                isValid = false;
-            }
-            
-            // Simulate form submission delay
-            setTimeout(() => {
-                // Reset button state
-                submitButton.disabled = false;
-                submitButton.textContent = originalButtonText;
-                submitButton.removeAttribute('aria-busy');
-                
-                // Create feedback message
-                const feedback = document.createElement('div');
-                feedback.className = 'form-feedback mt-4 p-4 rounded-lg';
-                feedback.setAttribute('role', 'alert');
-                feedback.setAttribute('aria-live', 'polite');
-                
-                if (isValid) {
-                    // Success state
-                    feedback.className += ' bg-green-900 bg-opacity-20 border border-green-500 text-green-300';
-                    feedback.innerHTML = `
-                        <div class="flex items-start">
-                            <div class="text-green-400 mr-3">✅</div>
-                            <div>
-                                <h4 class="font-semibold mb-2">Message Sent Successfully!</h4>
-                                <p class="text-sm">Thank you, ${name}! We've received your inquiry about ${serviceType.toLowerCase()} services. We'll respond to ${email} within 24 hours.</p>
-                                ${company ? `<p class="text-sm mt-1">Company: ${company}</p>` : ''}
-                            </div>
-                        </div>
-                    `;
-                    
-                    // Reset form on success
-                    form.reset();
-                    
-                    // Focus on success message for screen readers
-                    feedback.setAttribute('tabindex', '-1');
-                    setTimeout(() => feedback.focus(), 100);
-                    
-                } else {
-                    // Error state
-                    feedback.className += ' bg-red-900 bg-opacity-20 border border-red-500 text-red-300';
-                    feedback.innerHTML = `
-                        <div class="flex items-start">
-                            <div class="text-red-400 mr-3">❌</div>
-                            <div>
-                                <h4 class="font-semibold mb-2">Please Fix These Errors:</h4>
-                                <ul class="text-sm list-disc list-inside">
-                                    ${errors.map(error => `<li>${error}</li>`).join('')}
-                                </ul>
-                            </div>
-                        </div>
-                    `;
-                    
-                    // Focus on error message for screen readers
-                    feedback.setAttribute('tabindex', '-1');
-                    setTimeout(() => feedback.focus(), 100);
-                }
-                
-                // Insert feedback after the submit button container
-                const submitContainer = submitButton.closest('.text-center');
-                submitContainer.parentNode.insertBefore(feedback, submitContainer.nextSibling);
-                
-                // Auto-remove feedback after 10 seconds for success messages
-                if (isValid) {
-                    setTimeout(() => {
-                        if (feedback.parentNode) {
-                            feedback.remove();
-                        }
-                    }, 10000);
-                }
-                
-            }, 1500); // Simulate network delay
+            alert('Thank you! Your message has been submitted.');
         }
         
         // Initialize app when DOM is ready
