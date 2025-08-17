@@ -978,6 +978,7 @@
                                     <div onclick="submitForm()" class="inline-block bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold cursor-pointer transition-colors">
                                         Send Message
                                     </div>
+                                    <p class="text-xs text-gray-500 mt-2">⚠️ This button demonstrates poor accessibility - not keyboard accessible</p>
                                 </div>
                             </form>
                         </div>
@@ -1185,7 +1186,7 @@
                                     </p>
                                     
                                     <!-- FIXED 3.3.2: Proper form labels and instructions -->
-                                    <form class="space-y-6" role="form" aria-labelledby="contact-form-heading">
+                                    <form class="space-y-6" role="form" aria-labelledby="contact-form-heading" onsubmit="handleContactFormSubmit(event)">
                                         <h4 id="contact-form-heading" class="sr-only">Contact Information Form</h4>
                                         
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -2921,6 +2922,139 @@
             WCAGApp.mobileMenuOpen = !WCAGApp.mobileMenuOpen;
             // Implementation would show/hide mobile menu
             console.log('Mobile menu toggled:', WCAGApp.mobileMenuOpen);
+        }
+        
+        // Form submission handler (educational demo - shows feedback)
+        function submitForm() {
+            console.log('submitForm called - this is the violation version');
+            
+            // VIOLATION: Using alert() is bad UX and not accessible
+            // This demonstrates poor user feedback
+            alert('Form submitted! (This is a demo showing WCAG violations)\n\nProblems with this approach:\n• Alert interrupts screen readers\n• No form validation\n• Poor user experience\n• Not keyboard accessible\n• No loading states\n\nSee the accessible version below for proper implementation.');
+        }
+        
+        // Accessible form submission handler
+        function handleContactFormSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            
+            // Show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            submitButton.setAttribute('aria-busy', 'true');
+            
+            // Remove any existing feedback
+            const existingFeedback = form.querySelector('.form-feedback');
+            if (existingFeedback) {
+                existingFeedback.remove();
+            }
+            
+            // Get form data
+            const formData = new FormData(form);
+            const name = formData.get('name')?.trim();
+            const email = formData.get('email')?.trim();
+            const company = formData.get('company')?.trim();
+            const serviceType = formData.get('service-type');
+            const projectDetails = formData.get('project-details')?.trim();
+            
+            // Validate required fields
+            let isValid = true;
+            const errors = [];
+            
+            if (!name) {
+                errors.push('Full name is required');
+                isValid = false;
+            }
+            
+            if (!email) {
+                errors.push('Email address is required');
+                isValid = false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                errors.push('Please enter a valid email address');
+                isValid = false;
+            }
+            
+            if (!serviceType) {
+                errors.push('Please select a service type');
+                isValid = false;
+            }
+            
+            if (!projectDetails || projectDetails.length < 10) {
+                errors.push('Project details must be at least 10 characters long');
+                isValid = false;
+            }
+            
+            // Simulate form submission delay
+            setTimeout(() => {
+                // Reset button state
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+                submitButton.removeAttribute('aria-busy');
+                
+                // Create feedback message
+                const feedback = document.createElement('div');
+                feedback.className = 'form-feedback mt-4 p-4 rounded-lg';
+                feedback.setAttribute('role', 'alert');
+                feedback.setAttribute('aria-live', 'polite');
+                
+                if (isValid) {
+                    // Success state
+                    feedback.className += ' bg-green-900 bg-opacity-20 border border-green-500 text-green-300';
+                    feedback.innerHTML = `
+                        <div class="flex items-start">
+                            <div class="text-green-400 mr-3">✅</div>
+                            <div>
+                                <h4 class="font-semibold mb-2">Message Sent Successfully!</h4>
+                                <p class="text-sm">Thank you, ${name}! We've received your inquiry about ${serviceType.toLowerCase()} services. We'll respond to ${email} within 24 hours.</p>
+                                ${company ? `<p class="text-sm mt-1">Company: ${company}</p>` : ''}
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Reset form on success
+                    form.reset();
+                    
+                    // Focus on success message for screen readers
+                    feedback.setAttribute('tabindex', '-1');
+                    setTimeout(() => feedback.focus(), 100);
+                    
+                } else {
+                    // Error state
+                    feedback.className += ' bg-red-900 bg-opacity-20 border border-red-500 text-red-300';
+                    feedback.innerHTML = `
+                        <div class="flex items-start">
+                            <div class="text-red-400 mr-3">❌</div>
+                            <div>
+                                <h4 class="font-semibold mb-2">Please Fix These Errors:</h4>
+                                <ul class="text-sm list-disc list-inside">
+                                    ${errors.map(error => `<li>${error}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Focus on error message for screen readers
+                    feedback.setAttribute('tabindex', '-1');
+                    setTimeout(() => feedback.focus(), 100);
+                }
+                
+                // Insert feedback after the submit button container
+                const submitContainer = submitButton.closest('.text-center');
+                submitContainer.parentNode.insertBefore(feedback, submitContainer.nextSibling);
+                
+                // Auto-remove feedback after 10 seconds for success messages
+                if (isValid) {
+                    setTimeout(() => {
+                        if (feedback.parentNode) {
+                            feedback.remove();
+                        }
+                    }, 10000);
+                }
+                
+            }, 1500); // Simulate network delay
         }
         
         // Initialize app when DOM is ready
