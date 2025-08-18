@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WCAG Testing Platform - Educational Accessibility Learning</title>
+    <!-- VIOLATION 2.4.2: Generic, non-descriptive page title -->
+    <title>Seite</title>
     <meta name="description" content="Interactive educational platform for learning WCAG compliance through real business website examples with intentional violations for educational purposes">
     
     <style>
@@ -571,8 +572,8 @@
             order: -1;
         }
         
-        /* 1.3.4 Orientation - Lock to portrait only */
-        @media screen and (orientation: landscape) {
+        /* 1.3.4 Orientation - Lock to portrait only on mobile devices */
+        @media screen and (orientation: landscape) and (max-width: 768px) {
             #taskflow .orientation-restricted {
                 display: none;
             }
@@ -1064,7 +1065,7 @@
                             <!-- VIOLATION 1.3.2: Visual order doesn't match DOM order -->
                             <div class="flex items-center gap-4">
                                 <span class="text-sm text-gray-600" data-i18n-key="taskflow.welcome">Willkommen, Sarah</span>
-                                <button class="btn btn-primary visual-first" data-i18n-key="taskflow.newTask">Neue Aufgabe</button>
+                                <button class="btn btn-primary visual-first" data-i18n-key="taskflow.newTask" onclick="createNewTask()">Neue Aufgabe</button>
                             </div>
                         </div>
                     </div>
@@ -1146,7 +1147,7 @@
                                     <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
                                         <!-- VIOLATION 1.3.1: Missing form labels -->
                                         <div class="flex items-center gap-3">
-                                            <input type="checkbox" class="w-4 h-4 rounded">
+                                            <input type="checkbox" class="w-4 h-4 rounded" onclick="toggleTask(this)">
                                             <div>
                                                 <div class="font-medium">Homepage Mockup erstellen</div>
                                                 <div class="text-sm text-gray-600">Website-Redesign • Sarah Weber</div>
@@ -1156,7 +1157,7 @@
                                     </div>
                                     <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
                                         <div class="flex items-center gap-3">
-                                            <input type="checkbox" class="w-4 h-4">
+                                            <input type="checkbox" class="w-4 h-4" onclick="toggleTask(this)">
                                             <div>
                                                 <div class="font-medium">API Dokumentation überprüfen</div>
                                                 <div class="text-sm text-gray-600">Mobile App • Michael Schmidt</div>
@@ -1166,7 +1167,7 @@
                                     </div>
                                     <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
                                         <div class="flex items-center gap-3">
-                                            <input type="checkbox" class="w-4 h-4" checked>
+                                            <input type="checkbox" class="w-4 h-4" checked onclick="toggleTask(this)">
                                             <div class="line-through text-gray-500">
                                                 <div class="font-medium">Social Media Grafiken finalisieren</div>
                                                 <div class="text-sm text-gray-600">Marketing-Kampagne • Lisa Müller</div>
@@ -1190,7 +1191,7 @@
                                         <input type="email" placeholder="E-Mail Adresse" class="w-full px-3 py-2 border border-gray-300 rounded">
                                         <input type="tel" placeholder="Telefonnummer" class="w-full px-3 py-2 border border-gray-300 rounded">
                                         <input type="text" placeholder="Geburtsdatum (TT.MM.JJJJ)" class="w-full px-3 py-2 border border-gray-300 rounded">
-                                        <button type="submit" class="btn btn-primary w-full">Speichern</button>
+                                        <button type="submit" class="btn btn-primary w-full" onclick="saveProfile(); return false;">Speichern</button>
                                     </form>
                                 </div>
                                 
@@ -1281,16 +1282,17 @@
                 <header class="bg-gray-900 text-white">
                     <div class="container py-6">
                         <div class="flex items-center justify-between">
-                            <h1 class="text-3xl font-bold" data-i18n-key="techdaily.title">TechDaily News</h1>
+                            <!-- VIOLATION 2.4.6: Non-descriptive heading -->
+                            <h1 class="text-3xl font-bold" data-i18n-key="techdaily.title">Hier</h1>
                             <nav>
-                                <!-- VIOLATION: Navigation items without focus indicators -->
+                                <!-- Fixed navigation with proper focus -->
                                 <div class="flex space-x-6">
-                                    <span class="hover:text-blue-400 cursor-pointer" data-i18n-key="techdaily.nav.home">Startseite</span>
-                                    <span class="hover:text-blue-400 cursor-pointer" data-i18n-key="techdaily.nav.technology">Technologie</span>
-                                    <span class="hover:text-blue-400 cursor-pointer" data-i18n-key="techdaily.nav.innovation">Innovation</span>
-                                    <span class="hover:text-blue-400 cursor-pointer" data-i18n-key="techdaily.nav.startup">Startup</span>
-                                    <span class="hover:text-blue-400 cursor-pointer" data-i18n-key="techdaily.nav.reviews">Bewertungen</span>
-                                    <span class="hover:text-blue-400 cursor-pointer" data-i18n-key="techdaily.nav.contact">Kontakt</span>
+                                    <a href="#" class="hover:text-blue-400 focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400" data-i18n-key="techdaily.nav.home" onclick="navigateToSection('Startseite'); return false;">Startseite</a>
+                                    <a href="#" class="hover:text-blue-400 focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400" data-i18n-key="techdaily.nav.technology" onclick="navigateToSection('Technologie'); return false;">Technologie</a>
+                                    <a href="#" class="hover:text-blue-400 focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400" data-i18n-key="techdaily.nav.innovation" onclick="navigateToSection('Innovation'); return false;">Innovation</a>
+                                    <a href="#" class="hover:text-blue-400 focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400" data-i18n-key="techdaily.nav.startup" onclick="navigateToSection('Startup'); return false;">Startup</a>
+                                    <a href="#" class="hover:text-blue-400 focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400" data-i18n-key="techdaily.nav.reviews" onclick="navigateToSection('Bewertungen'); return false;">Bewertungen</a>
+                                    <a href="#" class="hover:text-blue-400 focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400" data-i18n-key="techdaily.nav.contact" onclick="navigateToSection('Kontakt'); return false;">Kontakt</a>
                                 </div>
                             </nav>
                         </div>
@@ -1301,16 +1303,16 @@
                     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
                         <!-- Main Content -->
                         <main class="lg:col-span-3">
-                            <h2 class="text-2xl font-bold mb-6" data-i18n-key="techdaily.latest">Neueste Artikel</h2>
+                            <!-- VIOLATION 2.4.6: Non-descriptive heading -->
+                            <h2 class="text-2xl font-bold mb-6" data-i18n-key="techdaily.latest">Mehr</h2>
                             
                             <!-- Featured Article -->
                             <article class="mb-12">
                                 <div class="relative">
                                     <div class="h-64 rounded-lg mb-4 overflow-hidden">
-                                        <!-- VIOLATION: Image without proper alt text for decorative image -->
+                                        <!-- VIOLATION 1.1.1: Image without alt text -->
                                         <img 
                                             src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzM0ZDM5OSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LSSBpbSBHZXN1bmRoZWl0c3dlc2VuPC90ZXh0Pgo8L3N2Zz4="
-                                            alt=""
                                             class="w-full h-full object-cover"
                                         />
                                     </div>
@@ -1320,8 +1322,9 @@
                                     </div>
                                 </div>
                                 
+                                <!-- VIOLATION 2.4.6: Non-descriptive heading -->
                                 <h2 class="text-3xl font-bold text-gray-900 mb-4">
-                                    KI-Revolution: Wie maschinelles Lernen das Gesundheitswesen transformiert
+                                    Information
                                 </h2>
                                 <p class="text-lg text-gray-700 mb-4">Medizinische Fachkräfte nutzen künstliche Intelligenz, um Patientenergebnisse zu verbessern und Diagnosen zu optimieren.</p>
                                 
@@ -1335,25 +1338,29 @@
                                 </div>
                                 
                                 <div class="flex gap-4">
-                                    <button class="btn btn-primary" data-i18n-key="techdaily.readMore">Weiterlesen</button>
-                                    <button class="btn btn-secondary">Teilen</button>
+                                    <!-- VIOLATION 2.5.3: Button visible text differs from accessible name -->
+                                    <button class="btn btn-primary" aria-label="Artikel öffnen" data-i18n-key="techdaily.readMore" onclick="readArticle('KI im Gesundheitswesen')">Weiterlesen</button>
+                                    <!-- VIOLATION 2.5.3: Button visible text differs from accessible name -->
+                                    <button class="btn btn-secondary" aria-label="Auf Social Media teilen" onclick="shareArticle('KI im Gesundheitswesen')">Teilen</button>
                                 </div>
                             </article>
                             
-                            <!-- More Articles -->
-                            <h3 class="text-xl font-semibold mb-6">Weitere Meldungen</h3>
+                            <!-- VIOLATION 2.4.6: Non-descriptive heading -->
+                            <h3 class="text-xl font-semibold mb-6">Weitere</h3>
                             
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <article class="business-card">
                                     <div class="h-48 rounded-lg mb-4 overflow-hidden">
+                                        <!-- VIOLATION 1.1.1: Image with inappropriate alt text -->
                                         <img 
                                             src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI2VmNDQ0NCIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTI1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DeWJlcnNpY2hlcmhlaXQ8L3RleHQ+Cjwvc3ZnPg=="
-                                            alt="Cybersicherheit Illustration"
+                                            alt="Bild"
                                             class="w-full h-full object-cover"
                                         />
                                     </div>
                                     
-                                    <h3 class="text-xl font-semibold mb-3">Cybersicherheit-Warnung</h3>
+                                    <!-- VIOLATION 2.4.6: Non-descriptive heading -->
+                                    <h3 class="text-xl font-semibold mb-3">Weitere Information</h3>
                                     <p class="text-gray-600 mb-4">Sicherheitsexperten warnen vor raffinierten Angriffen, die darauf abzielen, Schwachstellen im Homeoffice auszunutzen.</p>
                                     
                                     <div class="text-sm text-gray-500">
@@ -1372,7 +1379,8 @@
                                         />
                                     </div>
                                     
-                                    <h3 class="text-xl font-semibold mb-3">Nachhaltige Technologie</h3>
+                                    <!-- VIOLATION 2.4.6: Non-descriptive heading -->
+                                    <h3 class="text-xl font-semibold mb-3">Artikel</h3>
                                     <p class="text-gray-600 mb-4">Große Tech-Unternehmen investieren Milliarden in erneuerbare Energien für umweltfreundliches Computing.</p>
                                     
                                     <div class="text-sm text-gray-500">
@@ -1383,14 +1391,15 @@
                                 
                                 <article class="business-card">
                                     <div class="h-48 rounded-lg mb-4 overflow-hidden">
+                                        <!-- VIOLATION 1.1.1: Image without alt text -->
                                         <img 
                                             src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iIzM5OGNmNCIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTI1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5CbG9ja2NoYWluPC90ZXh0Pgo8L3N2Zz4="
-                                            alt="Blockchain Technologie"
                                             class="w-full h-full object-cover"
                                         />
                                     </div>
                                     
-                                    <h3 class="text-xl font-semibold mb-3">Blockchain-Innovation</h3>
+                                    <!-- VIOLATION 2.4.6: Non-descriptive heading -->
+                                    <h3 class="text-xl font-semibold mb-3">Details</h3>
                                     <p class="text-gray-600 mb-4">Neue Blockchain-Anwendungen revolutionieren das Lieferkettenmanagement und die Produktverfolgung.</p>
                                     
                                     <div class="text-sm text-gray-500">
@@ -1401,14 +1410,16 @@
                                 
                                 <article class="business-card">
                                     <div class="h-48 rounded-lg mb-4 overflow-hidden">
+                                        <!-- VIOLATION 1.1.1: Image with vague alt text -->
                                         <img 
                                             src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iIzhmNGM2MSIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTI1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5RdWFudGVuY29tcHV0ZXI8L3RleHQ+Cjwvc3ZnPg=="
-                                            alt="Quantencomputer Forschung"
+                                            alt="Grafik"
                                             class="w-full h-full object-cover"
                                         />
                                     </div>
                                     
-                                    <h3 class="text-xl font-semibold mb-3">Quantencomputer-Durchbruch</h3>
+                                    <!-- VIOLATION 2.4.6: Non-descriptive heading -->
+                                    <h3 class="text-xl font-semibold mb-3">Neues</h3>
                                     <p class="text-gray-600 mb-4">Wissenschaftler erreichen neuen Meilenstein in der Quantencomputerforschung mit 1000-Qubit-System.</p>
                                     
                                     <div class="text-sm text-gray-500">
@@ -1422,63 +1433,74 @@
                         <!-- Sidebar -->
                         <aside class="lg:col-span-1">
                             <div class="business-card mb-8">
-                                <h3 class="text-lg font-semibold mb-4" data-i18n-key="techdaily.newsletter.title">Newsletter abonnieren</h3>
+                                <!-- VIOLATION 2.4.6: Non-descriptive heading -->
+                                <h3 class="text-lg font-semibold mb-4" data-i18n-key="techdaily.newsletter.title">Hier</h3>
                                 <p class="text-gray-600 mb-4" data-i18n-key="techdaily.newsletter.subtitle">Bleiben Sie auf dem Laufenden mit den neuesten Tech-News.</p>
                                 
-                                <!-- VIOLATION: Form missing labels and proper validation -->
-                                <div class="space-y-4">
+                                <!-- Fixed form with proper labels -->
+                                <form class="space-y-4" onsubmit="return subscribeNewsletter();">
+                                    <!-- VIOLATION 2.4.6: Non-descriptive label -->
+                                    <label for="newsletter-email" class="block text-sm font-medium text-gray-700 mb-1">Input</label>
                                     <input 
                                         type="email" 
+                                        id="newsletter-email"
+                                        name="newsletter-email"
                                         placeholder="E-Mail-Adresse eingeben"
                                         class="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                                        required
                                     />
-                                    <button class="btn btn-primary w-full" data-i18n-key="techdaily.newsletter.subscribe">Abonnieren</button>
-                                </div>
+                                    <!-- VIOLATION 2.5.3: Button text differs from accessible name -->
+                                    <button type="submit" class="btn btn-primary w-full" aria-label="Newsletter-Anmeldung bestätigen" data-i18n-key="techdaily.newsletter.subscribe">Abonnieren</button>
+                                </form>
                             </div>
                             
                             <div class="business-card mb-8">
-                                <h3 class="text-lg font-semibold mb-4" data-i18n-key="techdaily.categories">Kategorien</h3>
+                                <!-- VIOLATION 2.4.6: Non-descriptive heading -->
+                                <h3 class="text-lg font-semibold mb-4" data-i18n-key="techdaily.categories">Liste</h3>
                                 
                                 <div class="space-y-3">
                                     <div class="flex justify-between items-center">
-                                        <span>Künstliche Intelligenz</span>
+                                        <button class="text-left hover:text-blue-600 focus:text-blue-600 focus:outline-none" onclick="navigateToSection('Künstliche Intelligenz')">Künstliche Intelligenz</button>
                                         <span class="text-sm text-gray-500">124</span>
                                     </div>
                                     <div class="flex justify-between items-center">
-                                        <span>Cybersicherheit</span>
+                                        <button class="text-left hover:text-blue-600 focus:text-blue-600 focus:outline-none" onclick="navigateToSection('Cybersicherheit')">Cybersicherheit</button>
                                         <span class="text-sm text-gray-500">89</span>
                                     </div>
                                     <div class="flex justify-between items-center">
-                                        <span>Blockchain</span>
+                                        <button class="text-left hover:text-blue-600 focus:text-blue-600 focus:outline-none" onclick="navigateToSection('Blockchain')">Blockchain</button>
                                         <span class="text-sm text-gray-500">67</span>
                                     </div>
                                     <div class="flex justify-between items-center">
-                                        <span>Green Tech</span>
+                                        <button class="text-left hover:text-blue-600 focus:text-blue-600 focus:outline-none" onclick="navigateToSection('Grüne Technologie')">Grüne Technologie</button>
                                         <span class="text-sm text-gray-500">45</span>
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="business-card">
-                                <h3 class="text-lg font-semibold mb-4" data-i18n-key="techdaily.featured">Empfohlen</h3>
+                                <!-- VIOLATION 2.4.6: Non-descriptive heading -->
+                                <h3 class="text-lg font-semibold mb-4" data-i18n-key="techdaily.featured">Bereich</h3>
                                 
                                 <div class="space-y-4">
                                     <div class="flex space-x-3">
                                         <div class="w-16 h-16 rounded flex-shrink-0 overflow-hidden">
-                                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjM2I4MmY2Ii8+CjxjaXJjbGUgY3g9IjMyIiBjeT0iMzIiIHI9IjEyIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="Smartphone Features Miniaturansicht" class="w-full h-full object-cover" />
+                                            <!-- VIOLATION 1.1.1: Image without alt text -->
+                                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjM2I4MmY2Ii8+CjxjaXJjbGUgY3g9IjMyIiBjeT0iMzIiIHI9IjEyIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" class="w-full h-full object-cover" />
                                         </div>
                                         <div>
-                                            <div class="font-medium text-sm">Neue Smartphone-Features 2024</div>
+                                            <button class="font-medium text-sm text-left hover:text-blue-600 focus:text-blue-600 focus:outline-none" onclick="readArticle('Neue Smartphone-Features 2024')">Neue Smartphone-Features 2024</button>
                                             <div class="text-xs text-gray-500">2.500 Aufrufe</div>
                                         </div>
                                     </div>
                                     
                                     <div class="flex space-x-3">
                                         <div class="w-16 h-16 rounded flex-shrink-0 overflow-hidden">
-                                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMTBiOTgxIi8+CjxyZWN0IHg9IjE2IiB5PSIyNCIgd2lkdGg9IjMyIiBoZWlnaHQ9IjE2IiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="Cloud Computing Miniaturansicht" class="w-full h-full object-cover" />
+                                            <!-- VIOLATION 1.1.1: Image with inappropriate alt text -->
+                                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMTBiOTgxIi8+CjxyZWN0IHg9IjE2IiB5PSIyNCIgd2lkdGg9IjMyIiBoZWlnaHQ9IjE2IiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="Icon" class="w-full h-full object-cover" />
                                         </div>
                                         <div>
-                                            <div class="font-medium text-sm">Cloud Computing Trends</div>
+                                            <button class="font-medium text-sm text-left hover:text-blue-600 focus:text-blue-600 focus:outline-none" onclick="readArticle('Cloud Computing Trends')">Cloud Computing Trends</button>
                                             <div class="text-xs text-gray-500">1.800 Aufrufe</div>
                                         </div>
                                     </div>
@@ -1488,7 +1510,7 @@
                                             <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZjU5ZTBiIi8+CjxjaXJjbGUgY3g9IjMyIiBjeT0iMjQiIHI9IjgiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHg9IjI0IiB5PSIzNiIgd2lkdGg9IjE2IiBoZWlnaHQ9IjEyIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="5G Technology Miniaturansicht" class="w-full h-full object-cover" />
                                         </div>
                                         <div>
-                                            <div class="font-medium text-sm">5G Technologie Ausblick</div>
+                                            <button class="font-medium text-sm text-left hover:text-blue-600 focus:text-blue-600 focus:outline-none" onclick="readArticle('5G Technologie Ausblick')">5G Technologie Ausblick</button>
                                             <div class="text-xs text-gray-500">3.200 Aufrufe</div>
                                         </div>
                                     </div>
@@ -1503,199 +1525,448 @@
         <!-- ElectroShop Page -->
         <div id="electroshop" class="page">
             <div class="min-h-screen bg-gray-50">
+                <!-- WCAG VIOLATION 2.4.11: Newsletter popup that can obscure focused content -->
+                <div id="newsletter-popup" class="fixed bottom-20 right-4 bg-white rounded-lg shadow-2xl p-6 z-50" style="display: none; width: 320px;">
+                    <h3 class="text-lg font-bold mb-3">Newsletter Anmeldung</h3>
+                    <p class="text-sm mb-3">Erhalten Sie 10% Rabatt auf Ihre erste Bestellung!</p>
+                    <form onsubmit="return subscribeNewsletter(event);">
+                        <label for="newsletter-email" class="block text-sm font-medium mb-1">E-Mail-Adresse</label>
+                        <input type="email" id="newsletter-email" name="email" autocomplete="email" required class="w-full p-2 border rounded mb-3">
+                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded w-full">Jetzt anmelden</button>
+                        <button type="button" onclick="closeNewsletter()" class="text-gray-500 text-sm mt-2">Später erinnern</button>
+                    </form>
+                </div>
+
+                <!-- WCAG VIOLATION 2.4.11: Cookie banner that obscures footer content when focused -->
+                <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 z-40" style="display: block;">
+                    <div class="container mx-auto flex items-center justify-between">
+                        <p class="text-sm">Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Mit der Nutzung unserer Website stimmen Sie unserer Cookie-Richtlinie zu.</p>
+                        <div class="flex gap-2">
+                            <button onclick="acceptCookies()" class="bg-white text-gray-900 px-4 py-2 rounded text-sm">Alle akzeptieren</button>
+                            <button onclick="rejectCookies()" class="border border-white px-4 py-2 rounded text-sm">Nur notwendige</button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Header -->
                 <header class="bg-white border-b border-gray-200">
                     <div class="container py-4">
+                        <!-- Proper page title -->
+                        <script>document.title = 'ElectroShop - Ihr Online-Shop für Elektronik';</script>
+                        
                         <div class="flex items-center justify-between">
-                            <h1 class="text-3xl font-bold text-gray-900" data-i18n-key="electroshop.title">ElectroShop</h1>
+                            <h1 class="text-3xl font-bold text-blue-600">ElectroShop</h1>
+                            
                             <div class="flex items-center space-x-4">
-                                <!-- VIOLATION: Search input missing label -->
-                                <input 
-                                    type="search" 
-                                    placeholder="Produkte suchen..."
-                                    class="px-4 py-2 border border-gray-300 rounded-lg w-64"
-                                />
-                                <button class="p-2 text-gray-600 hover:text-gray-900">
-                                    🛒 <span class="ml-1" data-i18n-key="electroshop.cart">Warenkorb (0)</span>
+                                <!-- WCAG VIOLATION 2.4.3: Search button has tabindex before search input -->
+                                <div class="flex items-center gap-2">
+                                    <label for="search-input" class="sr-only">Produktsuche</label>
+                                    <input 
+                                        type="search" 
+                                        id="search-input"
+                                        name="search"
+                                        placeholder="Produkte suchen..."
+                                        class="px-4 py-2 border border-gray-300 rounded-lg w-64 search-field"
+                                        tabindex="2"
+                                        autocomplete="off"
+                                    />
+                                    <button class="bg-blue-600 text-white px-4 py-2 rounded" onclick="searchProducts()" tabindex="1">
+                                        Suchen
+                                    </button>
+                                </div>
+                                
+                                <!-- WCAG VIOLATION 2.4.7: Focus indicators removed with CSS -->
+                                <style>
+                                    /* VIOLATION 2.4.7: Removing focus indicators */
+                                    input:focus, select:focus, textarea:focus, button:focus, a:focus {
+                                        outline: none !important;
+                                        box-shadow: none !important;
+                                    }
+                                    .search-field:focus {
+                                        border-color: #d1d5db !important;
+                                    }
+                                </style>
+                                
+                                <button class="flex items-center p-2 text-gray-600 hover:text-gray-900" onclick="openCart()">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMgM0gyMUwyMCAyMUgzVjNaIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik05IDlIOS4wMVY5LjAxSDlWOVoiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" 
+                                         width="20" height="20" alt="Warenkorb">
+                                    <span class="ml-1" id="cart-count">Warenkorb (0)</span>
                                 </button>
-                                <button class="p-2 text-gray-600 hover:text-gray-900" data-i18n-key="electroshop.account">
-                                    👤 Mein Konto
+                                
+                                <button class="p-2 text-gray-600 hover:text-gray-900" onclick="showLoginForm()">
+                                    <span aria-hidden="true">👤</span> Mein Konto
                                 </button>
                             </div>
                         </div>
                         
-                        <!-- Category Navigation -->
-                        <nav class="border-t border-gray-200 pt-4">
-                            <div class="flex space-x-8">
-                                <a href="#" class="text-gray-600 hover:text-blue-600" data-i18n-key="electroshop.categories.smartphones">Smartphones</a>
-                                <a href="#" class="text-gray-600 hover:text-blue-600" data-i18n-key="electroshop.categories.laptops">Laptops</a>
-                                <a href="#" class="text-gray-600 hover:text-blue-600" data-i18n-key="electroshop.categories.audio">Audio & Musik</a>
-                                <a href="#" class="text-gray-600 hover:text-blue-600" data-i18n-key="electroshop.categories.gaming">Gaming</a>
-                                <a href="#" class="text-gray-600 hover:text-blue-600" data-i18n-key="electroshop.categories.accessories">Zubehör</a>
-                            </div>
+                        <!-- Proper navigation without visual reordering -->
+                        <nav class="border-t border-gray-200 pt-4" aria-label="Hauptnavigation">
+                            <ul class="flex space-x-8">
+                                <li><button class="text-gray-600 hover:text-blue-600 underline" onclick="scrollToProducts()">Smartphones</button></li>
+                                <li><button class="text-gray-600 hover:text-blue-600 underline" onclick="scrollToProducts()">Laptops</button></li>
+                                <li><button class="text-gray-600 hover:text-blue-600 underline" onclick="scrollToProducts()">Audio & Musik</button></li>
+                                <li><button class="text-gray-600 hover:text-blue-600 underline" onclick="scrollToProducts()">Gaming</button></li>
+                                <li><button class="text-gray-600 hover:text-blue-600 underline" onclick="scrollToProducts()">Zubehör</button></li>
+                            </ul>
                         </nav>
                     </div>
                 </header>
                 
                 <!-- Main Content -->
                 <main class="container py-8">
-                    <!-- Featured Banner -->
-                    <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-8 mb-8">
-                        <h2 class="text-3xl font-bold mb-2">Sommer-Sale 2024</h2>
-                        <p class="text-xl mb-4">Bis zu 50% Rabatt auf ausgewählte Elektronik</p>
-                        <button class="bg-white text-blue-600 px-6 py-2 rounded font-semibold">Jetzt shoppen</button>
+                    <!-- Hero Banner -->
+                    <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-8 mb-8" style="background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);">
+                        <h2 class="text-3xl font-bold mb-2" style="color: #ffffff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Willkommen bei ElectroShop</h2>
+                        <p class="text-xl mb-4" style="color: #f8fafc; text-shadow: 0 1px 3px rgba(0,0,0,0.4);">Entdecken Sie unsere aktuellen Angebote - bis zu 50% Rabatt auf ausgewählte Artikel!</p>
+                        <button class="bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100" onclick="scrollToProducts()">Angebote ansehen</button>
                     </div>
                     
-                    <!-- Product Filter Bar -->
-                    <div class="flex items-center justify-between mb-6">
-                        <h2 class="text-2xl font-bold" data-i18n-key="electroshop.featured">Empfohlene Produkte</h2>
-                        <div class="flex items-center space-x-4">
-                            <!-- VIOLATION: Dropdown without proper labeling -->
-                            <select class="border border-gray-300 rounded px-3 py-2">
-                                <option>Sortieren nach</option>
-                                <option>Preis: Niedrig zu Hoch</option>
-                                <option>Preis: Hoch zu Niedrig</option>
-                                <option>Bewertung</option>
-                                <option>Neueste</option>
-                            </select>
-                            <button class="border border-gray-300 rounded px-3 py-2">Filter</button>
+                    <!-- Product Filter Section with WCAG VIOLATION 2.4.3: Apply button before filter options -->
+                    <div class="bg-white p-6 rounded-lg shadow mb-8">
+                        <h2 class="text-xl font-bold mb-4">Produktfilter</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                            <!-- VIOLATION 2.4.3: Apply button comes first in tab order -->
+                            <button class="bg-blue-600 text-white px-6 py-2 rounded" onclick="applyFilters()" tabindex="10">
+                                Filter anwenden
+                            </button>
+                            
+                            <div>
+                                <label for="category-filter" class="block text-sm font-medium mb-1">Kategorie</label>
+                                <select id="category-filter" class="w-full border border-gray-300 rounded px-3 py-2" tabindex="11">
+                                    <option value="">Alle Kategorien</option>
+                                    <option value="smartphones">Smartphones</option>
+                                    <option value="laptops">Laptops</option>
+                                    <option value="audio">Audio</option>
+                                    <option value="gaming">Gaming</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="price-filter" class="block text-sm font-medium mb-1">Preis bis</label>
+                                <input type="number" id="price-filter" class="w-full border border-gray-300 rounded px-3 py-2" 
+                                       placeholder="Maximaler Preis" tabindex="12">
+                            </div>
+                            
+                            <div>
+                                <label for="sort-filter" class="block text-sm font-medium mb-1">Sortierung</label>
+                                <select id="sort-filter" class="w-full border border-gray-300 rounded px-3 py-2" tabindex="13">
+                                    <option value="">Standard</option>
+                                    <option value="price-asc">Preis aufsteigend</option>
+                                    <option value="price-desc">Preis absteigend</option>
+                                    <option value="rating">Beste Bewertung</option>
+                                    <option value="newest">Neueste zuerst</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Featured Products -->
+                    <h2 id="bestseller" class="text-2xl font-bold mb-6">Unsere Bestseller</h2>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 product-grid">
                         <!-- Product 1 - Smartphone -->
-                        <div class="business-card">
-                            <div class="h-48 flex items-center justify-center overflow-hidden mb-4">
+                        <article class="business-card">
+                            <div class="h-48 flex items-center justify-center overflow-hidden mb-4 bg-gray-50 rounded">
                                 <img 
-                                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTUwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzFmMjkzNyIgcng9IjE1Ii8+CiAgPHJlY3QgeD0iMTAiIHk9IjIwIiB3aWR0aD0iMTMwIiBoZWlnaHQ9IjE2MCIgZmlsbD0iIzAwMDAwMCIgcng9IjgiLz4KICA8cmVjdCB4PSIyMCIgeT0iMzAiIHdpZHRoPSIxMTAiIGhlaWdodD0iMjAiIGZpbGw9IiMzYjgyZjYiIHJ4PSIzIi8+CiAgPHRleHQgeD0iNzUiIHk9IjIyMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TbWFydHBob25lPC90ZXh0Pgo8L3N2Zz4K"
-                                    alt="Premium Smartphone ProMax 256GB"
-                                    class="w-full h-full object-contain"
+                                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTUwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzFmMjkzNyIgcng9IjE1Ii8+CiAgPHJlY3QgeD0iMTAiIHk9IjIwIiB3aWR0aD0iMTMwIiBoZWlnaHQ9IjE2MCIgZmlsbD0iIzAwMDAwMCIgcng9IjgiLz4KICA8cmVjdCB4PSIyMCIgeT0iMzAiIHdpZHRoPSIxMTAiIGhlaWdodD0iMjAiIGZpbGw9IiMzYjgyZjYiIHJ4PSIzIi8+CiAgPHRleHQgeD0iNzUiIHk9IjIyMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNjQ3NDhiIiB0ZWh0LWFuY2hvcj0ibWlkZGxlIj5TbWFydHBob25lPC90ZXh0Pgo8L3N2Zz4K"
+                                    alt="Samsung Galaxy S24 Ultra Smartphone in Schwarz"
+                                    class="max-w-full max-h-full object-contain"
+                                    style="width: auto; height: auto; max-width: 150px; max-height: 180px;"
                                 />
                             </div>
                             
-                            <h3 class="text-lg font-semibold mb-2">Smartphone ProMax 256GB</h3>
-                            <p class="text-sm text-gray-600 mb-3">6,7" Display, 48MP Kamera, 5G-fähig</p>
+                            <h3 class="text-lg font-semibold mb-2">Samsung Galaxy S24 Ultra</h3>
+                            <p class="text-sm text-gray-600 mb-3">6,8" Dynamic AMOLED, 200MP Kamera, 512GB, 5G</p>
                             
-                            <div class="flex items-center mb-2">
-                                <!-- VIOLATION: Price without currency announcement for screen readers -->
-                                <span class="text-2xl font-bold text-blue-600">899,99€</span>
-                                <span class="text-sm text-gray-500 line-through ml-2">1.199,99€</span>
-                                <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded ml-2">-25%</span>
+                            <div class="mb-2">
+                                <span class="text-2xl font-bold text-blue-600">1.199,99€</span>
+                                <span class="text-sm text-gray-500 line-through ml-2">1.449,99€</span>
+                                <span class="ml-2 text-sm bg-red-600 text-white px-2 py-1 rounded">-17% Rabatt</span>
                             </div>
                             
                             <div class="flex items-center mb-4">
-                                <!-- VIOLATION: Star rating without accessible text -->
-                                <div class="text-yellow-500">★★★★★</div>
+                                <span class="sr-only">Bewertung: 4,8 von 5 Sternen</span>
+                                <div class="text-yellow-500" aria-hidden="true">★★★★★</div>
                                 <span class="text-sm text-gray-600 ml-2">(1.247 Bewertungen)</span>
                             </div>
                             
-                            <div class="text-sm text-green-600 mb-3" data-i18n-key="electroshop.inStock">✓ Auf Lager</div>
-                            <button class="btn btn-primary w-full" data-i18n-key="electroshop.addToCart">In den Warenkorb</button>
-                        </div>
+                            <div class="mb-3">
+                                <label for="color-1" class="block text-sm font-medium mb-1">Farbe</label>
+                                <select id="color-1" name="color" class="text-sm border rounded px-2 py-1 w-full mb-2">
+                                    <option>Phantom Black</option>
+                                    <option>Phantom Silver</option>
+                                    <option>Phantom Violet</option>
+                                </select>
+                                <label for="qty-1" class="block text-sm font-medium mb-1">Anzahl</label>
+                                <input type="number" id="qty-1" name="quantity" value="1" min="1" max="10" 
+                                       class="text-sm border rounded px-2 py-1 w-20">
+                            </div>
+                            
+                            <div class="text-sm text-green-600 mb-3">
+                                <span aria-label="Auf Lager">✓</span> Auf Lager - Lieferung morgen
+                            </div>
+                            <button class="btn btn-primary w-full mb-2" onclick="addToCart(1)">
+                                In den Warenkorb
+                            </button>
+                            <button class="btn btn-outline w-full text-sm" onclick="toggleWishlist(1)">
+                                <span aria-hidden="true">♥</span> Auf die Wunschliste
+                            </button>
+                        </article>
                         
                         <!-- Product 2 - Laptop -->
-                        <div class="business-card">
-                            <div class="h-48 flex items-center justify-center overflow-hidden mb-4">
+                        <article class="business-card">
+                            <div class="h-48 flex items-center justify-center overflow-hidden mb-4 bg-gray-50 rounded">
                                 <img 
                                     src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzM3NDE1MSIgcng9IjgiLz4KICA8cmVjdCB4PSIxMCIgeT0iMTAiIHdpZHRoPSIxODAiIGhlaWdodD0iODAiIGZpbGw9IiMwMDAwMDAiIHJ4PSI0Ii8+CiAgPHJlY3QgeD0iMjAiIHk9IjIwIiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZTVlN2ViIiByeD0iMiIvPgogIDxyZWN0IHg9IjIwIiB5PSI0MCIgd2lkdGg9IjEyMCIgaGVpZ2h0PSI4IiBmaWxsPSIjZTVlN2ViIiByeD0iMiIvPgogIDxyZWN0IHg9IjIwIiB5PSI1NSIgd2lkdGg9IjE0MCIgaGVpZ2h0PSI4IiBmaWxsPSIjZTVlN2ViIiByeD0iMiIvPgogIDxyZWN0IHg9IjAiIHk9IjEwMCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIxNSIgZmlsbD0iIzM3NDE1MSIgcng9IjgiLz4KICA8dGV4dCB4PSIxMDAiIHk9IjE3NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MYXB0b3A8L3RleHQ+Cjwvc3ZnPgo="
-                                    alt="Gaming Laptop UltraBook 15 Zoll"
-                                    class="w-full h-full object-contain"
+                                    alt="Dell XPS 15 Laptop in Silber"
+                                    class="max-w-full max-h-full object-contain"
+                                    style="width: auto; height: auto; max-width: 180px; max-height: 120px;"
                                 />
                             </div>
                             
-                            <h3 class="text-lg font-semibold mb-2">Gaming Laptop UltraBook 15"</h3>
-                            <p class="text-sm text-gray-600 mb-3">Intel i7, 16GB RAM, RTX 4060, 512GB SSD</p>
+                            <h3 class="text-lg font-semibold mb-2">ProBook Gaming 15"</h3>
+                            <p class="text-sm text-gray-600 mb-3">Intel i7, 16GB RAM, RTX 4070, 1TB SSD</p>
                             
                             <div class="flex items-center mb-2">
-                                <span class="text-2xl font-bold text-blue-600">1.299,99€</span>
+                                <span class="text-2xl font-bold" style="color: #dc2626;">1.299,99€</span>
                                 <span class="text-sm text-gray-500 line-through ml-2">1.599,99€</span>
-                                <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded ml-2">-19%</span>
+                                <span class="text-xs px-2 py-1 rounded ml-2" style="background-color: #16a34a; color: white;">-19%</span>
                             </div>
                             
                             <div class="flex items-center mb-4">
                                 <div class="text-yellow-500">★★★★☆</div>
-                                <span class="text-sm text-gray-600 ml-2">(892 Bewertungen)</span>
+                                <span class="text-sm text-gray-600 ml-2">(892)</span>
                             </div>
                             
-                            <div class="text-sm text-green-600 mb-3" data-i18n-key="electroshop.freeShipping">🚚 Kostenloser Versand</div>
-                            <button class="btn btn-primary w-full" data-i18n-key="electroshop.addToCart">In den Warenkorb</button>
+                            <!-- Delivery options form -->
+                            <div class="mb-3">
+                                <!-- VIOLATION 1.3.1: Radio buttons without proper grouping -->
+                                <div class="text-xs">
+                                    <input type="radio" name="delivery" value="standard" checked> Standard (2-3 Tage)
+                                    <input type="radio" name="delivery" value="express" class="ml-2"> Express (+9,99€)
+                                </div>
+                            </div>
+                            
+                            <div class="text-sm text-blue-600 mb-3">🚚 Kostenloser Versand ab 50€</div>
+                            <button class="btn btn-primary w-full mb-2" onclick="addToCart(2)">In den Warenkorb</button>
+                            <button class="btn btn-outline w-full text-sm" onclick="compareProduct(2)">Vergleichen</button>
                         </div>
                         
                         <!-- Product 3 - Headphones -->
                         <div class="business-card">
                             <div class="h-48 flex items-center justify-center overflow-hidden mb-4">
+                                <!-- VIOLATION 1.1.1: Image with inappropriate alt text -->
                                 <img 
                                     src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSI0NSIgY3k9IjkwIiByPSI0MCIgZmlsbD0iIzM3NDE1MSIvPgogIDxjaXJjbGUgY3g9IjEzNSIgY3k9IjkwIiByPSI0MCIgZmlsbD0iIzM3NDE1MSIvPgogIDxwYXRoIGQ9Ik00NSA1MEM0NSA0NCA3NCA0MCA5MCA0MFMxMzUgNDQgMTM1IDUwIiBzdHJva2U9IiMzNzQxNTEiIHN0cm9rZS13aWR0aD0iOCIgZmlsbD0ibm9uZSIvPgogIDx0ZXh0IHg9IjkwIiB5PSIyMDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+S29wZmjDtnJlcjwvdGV4dD4KPC9zdmc+"
-                                    alt="Wireless Kopfhörer Pro Noise-Cancelling"
+                                    alt="Icon"
                                     class="w-full h-full object-contain"
                                 />
                             </div>
                             
-                            <h3 class="text-lg font-semibold mb-2">Wireless Kopfhörer Pro</h3>
+                            <h3 class="text-lg font-semibold mb-2">AudioMax Wireless Pro</h3>
                             <p class="text-sm text-gray-600 mb-3">Noise-Cancelling, 30h Akku, Bluetooth 5.3</p>
                             
                             <div class="flex items-center mb-2">
-                                <span class="text-2xl font-bold text-blue-600">199,99€</span>
+                                <!-- VIOLATION 1.3.3: Relies on color to convey discount information -->
+                                <span class="text-2xl font-bold" style="color: #7c3aed;">199,99€</span>
                                 <span class="text-sm text-gray-500 line-through ml-2">249,99€</span>
-                                <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded ml-2">-20%</span>
+                                <span class="text-xs px-2 py-1 rounded ml-2" style="background-color: #f59e0b; color: white;">-20%</span>
                             </div>
                             
                             <div class="flex items-center mb-4">
                                 <div class="text-yellow-500">★★★★★</div>
-                                <span class="text-sm text-gray-600 ml-2">(2.156 Bewertungen)</span>
+                                <span class="text-sm text-gray-600 ml-2">(2.156)</span>
                             </div>
                             
-                            <div class="text-sm text-green-600 mb-3">✓ Bestseller</div>
-                            <button class="btn btn-primary w-full" data-i18n-key="electroshop.addToCart">In den Warenkorb</button>
+                            <!-- Extended warranty options -->
+                            <div class="mb-3">
+                                <!-- VIOLATION 1.3.1: Checkboxes without proper labels -->
+                                <div class="text-xs space-y-1">
+                                    <div><input type="checkbox"> Garantieverlängerung (+29€)</div>
+                                    <div><input type="checkbox"> Express-Lieferung (+9€)</div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-sm mb-3" style="color: #dc2626;">🔥 Bestseller - Begrenzt verfügbar</div>
+                            <button class="btn btn-primary w-full mb-2" onclick="addToCart(3)">In den Warenkorb</button>
+                            <button class="btn btn-outline w-full text-sm" onclick="showReviews(3)">Bewertungen lesen</button>
                         </div>
                         
                         <!-- Product 4 - Tablet -->
                         <div class="business-card">
                             <div class="h-48 flex items-center justify-center overflow-hidden mb-4">
+                                <!-- VIOLATION 1.1.1: Image with vague alt text -->
                                 <img 
                                     src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE4MCIgZmlsbD0iIzM3NDE1MSIgcng9IjEwIi8+CiAgPHJlY3QgeD0iMTAiIHk9IjE1IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iIzAwMDAwMCIgcng9IjUiLz4KICA8cmVjdCB4PSIyMCIgeT0iMjUiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTUiIGZpbGw9IiMzYjgyZjYiIHJ4PSIzIi8+CiAgPHJlY3QgeD0iMjAiIHk9IjUwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgiIGZpbGw9IiNlNWU3ZWIiIHJ4PSIyIi8+CiAgPHJlY3QgeD0iMjAiIHk9IjY1IiB3aWR0aD0iODAiIGhlaWdodD0iOCIgZmlsbD0iI2U1ZTdlYiIgcng9IjIiLz4KICA8cmVjdCB4PSIyMCIgeT0iODAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI4IiBmaWxsPSIjZTVlN2ViIiByeD0iMiIvPgogIDx0ZXh0IHg9IjcwIiB5PSIyMDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VGFibGV0PC90ZXh0Pgo8L3N2Zz4K"
-                                    alt="Tablet Air 11 Zoll WiFi 128GB"
+                                    alt="Grafik"
                                     class="w-full h-full object-contain"
                                 />
                             </div>
                             
-                            <h3 class="text-lg font-semibold mb-2">Tablet Air 11" WiFi</h3>
-                            <p class="text-sm text-gray-600 mb-3">128GB, A15 Chip, 10h Akku, Face ID</p>
+                            <h3 class="text-lg font-semibold mb-2">TabletPro Air 11"</h3>
+                            <p class="text-sm text-gray-600 mb-3">256GB, M2 Chip, 12h Akku, Face ID</p>
                             
                             <div class="flex items-center mb-2">
-                                <span class="text-2xl font-bold text-blue-600">649,99€</span>
+                                <span class="text-2xl font-bold" style="color: #059669;">649,99€</span>
                                 <span class="text-sm text-gray-500 line-through ml-2">749,99€</span>
-                                <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded ml-2">-13%</span>
+                                <span class="text-xs px-2 py-1 rounded ml-2" style="background-color: #dc2626; color: white;">-13%</span>
                             </div>
                             
                             <div class="flex items-center mb-4">
                                 <div class="text-yellow-500">★★★★☆</div>
-                                <span class="text-sm text-gray-600 ml-2">(634 Bewertungen)</span>
+                                <span class="text-sm text-gray-600 ml-2">(634)</span>
                             </div>
                             
-                            <div class="text-sm text-orange-600 mb-3">⚠ Nur noch 3 auf Lager</div>
-                            <button class="btn btn-primary w-full" data-i18n-key="electroshop.addToCart">In den Warenkorb</button>
+                            <!-- Storage selection without proper form -->
+                            <div class="mb-3">
+                                <!-- VIOLATION 1.3.1: Radio buttons without fieldset/legend -->
+                                <div class="text-xs space-y-1">
+                                    <div><input type="radio" name="storage4" checked> 128GB</div>
+                                    <div><input type="radio" name="storage4"> 256GB (+100€)</div>
+                                    <div><input type="radio" name="storage4"> 512GB (+300€)</div>
+                                </div>
+                            </div>
+                            
+                            <!-- VIOLATION 1.3.3: Warning relies on color and icon only -->
+                            <div class="text-sm mb-3" style="color: #ea580c;">⚠ Nur noch 3 auf Lager</div>
+                            <button class="btn btn-primary w-full mb-2" onclick="addToCart(4)">In den Warenkorb</button>
+                            <button class="btn btn-outline w-full text-sm" onclick="notifyAvailability(4)">Bei Verfügbarkeit benachrichtigen</button>
                         </div>
                     </div>
                     
+                    <!-- Customer Reviews Section -->
+                    <div id="reviews-section" class="bg-white p-6 rounded-lg shadow mb-8" style="display: none;">
+                        <!-- VIOLATION 2.4.6: Non-descriptive heading -->
+                        <h2 class="text-xl font-bold mb-4">Meinungen</h2>
+                        <div class="space-y-4">
+                            <div class="border-b pb-4">
+                                <div class="flex items-center mb-2">
+                                    <div class="text-yellow-500 mr-2">★★★★★</div>
+                                    <span class="font-medium">Schmidt_78</span>
+                                    <span class="text-gray-500 text-sm ml-2">vor 3 Tagen</span>
+                                </div>
+                                <p class="text-gray-700">Sehr gute Qualität, schnelle Lieferung. Empfehlenswert!</p>
+                            </div>
+                            <div class="border-b pb-4">
+                                <div class="flex items-center mb-2">
+                                    <div class="text-yellow-500 mr-2">★★★★☆</div>
+                                    <span class="font-medium">TechLover99</span>
+                                    <span class="text-gray-500 text-sm ml-2">vor 1 Woche</span>
+                                </div>
+                                <p class="text-gray-700">Preis-Leistung stimmt. Kleiner Verpackungsschaden, aber Produkt OK.</p>
+                            </div>
+                        </div>
+                        <button onclick="hideReviews()" class="mt-4 text-blue-600">Schließen</button>
+                    </div>
+
+                    <!-- Checkout Form Section -->
+                    <div id="checkout-section" class="bg-white p-6 rounded-lg shadow mb-8" style="display: none;">
+                        <!-- VIOLATION 2.4.6: Non-descriptive heading -->
+                        <h2 class="text-xl font-bold mb-4">Kasse</h2>
+                        <!-- VIOLATION 3.3.1, 3.3.3, 3.3.4: Form without proper error handling -->
+                        <form onsubmit="return processCheckout()">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <!-- VIOLATION 1.3.1 & 1.3.5: Missing proper labels and autocomplete -->
+                                <div>
+                                    <input type="text" placeholder="Vorname" class="w-full p-3 border rounded">
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="Nachname" class="w-full p-3 border rounded">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <input type="email" placeholder="E-Mail-Adresse" class="w-full p-3 border rounded">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <input type="text" placeholder="Adresse" class="w-full p-3 border rounded">
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="PLZ" class="w-full p-3 border rounded">
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="Stadt" class="w-full p-3 border rounded">
+                                </div>
+                            </div>
+                            
+                            <!-- Payment Information -->
+                            <div class="mt-6">
+                                <!-- VIOLATION 2.4.6: Non-descriptive heading -->
+                                <h3 class="text-lg font-semibold mb-3">Zahlung</h3>
+                                <!-- VIOLATION 1.3.1: Payment method selection without proper grouping -->
+                                <div class="space-y-2 mb-4">
+                                    <div><input type="radio" name="payment" value="card" checked> Kreditkarte</div>
+                                    <div><input type="radio" name="payment" value="paypal"> PayPal</div>
+                                    <div><input type="radio" name="payment" value="invoice"> Rechnung</div>
+                                </div>
+                                
+                                <!-- VIOLATION 1.3.5: Credit card fields without autocomplete -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="md:col-span-2">
+                                        <input type="text" placeholder="Kartennummer" class="w-full p-3 border rounded">
+                                    </div>
+                                    <div>
+                                        <input type="text" placeholder="MM/JJ" class="w-full p-3 border rounded">
+                                    </div>
+                                    <div>
+                                        <input type="text" placeholder="CVC" class="w-full p-3 border rounded">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- VIOLATION 2.4.3: Order summary placed before required fields in DOM -->
+                            <div class="mt-6 p-4 bg-gray-50 rounded" style="order: -1; display: flex; flex-direction: column;">
+                                <h3 class="font-semibold mb-2">Bestellzusammenfassung</h3>
+                                <div class="flex justify-between">
+                                    <span>Zwischensumme:</span>
+                                    <span>2.399,96€</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Versand:</span>
+                                    <span>Kostenlos</span>
+                                </div>
+                                <div class="flex justify-between font-bold text-lg mt-2">
+                                    <span>Gesamt:</span>
+                                    <span>2.399,96€</span>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-green-600 text-white py-3 rounded font-semibold mt-6">Jetzt kaufen</button>
+                        </form>
+                    </div>
+
+                    <!-- Newsletter Section -->
+                    <div class="bg-blue-600 text-white p-6 rounded-lg mb-8">
+                        <!-- VIOLATION 2.4.6: Non-descriptive heading -->
+                        <h2 class="text-xl font-bold mb-3">Newsletter</h2>
+                        <!-- VIOLATION 1.3.3: Instructions rely on position -->
+                        <p class="mb-4">Geben Sie Ihre E-Mail unten ein für exklusive Angebote!</p>
+                        <!-- VIOLATION 3.3.1: Form without error identification -->
+                        <form class="flex gap-2" onsubmit="return subscribeNewsletter()">
+                            <!-- VIOLATION 1.3.1 & 1.3.5: Missing label and autocomplete -->
+                            <input type="email" placeholder="Ihre E-Mail-Adresse" class="flex-1 p-3 rounded text-gray-900" style="outline: none;">
+                            <!-- VIOLATION 2.5.3: Button text differs from accessible name -->
+                            <button type="submit" class="bg-yellow-500 text-blue-900 px-6 py-3 rounded font-semibold" aria-label="Für Newsletter anmelden">Anmelden</button>
+                        </form>
+                    </div>
+
                     <!-- Additional Product Categories -->
                     <div class="mt-12">
-                        <h2 class="text-2xl font-bold mb-6" data-i18n-key="electroshop.bestsellers">Bestseller</h2>
+                        <!-- VIOLATION 2.4.6: Non-descriptive heading -->
+                        <h2 class="text-2xl font-bold mb-6">Mehr</h2>
                         
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <!-- Gaming Console -->
                             <div class="business-card">
                                 <div class="h-40 flex items-center justify-center overflow-hidden mb-4">
+                                    <!-- VIOLATION 1.1.1: Image without alt text -->
                                     <img 
                                         src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzM3NDE1MSIgcng9IjgiLz4KICA8cmVjdCB4PSIxMCIgeT0iMTAiIHdpZHRoPSIxODAiIGhlaWdodD0iODAiIGZpbGw9IiMxZjI5MzciIHJ4PSI0Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMTUiIGZpbGw9IiNlNWU3ZWIiLz4KICA8Y2lyY2xlIGN4PSIxNTAiIGN5PSI1MCIgcj0iMTUiIGZpbGw9IiNlNWU3ZWIiLz4KICA8dGV4dCB4PSIxMDAiIHk9IjEzMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5HYW1pbmcgS29uc29sZTwvdGV4dD4KPC9zdmc+"
-                                        alt="Gaming Konsole NextGen 512GB"
                                         class="w-full h-full object-contain"
                                     />
                                 </div>
-                                <h3 class="text-lg font-semibold mb-2">Gaming Konsole NextGen</h3>
-                                <div class="text-sm text-gray-600 mb-3">512GB SSD, 4K Gaming, Ray Tracing</div>
-                                <div class="text-2xl font-bold text-blue-600 mb-3">499,99€</div>
-                                <button class="btn btn-primary w-full" data-i18n-key="electroshop.addToCart">In den Warenkorb</button>
+                                <h3 class="text-lg font-semibold mb-2">GameStation 5 Pro</h3>
+                                <div class="text-sm text-gray-600 mb-3">1TB SSD, 8K Gaming, VR-Ready</div>
+                                <div class="text-2xl font-bold" style="color: #7c2d12;">499,99€</div>
+                                <button class="btn btn-primary w-full mt-3" onclick="addToCart(5)">In den Warenkorb</button>
                             </div>
                             
                             <!-- Smart Watch -->
@@ -1703,14 +1974,14 @@
                                 <div class="h-40 flex items-center justify-center overflow-hidden mb-4">
                                     <img 
                                         src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSIzMCIgeT0iNDAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI3MCIgZmlsbD0iIzM3NDE1MSIgcng9IjEwIi8+CiAgPHJlY3QgeD0iMzUiIHk9IjQ1IiB3aWR0aD0iNTAiIGhlaWdodD0iNjAiIGZpbGw9IiMwMDAwMDAiIHJ4PSI4Ii8+CiAgPGNpcmNsZSBjeD0iNjAiIGN5PSI3NSIgcj0iMTUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzNiODJmNiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHJlY3QgeD0iNTUiIHk9IjIwIiB3aWR0aD0iMTAiIGhlaWdodD0iMjAiIGZpbGw9IiMzNzQxNTEiLz4KICA8cmVjdCB4PSI1NSIgeT0iMTEwIiB3aWR0aD0iMTAiIGhlaWdodD0iMjAiIGZpbGw9IiMzNzQxNTEiLz4KICA8dGV4dCB4PSI2MCIgeT0iMTcwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNtYXJ0IFdhdGNoPC90ZXh0Pgo8L3N2Zz4K"
-                                        alt="Smart Watch Fitness Pro GPS"
+                                        alt="WearableTech Pro GPS Sport"
                                         class="w-full h-full object-contain"
                                     />
                                 </div>
-                                <h3 class="text-lg font-semibold mb-2">Smart Watch Fitness Pro</h3>
-                                <div class="text-sm text-gray-600 mb-3">GPS, Herzfrequenz, 7 Tage Akku</div>
-                                <div class="text-2xl font-bold text-blue-600 mb-3">299,99€</div>
-                                <button class="btn btn-primary w-full" data-i18n-key="electroshop.addToCart">In den Warenkorb</button>
+                                <h3 class="text-lg font-semibold mb-2">WearableTech Fitness Pro</h3>
+                                <div class="text-sm text-gray-600 mb-3">GPS, EKG, 14 Tage Akku, Wasserdicht</div>
+                                <div class="text-2xl font-bold" style="color: #1d4ed8;">299,99€</div>
+                                <button class="btn btn-primary w-full mt-3" onclick="addToCart(6)">In den Warenkorb</button>
                             </div>
                             
                             <!-- Bluetooth Speaker -->
@@ -1718,18 +1989,169 @@
                                 <div class="h-40 flex items-center justify-center overflow-hidden mb-4">
                                     <img 
                                         src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTgwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzM3NDE1MSIgcng9IjIwIi8+CiAgPGNpcmNsZSBjeD0iNDUiIGN5PSI1MCIgcj0iMjAiIGZpbGw9IiM2YjcyODAiLz4KICA8Y2lyY2xlIGN4PSI5MCIgY3k9IjUwIiByPSIyMCIgZmlsbD0iIzZiNzI4MCIvPgogIDxjaXJjbGUgY3g9IjEzNSIgY3k9IjUwIiByPSIyMCIgZmlsbD0iIzZiNzI4MCIvPgogIDx0ZXh0IHg9IjkwIiB5PSIxMzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Qmx1ZXRvb3RoIFNwZWFrZXI8L3RleHQ+Cjwvc3ZnPgo="
-                                        alt="Bluetooth Lautsprecher Portable Wasserdicht"
+                                        alt="SoundBlast Portable Speaker"
                                         class="w-full h-full object-contain"
                                     />
                                 </div>
-                                <h3 class="text-lg font-semibold mb-2">Bluetooth Lautsprecher Portable</h3>
-                                <div class="text-sm text-gray-600 mb-3">Wasserdicht, 360° Sound, 20h Akku</div>
-                                <div class="text-2xl font-bold text-blue-600 mb-3">79,99€</div>
-                                <button class="btn btn-primary w-full" data-i18n-key="electroshop.addToCart">In den Warenkorb</button>
+                                <h3 class="text-lg font-semibold mb-2">SoundBlast Portable</h3>
+                                <div class="text-sm text-gray-600 mb-3">Wasserdicht, 360° Sound, 24h Akku, RGB</div>
+                                <div class="text-2xl font-bold" style="color: #059669;">79,99€</div>
+                                <button class="btn btn-primary w-full mt-3" onclick="addToCart(7)">In den Warenkorb</button>
                             </div>
                         </div>
                     </div>
                 </main>
+
+                <!-- JavaScript Functions for ElectroShop -->
+                <script>
+                // ElectroShop functionality
+                let cart = [];
+                let wishlist = [];
+
+                function showLoginForm() {
+                    const form = document.getElementById('login-form');
+                    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+                }
+
+                function showProducts() {
+                    alert('Demo: Navigation zu Produktangeboten. Dies ist eine Lernplattform für WCAG-Tests.');
+                }
+
+                function scrollToProducts() {
+                    const productsSection = document.getElementById('bestseller');
+                    if (productsSection) {
+                        productsSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+
+                function searchProducts() {
+                    const searchInput = document.getElementById('search-input');
+                    const query = searchInput ? searchInput.value : '';
+                    if (query.trim()) {
+                        alert(`Demo: Suche nach "${query}". Dies ist eine Lernplattform für WCAG-Tests.`);
+                    } else {
+                        alert('Bitte geben Sie einen Suchbegriff ein.');
+                    }
+                }
+
+                function applyFilters() {
+                    alert('Demo: Filter werden angewendet. Dies ist eine Lernplattform für WCAG-Tests.');
+                }
+
+                function addToCart(productId) {
+                    cart.push(productId);
+                    alert(`Demo: Produkt ${productId} wurde zum Warenkorb hinzugefügt. Warenkorb enthält jetzt ${cart.length} Artikel. Dies ist eine Lernplattform für WCAG-Tests.`);
+                    updateCartDisplay();
+                }
+
+                function toggleWishlist(productId) {
+                    if (wishlist.includes(productId)) {
+                        wishlist = wishlist.filter(id => id !== productId);
+                        alert(`Demo: Produkt ${productId} wurde von der Merkliste entfernt.`);
+                    } else {
+                        wishlist.push(productId);
+                        alert(`Demo: Produkt ${productId} wurde zur Merkliste hinzugefügt.`);
+                    }
+                }
+
+                function compareProduct(productId) {
+                    alert(`Demo: Produktvergleich für Produkt ${productId} würde geöffnet. Dies ist eine Lernplattform für WCAG-Tests.`);
+                }
+
+                function showReviews(productId) {
+                    document.getElementById('reviews-section').style.display = 'block';
+                    document.getElementById('reviews-section').scrollIntoView({ behavior: 'smooth' });
+                }
+
+                function hideReviews() {
+                    document.getElementById('reviews-section').style.display = 'none';
+                }
+
+                function notifyAvailability(productId) {
+                    alert(`Demo: Sie werden benachrichtigt, wenn Produkt ${productId} wieder verfügbar ist. Dies ist eine Lernplattform für WCAG-Tests.`);
+                }
+
+                function updateCartDisplay() {
+                    // Update cart count in header
+                    const cartButtons = document.querySelectorAll('[onclick*="cart"]');
+                    cartButtons.forEach(btn => {
+                        if (btn.textContent.includes('Warenkorb')) {
+                            btn.innerHTML = btn.innerHTML.replace(/\(\d+\)/, `(${cart.length})`);
+                        }
+                    });
+                }
+
+                function validateLogin() {
+                    // VIOLATION 3.3.1, 3.3.3: No proper validation or error messages
+                    alert('Demo: Anmeldung würde versucht. Für Lernzwecke wird keine echte Anmeldung durchgeführt.');
+                    return false;
+                }
+
+                function processCheckout() {
+                    // VIOLATION 3.3.4: No confirmation for important transaction
+                    if (cart.length === 0) {
+                        alert('Warenkorb ist leer!');
+                        return false;
+                    }
+                    alert('Demo: Bestellung würde verarbeitet. Dies ist eine Lernplattform für WCAG-Tests.');
+                    return false;
+                }
+
+                function subscribeNewsletter() {
+                    // VIOLATION 3.3.1: No email validation
+                    const email = event.target.querySelector('input[type="email"]').value;
+                    if (!email) {
+                        alert('Bitte geben Sie eine E-Mail-Adresse ein.');
+                        return false;
+                    }
+                    alert(`Demo: Newsletter-Anmeldung für ${email} erfolgreich. Dies ist eine Lernplattform für WCAG-Tests.`);
+                    return false;
+                }
+
+                // Show checkout when cart has items
+                function showCheckout() {
+                    if (cart.length > 0) {
+                        document.getElementById('checkout-section').style.display = 'block';
+                        document.getElementById('checkout-section').scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        alert('Warenkorb ist leer!');
+                    }
+                }
+
+                // Additional ElectroShop functionality
+                function acceptCookies() {
+                    document.getElementById('cookie-banner').style.display = 'none';
+                    alert('Cookies akzeptiert. Dies ist eine Demo für WCAG-Tests.');
+                }
+
+                function rejectCookies() {
+                    document.getElementById('cookie-banner').style.display = 'none';
+                    alert('Nur notwendige Cookies akzeptiert. Dies ist eine Demo für WCAG-Tests.');
+                }
+
+                function subscribeNewsletter(event) {
+                    event.preventDefault();
+                    const email = event.target.querySelector('input[type="email"]').value;
+                    if (email) {
+                        alert(`Newsletter-Anmeldung für ${email} erfolgreich! Dies ist eine Demo für WCAG-Tests.`);
+                        document.getElementById('newsletter-popup').style.display = 'none';
+                    }
+                    return false;
+                }
+
+                function closeNewsletter() {
+                    document.getElementById('newsletter-popup').style.display = 'none';
+                }
+
+                // Show newsletter popup after 5 seconds (demo)
+                setTimeout(() => {
+                    if (document.getElementById('newsletter-popup')) {
+                        document.getElementById('newsletter-popup').style.display = 'block';
+                    }
+                }, 5000);
+
+                // Cart functionality ready - items will be added when user clicks buttons
+                </script>
             </div>
         </div>
         
@@ -2734,6 +3156,55 @@
         
         function submitForm() {
             alert('Thank you! Your message has been submitted.');
+        }
+        
+        function createNewTask() {
+            alert('Neue Aufgabe erstellen - Diese Funktion ist in der Demo nicht verfügbar.');
+        }
+        
+        function saveProfile() {
+            alert('Profil gespeichert - Änderungen wurden erfolgreich übernommen.');
+        }
+        
+        function toggleTask(checkbox) {
+            if (checkbox.checked) {
+                alert('Aufgabe als erledigt markiert.');
+            } else {
+                alert('Aufgabe als unerledigt markiert.');
+            }
+        }
+        
+        function subscribeNewsletter() {
+            const emailInput = document.getElementById('newsletter-email');
+            const email = emailInput ? emailInput.value.trim() : '';
+            
+            if (email === '') {
+                alert('Bitte geben Sie eine E-Mail-Adresse ein.');
+                return false;
+            }
+            
+            if (!email.includes('@')) {
+                alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+                return false;
+            }
+            
+            alert('Vielen Dank! Sie haben sich erfolgreich für unseren Newsletter angemeldet.');
+            if (emailInput) {
+                emailInput.value = '';
+            }
+            return false; // Prevent form submission
+        }
+        
+        function readArticle(articleTitle) {
+            alert('Demo-Modus: Der vollständige Artikel "' + articleTitle + '" würde in einer echten Anwendung geöffnet werden.\\n\\nDiese Seite dient nur zu WCAG-Testzwecken.');
+        }
+        
+        function shareArticle(articleTitle) {
+            alert('Demo-Modus: Der Artikel "' + articleTitle + '" würde in einer echten Anwendung auf Social Media geteilt werden.\\n\\nDiese Seite dient nur zu WCAG-Testzwecken.');
+        }
+        
+        function navigateToSection(sectionName) {
+            alert('Demo-Modus: Der Bereich "' + sectionName + '" würde in einer echten News-Website geöffnet werden.\\n\\nDiese Seite dient nur zu WCAG-Testzwecken.');
         }
         
         // Initialize app when DOM is ready

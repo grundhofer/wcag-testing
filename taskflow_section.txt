@@ -1,0 +1,178 @@
+        <div id="taskflow" class="page">
+            <div class="min-h-screen bg-gray-50">
+                <!-- Header -->
+                <header class="bg-white border-b border-gray-200">
+                    <div class="container py-6">
+                        <div class="flex justify-between items-center">
+                            <h1 class="text-3xl font-bold text-gray-900" data-i18n-key="taskflow.title">TaskFlow Pro</h1>
+                            <div class="flex items-center gap-4">
+                                <span class="text-sm text-gray-600" data-i18n-key="taskflow.welcome">Willkommen, Sarah</span>
+                                <button class="btn btn-primary" data-i18n-key="taskflow.newTask">Neue Aufgabe</button>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                
+                <!-- Dashboard -->
+                <main class="container py-8">
+                    <!-- Quick Stats Row -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                        <div class="business-card text-center">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">12</div>
+                            <div class="text-sm text-gray-600" data-i18n-key="taskflow.activeProjects">Aktive Projekte</div>
+                        </div>
+                        <div class="business-card text-center">
+                            <div class="text-3xl font-bold text-green-600 mb-2">247</div>
+                            <div class="text-sm text-gray-600" data-i18n-key="taskflow.completedTasks">Erledigte Aufgaben</div>
+                        </div>
+                        <div class="business-card text-center">
+                            <div class="text-3xl font-bold text-purple-600 mb-2">18</div>
+                            <div class="text-sm text-gray-600" data-i18n-key="taskflow.teamMembers">Teammitglieder</div>
+                        </div>
+                        <div class="business-card text-center">
+                            <div class="text-3xl font-bold text-red-600 mb-2">3</div>
+                            <div class="text-sm text-gray-600" data-i18n-key="taskflow.deadlines">Fristen heute</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                        <!-- Project Overview -->
+                        <div class="lg:col-span-3">
+                            <h2 class="text-2xl font-bold mb-6" data-i18n-key="taskflow.projectProgress">Projektfortschritt</h2>
+                            
+                            <!-- Project Cards -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                                <div class="business-card">
+                                    <h3 class="font-semibold mb-2" data-i18n-key="taskflow.projects.websiteRedesign">Website-Redesign</h3>
+                                    <p class="text-sm text-gray-600 mb-4">18/24 Aufgaben erledigt</p>
+                                    <!-- WCAG VIOLATION: Missing label for progress bar -->
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-blue-600 h-2 rounded-full" style="width: 75%"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500 mt-2">
+                                        <span>Fällig: 15. Sep</span>
+                                        <span style="color: #ff0000;">Hoch</span> <!-- VIOLATION: Color only indicator -->
+                                    </div>
+                                </div>
+                                
+                                <div class="business-card">
+                                    <h3 class="font-semibold mb-2" data-i18n-key="taskflow.projects.mobileApp">Mobile App</h3>
+                                    <p class="text-sm text-gray-600 mb-4">12/32 Aufgaben erledigt</p>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-green-500 h-2 rounded-full" style="width: 37%"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500 mt-2">
+                                        <span>Fällig: 30. Sep</span>
+                                        <span style="color: #ffaa00;">Mittel</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="business-card">
+                                    <h3 class="font-semibold mb-2" data-i18n-key="taskflow.projects.marketing">Marketing-Kampagne</h3>
+                                    <p class="text-sm text-gray-600 mb-4">14/16 Aufgaben erledigt</p>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 87%"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500 mt-2">
+                                        <span>Fällig: 8. Sep</span>
+                                        <span style="color: #00aa00;">Niedrig</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Task List -->
+                            <div class="business-card">
+                                <h3 class="text-xl font-semibold mb-4">Aktuelle Aufgaben</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                                        <!-- VIOLATION: Missing form labels -->
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="w-4 h-4">
+                                            <div>
+                                                <div class="font-medium">Homepage Mockup erstellen</div>
+                                                <div class="text-sm text-gray-600">Website-Redesign • Sarah Weber</div>
+                                            </div>
+                                        </div>
+                                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded" data-i18n-key="taskflow.taskStatus.inProgress">In Bearbeitung</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="w-4 h-4">
+                                            <div>
+                                                <div class="font-medium">API Dokumentation überprüfen</div>
+                                                <div class="text-sm text-gray-600">Mobile App • Michael Schmidt</div>
+                                            </div>
+                                        </div>
+                                        <span class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded" data-i18n-key="taskflow.taskStatus.review">Überprüfung</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="w-4 h-4" checked>
+                                            <div class="line-through text-gray-500">
+                                                <div class="font-medium">Social Media Grafiken finalisieren</div>
+                                                <div class="text-sm text-gray-600">Marketing-Kampagne • Lisa Müller</div>
+                                            </div>
+                                        </div>
+                                        <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded" data-i18n-key="taskflow.taskStatus.done">Fertig</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sidebar -->
+                        <div class="lg:col-span-1">
+                            <div class="space-y-6">
+                                <!-- Team Activity -->
+                                <div class="business-card">
+                                    <h3 class="text-lg font-semibold mb-4" data-i18n-key="taskflow.recentActivity">Letzte Aktivitäten</h3>
+                                    <div class="space-y-3">
+                                        <div class="flex items-start gap-3">
+                                            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs">SW</div>
+                                            <div class="flex-1">
+                                                <div class="text-sm font-medium">Sarah Weber</div>
+                                                <div class="text-xs text-gray-600">Mockup hochgeladen • vor 2 Std.</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-xs">MS</div>
+                                            <div class="flex-1">
+                                                <div class="text-sm font-medium">Michael Schmidt</div>
+                                                <div class="text-xs text-gray-600">Aufgabe abgeschlossen • vor 4 Std.</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-xs">LM</div>
+                                            <div class="flex-1">
+                                                <div class="text-sm font-medium">Lisa Müller</div>
+                                                <div class="text-xs text-gray-600">Kommentar hinzugefügt • vor 6 Std.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Upcoming Deadlines -->
+                                <div class="business-card">
+                                    <h3 class="text-lg font-semibold mb-4">Anstehende Fristen</h3>
+                                    <div class="space-y-3">
+                                        <div class="p-3 bg-red-50 border-l-4 border-red-400">
+                                            <div class="font-medium text-red-800">Marketing Grafiken</div>
+                                            <div class="text-sm text-red-600">Heute fällig</div>
+                                        </div>
+                                        <div class="p-3 bg-yellow-50 border-l-4 border-yellow-400">
+                                            <div class="font-medium text-yellow-800">API Tests</div>
+                                            <div class="text-sm text-yellow-600">Morgen fällig</div>
+                                        </div>
+                                        <div class="p-3 bg-blue-50 border-l-4 border-blue-400">
+                                            <div class="font-medium text-blue-800">Design Review</div>
+                                            <div class="text-sm text-blue-600">3 Tage</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        
+        <!-- TechDaily News Page -->
