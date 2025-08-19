@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- VIOLATION 2.4.2: Generic, non-descriptive page title -->
     <title>Seite</title>
     <meta name="description" content="Interactive educational platform for learning WCAG compliance through real business website examples with intentional violations for educational purposes">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
         /* ===============================================
@@ -597,17 +598,14 @@
     </style>
 </head>
 <body>
-    <!-- Skip to content link -->
     <a href="#main" class="skip-to-content">Skip to main content</a>
     
-    <!-- Navigation -->
     <nav class="nav" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a class="nav-brand" onclick="navigateTo('home')" data-i18n-key="brand">
                 WCAG Testing Platform
             </a>
             
-            <!-- Desktop Menu -->
             <ul class="nav-menu">
                 <li class="nav-item">
                     <a class="nav-link" onclick="navigateTo('home')" data-page="home">
@@ -646,7 +644,6 @@
                 </li>
             </ul>
             
-            <!-- Language Switcher -->
             <div class="language-switcher">
                 <label for="language-select-header" class="text-sm text-gray-600" data-i18n-key="footer.language">
                     Language:
@@ -657,7 +654,6 @@
                 </select>
             </div>
             
-            <!-- Mobile Menu Toggle -->
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Open mobile menu">
                 <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -666,11 +662,8 @@
         </div>
     </nav>
     
-    <!-- Main Content Container -->
     <main id="main">
-        <!-- Homepage -->
         <div id="home" class="page active">
-            <!-- Hero Section -->
             <section class="hero">
                 <div class="container">
                     <div class="hero-content">
@@ -682,7 +675,6 @@
                 </div>
             </section>
             
-            <!-- Purpose Section -->
             <section class="py-12 bg-gray-50">
                 <div class="container">
                     <div class="max-w-4xl mx-auto">
@@ -692,14 +684,12 @@
                 </div>
             </section>
             
-            <!-- Business Examples -->
             <section id="businesses" class="py-12">
                 <div class="container">
                     <h2 class="text-3xl font-bold text-center mb-4" data-i18n-key="home.businessExamples.title">Business Examples for Analysis</h2>
                     <p class="text-center text-gray-600 mb-8" data-i18n-key="home.businessExamples.subtitle">Choose a website to test</p>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- CreativeFlow -->
                         <div class="business-card">
                             <h3 class="text-xl font-semibold mb-2" data-i18n-key="businesses.creativeflow.title">CreativeFlow Marketing</h3>
                             <p class="text-gray-600 mb-4" data-i18n-key="businesses.creativeflow.description">Digital marketing agency - Portfolio and services</p>
@@ -707,7 +697,6 @@
                             <a class="btn btn-primary" onclick="navigateTo('creativeflow')" data-i18n-key="home.businessExamples.visitSite">Visit Site →</a>
                         </div>
                         
-                        <!-- TaskFlow -->
                         <div class="business-card">
                             <h3 class="text-xl font-semibold mb-2" data-i18n-key="businesses.taskflow.title">TaskFlow Pro</h3>
                             <p class="text-gray-600 mb-4" data-i18n-key="businesses.taskflow.description">SaaS project management tool - Dashboard demo</p>
@@ -715,7 +704,6 @@
                             <a class="btn btn-primary" onclick="navigateTo('taskflow')" data-i18n-key="home.businessExamples.visitSite">Visit Site →</a>
                         </div>
                         
-                        <!-- TechDaily -->
                         <div class="business-card">
                             <h3 class="text-xl font-semibold mb-2" data-i18n-key="businesses.techdaily.title">TechDaily News</h3>
                             <p class="text-gray-600 mb-4" data-i18n-key="businesses.techdaily.description">Technology news portal with articles and blog</p>
@@ -723,7 +711,6 @@
                             <a class="btn btn-primary" onclick="navigateTo('techdaily')" data-i18n-key="home.businessExamples.visitSite">Visit Site →</a>
                         </div>
                         
-                        <!-- ElectroShop -->
                         <div class="business-card">
                             <h3 class="text-xl font-semibold mb-2" data-i18n-key="businesses.electroshop.title">ElectroShop</h3>
                             <p class="text-gray-600 mb-4" data-i18n-key="businesses.electroshop.description">Online electronics store - Product catalog and shop</p>
@@ -731,7 +718,6 @@
                             <a class="btn btn-primary" onclick="navigateTo('electroshop')" data-i18n-key="home.businessExamples.visitSite">Visit Site →</a>
                         </div>
                         
-                        <!-- SecureBank -->
                         <div class="business-card">
                             <h3 class="text-xl font-semibold mb-2" data-i18n-key="businesses.securebank.title">SecureBank</h3>
                             <p class="text-gray-600 mb-4" data-i18n-key="businesses.securebank.description">Online banking portal - Account management and transactions</p>
@@ -739,7 +725,6 @@
                             <a class="btn btn-primary" onclick="navigateTo('securebank')" data-i18n-key="home.businessExamples.visitSite">Visit Site →</a>
                         </div>
                         
-                        <!-- InnovateCorp -->
                         <div class="business-card">
                             <h3 class="text-xl font-semibold mb-2" data-i18n-key="businesses.innovatecorp.title">Innovate Corp</h3>
                             <p class="text-gray-600 mb-4" data-i18n-key="businesses.innovatecorp.description">Corporate website - About us and services</p>
@@ -750,7 +735,6 @@
                 </div>
             </section>
             
-<!-- Resources Section -->
             <section class="py-12">
                 <div class="container">
                     <div class="max-w-4xl mx-auto text-center">
@@ -774,10 +758,8 @@
             </section>
         </div>
         
-        <!-- CreativeFlow Marketing Page -->
         <div id="creativeflow" class="page">
             <div class="min-h-screen bg-gray-900 text-white">
-                <!-- Header -->
                 <header class="py-12">
                     <div class="container">
                         <div class="flex justify-between items-center mb-8">
@@ -804,7 +786,6 @@
                             </nav>
                         </div>
                         
-                        <!-- CTA Section -->
                         <div class="mt-12 text-center">
                             <h2 class="text-2xl mb-6">Bereit, Ihre Marke zu verbessern?</h2>
                             <button class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold mr-4" style="border: 1px solid #4A5568;">
@@ -817,13 +798,11 @@
                     </div>
                 </header>
                 
-                <!-- Services Section -->
                 <section class="py-16 bg-gray-800">
                     <div class="container">
                         <h2 class="text-3xl font-bold text-center mb-12">Unsere Leistungen</h2>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                            <!-- Service 1 -->
                             <div class="text-center">
                                 <div class="w-16 h-16 bg-blue-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
                                     <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTMuMDkgOC4yNkwyMCA5TDEzLjA5IDE1Ljc0TDEyIDIyTDEwLjkxIDE1Ljc0TDQgOUwxMC45MSA4LjI2TDEyIDJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" class="w-8 h-8" alt="Brand Strategy icon" />
@@ -832,7 +811,6 @@
                                 <p style="color: #999999;">Umfassende Markenpositionierung und Nachrichtenentwicklung</p>
                             </div>
                             
-                            <!-- Service 2 -->
                             <div class="text-center">
                                 <div class="w-16 h-16 bg-green-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
                                     <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMNS41IDlINS41VjIwSDEwVjE0SDE0VjIwSDE4LjVWOUwxMiAyWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+" class="w-8 h-8" alt="Digital Marketing icon"/>
@@ -841,7 +819,6 @@
                                 <p class="text-gray-300">Multikanal-Kampagnen für Engagement und Konversionen</p>
                             </div>
                             
-                            <!-- Service 3 -->
                             <div class="text-center">
                                 <div class="w-16 h-16 bg-purple-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
                                     <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcgN0gxN1YxN0g3VjdaTTkgOVYxNUgxNVY5SDlaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" class="w-8 h-8" alt="Web Design icon"/>
@@ -850,7 +827,6 @@
                                 <p class="text-gray-300">Responsive Websites, die Besucher zu Kunden machen</p>
                             </div>
                             
-                            <!-- Service 4 -->
                             <div class="text-center">
                                 <div class="w-16 h-16 bg-red-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
                                     <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTUuMDkgOC4yNkwyMiA5TDE3IDEzTDE4LjE4IDIxTDEyIDE3TDUuODIgMjFMNyAxM0wyIDlMOC45MSA4LjI2TDEyIDJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" class="w-8 h-8" alt="Content Creation icon"/>
@@ -862,7 +838,6 @@
                     </div>
                 </section>
                 
-                <!-- Portfolio Section -->
                 <section class="py-16 bg-gray-700">
                     <div class="container">
                         <h2 class="text-3xl font-bold mb-8">Unser Portfolio</h2>
@@ -871,7 +846,6 @@
                         </p>
                         
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                            <!-- Project 1 -->
                             <div class="bg-gray-800 rounded-lg overflow-hidden p-6">
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="w-3 h-3 rounded-full bg-green-500"></div>
@@ -901,7 +875,6 @@
                                 </div>
                             </div>
                             
-                            <!-- Project 2 -->
                             <div class="bg-gray-800 rounded-lg overflow-hidden p-6">
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
@@ -926,7 +899,6 @@
                                 </div>
                             </div>
                             
-                            <!-- Project 3 -->
                             <div class="bg-gray-800 rounded-lg overflow-hidden p-6">
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="w-3 h-3 rounded-full bg-blue-500"></div>
@@ -952,7 +924,6 @@
                             </div>
                         </div>
                         
-                        <!-- Portfolio Statistics -->
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                             <div>
                                 <div class="text-3xl font-bold text-blue-400 mb-2">150+</div>
@@ -974,7 +945,6 @@
                     </div>
                 </section>
                 
-                <!-- Contact Form Section -->
                 <section class="py-16 bg-gray-800">
                     <div class="container">
                         <div class="max-w-2xl mx-auto">
@@ -1048,21 +1018,17 @@
             </div>
         </div>
         
-        <!-- TaskFlow Pro Page -->
         <div id="taskflow" class="page">
             <div class="min-h-screen bg-gray-50 orientation-restricted">
-                <!-- Landscape orientation warning -->
                 <div class="landscape-warning">
                     <h2 class="text-2xl font-bold mb-4">Bitte drehen Sie Ihr Gerät</h2>
                     <p>Diese Anwendung funktioniert am besten im Hochformat.</p>
                 </div>
                 
-                <!-- Header with meaningful sequence issue -->
                 <header class="bg-white border-b border-gray-200">
                     <div class="container py-6">
                         <div class="flex justify-between items-center reorder-visual">
                             <h1 class="text-3xl font-bold text-gray-900" data-i18n-key="taskflow.title">TaskFlow Pro</h1>
-                            <!-- VIOLATION 1.3.2: Visual order doesn't match DOM order -->
                             <div class="flex items-center gap-4">
                                 <span class="text-sm text-gray-600" data-i18n-key="taskflow.welcome">Willkommen, Sarah</span>
                                 <button class="btn btn-primary visual-first" data-i18n-key="taskflow.newTask" onclick="createNewTask()">Neue Aufgabe</button>
@@ -1071,9 +1037,7 @@
                     </div>
                 </header>
                 
-                <!-- Dashboard -->
                 <main class="container py-8">
-                    <!-- Quick Stats Row -->
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
                         <div class="business-card text-center">
                             <div class="text-3xl font-bold text-blue-600 mb-2">12</div>
@@ -1094,16 +1058,13 @@
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-                        <!-- Project Overview -->
                         <div class="lg:col-span-3">
                             <h2 class="text-2xl font-bold mb-6" data-i18n-key="taskflow.projectProgress">Projektfortschritt</h2>
                             
-                            <!-- Project Cards -->
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                                 <div class="business-card">
                                     <h3 class="font-semibold mb-2" data-i18n-key="taskflow.projects.websiteRedesign">Website-Redesign</h3>
                                     <p class="text-sm text-gray-600 mb-4">18/24 Aufgaben erledigt</p>
-                                    <!-- WCAG VIOLATION: Missing label for progress bar -->
                                     <div class="w-full bg-gray-200 rounded-full h-2">
                                         <div class="bg-blue-600 h-2 rounded-full" style="width: 75%"></div>
                                     </div>
@@ -1138,14 +1099,11 @@
                                 </div>
                             </div>
                             
-                            <!-- Task List with 1.3.1 and 1.3.3 violations -->
                             <div class="business-card">
                                 <h3 class="text-xl font-semibold mb-4">Aktuelle Aufgaben</h3>
-                                <!-- VIOLATION 1.3.3: Instructions rely on sensory characteristics -->
                                 <p class="text-sm text-gray-600 mb-3">Klicken Sie auf das runde Symbol links, um Aufgaben abzuhaken. Die grünen Kästchen zeigen erledigte Aufgaben.</p>
                                 <div class="space-y-3">
                                     <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
-                                        <!-- VIOLATION 1.3.1: Missing form labels -->
                                         <div class="flex items-center gap-3">
                                             <input type="checkbox" class="w-4 h-4 rounded" onclick="toggleTask(this)">
                                             <div>
@@ -1179,13 +1137,10 @@
                             </div>
                         </div>
                         
-                        <!-- Sidebar -->
                         <div class="lg:col-span-1">
                             <div class="space-y-6">
-                                <!-- User Profile Form with 1.3.5 violations -->
                                 <div class="business-card">
                                     <h3 class="text-lg font-semibold mb-4">Profil Aktualisieren</h3>
-                                    <!-- VIOLATION 1.3.5: Missing autocomplete attributes for input purpose -->
                                     <form class="space-y-3">
                                         <input type="text" placeholder="Vollständiger Name" class="w-full px-3 py-2 border border-gray-300 rounded">
                                         <input type="email" placeholder="E-Mail Adresse" class="w-full px-3 py-2 border border-gray-300 rounded">
@@ -1195,10 +1150,8 @@
                                     </form>
                                 </div>
                                 
-                                <!-- Team Activity with table lacking proper structure -->
                                 <div class="business-card">
                                     <h3 class="text-lg font-semibold mb-4" data-i18n-key="taskflow.recentActivity">Team Statistiken</h3>
-                                    <!-- VIOLATION 1.3.1: Table without proper header associations -->
                                     <table class="w-full text-sm">
                                         <tr class="border-b">
                                             <td class="py-2 font-semibold">Mitglied</td>
@@ -1219,7 +1172,6 @@
                                     </table>
                                 </div>
                                 
-                                <!-- Original Team Activity moved down -->
                                 <div class="business-card">
                                     <h3 class="text-lg font-semibold mb-4" data-i18n-key="taskflow.recentActivity">Letzte Aktivitäten</h3>
                                     <div class="space-y-3">
@@ -1247,12 +1199,9 @@
                                     </div>
                                 </div>
                                 
-                                <!-- Upcoming Deadlines with 1.3.2 sequence issue -->
                                 <div class="business-card">
                                     <h3 class="text-lg font-semibold mb-4">Anstehende Fristen</h3>
-                                    <!-- VIOLATION 1.3.3: More sensory characteristic instructions -->
                                     <p class="text-sm text-gray-600 mb-3">Die roten Einträge unten sind dringend. Wählen Sie den blauen Bereich für Details.</p>
-                                    <!-- VIOLATION 1.3.2: Visual order changed with CSS but DOM order remains -->
                                     <div class="space-y-3" style="display: flex; flex-direction: column-reverse;">
                                         <div class="p-3 bg-red-50 border-l-4 border-red-400">
                                             <div class="font-medium text-red-800">Marketing Grafiken</div>
@@ -1271,21 +1220,58 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="mt-12">
+                        <h2 class="text-2xl font-bold mb-6">Nachhaltigkeits-Audit Dashboard</h2>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div class="business-card">
+                                <h3 class="text-xl font-semibold mb-4">CO₂-Fußabdruck (Monatlich)</h3>
+                                <div class="h-64">
+                                    <canvas id="carbonFootprintChart" aria-label="CO2-Fußabdruck Diagramm zeigt monatliche Emissionen in Tonnen"></canvas>
+                                </div>
+                            </div>
+                            
+                            <div class="business-card">
+                                <h3 class="text-xl font-semibold mb-4">Energieverbrauch nach Quelle</h3>
+                                <div class="h-64">
+                                    <canvas id="energyChart" aria-label="Energieverbrauch Kreisdiagramm zeigt Verteilung nach erneuerbaren und nicht-erneuerbaren Quellen"></canvas>
+                                </div>
+                            </div>
+                            
+                            <div class="business-card lg:col-span-2">
+                                <h3 class="text-xl font-semibold mb-4">Nachhaltigkeits-KPIs</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                    <div class="text-center p-4 bg-green-50 rounded-lg">
+                                        <div class="text-2xl font-bold text-green-600 mb-1">-15%</div>
+                                        <div class="text-sm text-gray-600">CO₂-Reduktion</div>
+                                    </div>
+                                    <div class="text-center p-4 bg-blue-50 rounded-lg">
+                                        <div class="text-2xl font-bold text-blue-600 mb-1">78%</div>
+                                        <div class="text-sm text-gray-600">Erneuerbare Energie</div>
+                                    </div>
+                                    <div class="text-center p-4 bg-purple-50 rounded-lg">
+                                        <div class="text-2xl font-bold text-purple-600 mb-1">92%</div>
+                                        <div class="text-sm text-gray-600">Recycling-Rate</div>
+                                    </div>
+                                    <div class="text-center p-4 bg-orange-50 rounded-lg">
+                                        <div class="text-2xl font-bold text-orange-600 mb-1">A+</div>
+                                        <div class="text-sm text-gray-600">Nachhaltigkeits-Score</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </main>
             </div>
         </div>
         
-        <!-- TechDaily News Page -->
         <div id="techdaily" class="page">
             <div class="min-h-screen bg-white">
-                <!-- Header -->
                 <header class="bg-gray-900 text-white">
                     <div class="container py-6">
                         <div class="flex items-center justify-between">
-                            <!-- VIOLATION 2.4.6: Non-descriptive heading -->
                             <h1 class="text-3xl font-bold" data-i18n-key="techdaily.title">Hier</h1>
                             <nav>
-                                <!-- Fixed navigation with proper focus -->
                                 <div class="flex space-x-6">
                                     <a href="#" class="hover:text-blue-400 focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400" data-i18n-key="techdaily.nav.home" onclick="navigateToSection('Startseite'); return false;">Startseite</a>
                                     <a href="#" class="hover:text-blue-400 focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400" data-i18n-key="techdaily.nav.technology" onclick="navigateToSection('Technologie'); return false;">Technologie</a>
@@ -1301,16 +1287,12 @@
                 
                 <div class="container py-8">
                     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-                        <!-- Main Content -->
                         <main class="lg:col-span-3">
-                            <!-- VIOLATION 2.4.6: Non-descriptive heading -->
                             <h2 class="text-2xl font-bold mb-6" data-i18n-key="techdaily.latest">Mehr</h2>
                             
-                            <!-- Featured Article -->
                             <article class="mb-12">
                                 <div class="relative">
                                     <div class="h-64 rounded-lg mb-4 overflow-hidden">
-                                        <!-- VIOLATION 1.1.1: Image without alt text -->
                                         <img 
                                             src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzM0ZDM5OSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LSSBpbSBHZXN1bmRoZWl0c3dlc2VuPC90ZXh0Pgo8L3N2Zz4="
                                             class="w-full h-full object-cover"
@@ -1322,7 +1304,6 @@
                                     </div>
                                 </div>
                                 
-                                <!-- VIOLATION 2.4.6: Non-descriptive heading -->
                                 <h2 class="text-3xl font-bold text-gray-900 mb-4">
                                     Information
                                 </h2>
@@ -1338,20 +1319,16 @@
                                 </div>
                                 
                                 <div class="flex gap-4">
-                                    <!-- VIOLATION 2.5.3: Button visible text differs from accessible name -->
                                     <button class="btn btn-primary" aria-label="Artikel öffnen" data-i18n-key="techdaily.readMore" onclick="readArticle('KI im Gesundheitswesen')">Weiterlesen</button>
-                                    <!-- VIOLATION 2.5.3: Button visible text differs from accessible name -->
                                     <button class="btn btn-secondary" aria-label="Auf Social Media teilen" onclick="shareArticle('KI im Gesundheitswesen')">Teilen</button>
                                 </div>
                             </article>
                             
-                            <!-- VIOLATION 2.4.6: Non-descriptive heading -->
                             <h3 class="text-xl font-semibold mb-6">Weitere</h3>
                             
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <article class="business-card">
                                     <div class="h-48 rounded-lg mb-4 overflow-hidden">
-                                        <!-- VIOLATION 1.1.1: Image with inappropriate alt text -->
                                         <img 
                                             src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI2VmNDQ0NCIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTI1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DeWJlcnNpY2hlcmhlaXQ8L3RleHQ+Cjwvc3ZnPg=="
                                             alt="Bild"
@@ -1359,13 +1336,11 @@
                                         />
                                     </div>
                                     
-                                    <!-- VIOLATION 2.4.6: Non-descriptive heading -->
                                     <h3 class="text-xl font-semibold mb-3">Weitere Information</h3>
                                     <p class="text-gray-600 mb-4">Sicherheitsexperten warnen vor raffinierten Angriffen, die darauf abzielen, Schwachstellen im Homeoffice auszunutzen.</p>
                                     
                                     <div class="text-sm text-gray-500">
                                         <span>Mike Rodriguez</span> · <span>16. August 2024</span>
-                                        <!-- VIOLATION: Missing comments count label -->
                                         <span> · 47</span>
                                     </div>
                                 </article>
@@ -1379,7 +1354,6 @@
                                         />
                                     </div>
                                     
-                                    <!-- VIOLATION 2.4.6: Non-descriptive heading -->
                                     <h3 class="text-xl font-semibold mb-3">Artikel</h3>
                                     <p class="text-gray-600 mb-4">Große Tech-Unternehmen investieren Milliarden in erneuerbare Energien für umweltfreundliches Computing.</p>
                                     
@@ -1391,14 +1365,12 @@
                                 
                                 <article class="business-card">
                                     <div class="h-48 rounded-lg mb-4 overflow-hidden">
-                                        <!-- VIOLATION 1.1.1: Image without alt text -->
                                         <img 
                                             src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iIzM5OGNmNCIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTI1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5CbG9ja2NoYWluPC90ZXh0Pgo8L3N2Zz4="
                                             class="w-full h-full object-cover"
                                         />
                                     </div>
                                     
-                                    <!-- VIOLATION 2.4.6: Non-descriptive heading -->
                                     <h3 class="text-xl font-semibold mb-3">Details</h3>
                                     <p class="text-gray-600 mb-4">Neue Blockchain-Anwendungen revolutionieren das Lieferkettenmanagement und die Produktverfolgung.</p>
                                     
@@ -1410,7 +1382,6 @@
                                 
                                 <article class="business-card">
                                     <div class="h-48 rounded-lg mb-4 overflow-hidden">
-                                        <!-- VIOLATION 1.1.1: Image with vague alt text -->
                                         <img 
                                             src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iIzhmNGM2MSIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTI1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5RdWFudGVuY29tcHV0ZXI8L3RleHQ+Cjwvc3ZnPg=="
                                             alt="Grafik"
@@ -1418,7 +1389,6 @@
                                         />
                                     </div>
                                     
-                                    <!-- VIOLATION 2.4.6: Non-descriptive heading -->
                                     <h3 class="text-xl font-semibold mb-3">Neues</h3>
                                     <p class="text-gray-600 mb-4">Wissenschaftler erreichen neuen Meilenstein in der Quantencomputerforschung mit 1000-Qubit-System.</p>
                                     
@@ -1430,16 +1400,12 @@
                             </div>
                         </main>
                         
-                        <!-- Sidebar -->
                         <aside class="lg:col-span-1">
                             <div class="business-card mb-8">
-                                <!-- VIOLATION 2.4.6: Non-descriptive heading -->
                                 <h3 class="text-lg font-semibold mb-4" data-i18n-key="techdaily.newsletter.title">Hier</h3>
                                 <p class="text-gray-600 mb-4" data-i18n-key="techdaily.newsletter.subtitle">Bleiben Sie auf dem Laufenden mit den neuesten Tech-News.</p>
                                 
-                                <!-- Fixed form with proper labels -->
                                 <form class="space-y-4" onsubmit="return subscribeNewsletter();">
-                                    <!-- VIOLATION 2.4.6: Non-descriptive label -->
                                     <label for="newsletter-email" class="block text-sm font-medium text-gray-700 mb-1">Input</label>
                                     <input 
                                         type="email" 
@@ -1449,13 +1415,11 @@
                                         class="w-full px-4 py-2 border border-gray-300 rounded-lg"
                                         required
                                     />
-                                    <!-- VIOLATION 2.5.3: Button text differs from accessible name -->
                                     <button type="submit" class="btn btn-primary w-full" aria-label="Newsletter-Anmeldung bestätigen" data-i18n-key="techdaily.newsletter.subscribe">Abonnieren</button>
                                 </form>
                             </div>
                             
                             <div class="business-card mb-8">
-                                <!-- VIOLATION 2.4.6: Non-descriptive heading -->
                                 <h3 class="text-lg font-semibold mb-4" data-i18n-key="techdaily.categories">Liste</h3>
                                 
                                 <div class="space-y-3">
@@ -1479,13 +1443,11 @@
                             </div>
                             
                             <div class="business-card">
-                                <!-- VIOLATION 2.4.6: Non-descriptive heading -->
                                 <h3 class="text-lg font-semibold mb-4" data-i18n-key="techdaily.featured">Bereich</h3>
                                 
                                 <div class="space-y-4">
                                     <div class="flex space-x-3">
                                         <div class="w-16 h-16 rounded flex-shrink-0 overflow-hidden">
-                                            <!-- VIOLATION 1.1.1: Image without alt text -->
                                             <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjM2I4MmY2Ii8+CjxjaXJjbGUgY3g9IjMyIiBjeT0iMzIiIHI9IjEyIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" class="w-full h-full object-cover" />
                                         </div>
                                         <div>
@@ -1496,7 +1458,6 @@
                                     
                                     <div class="flex space-x-3">
                                         <div class="w-16 h-16 rounded flex-shrink-0 overflow-hidden">
-                                            <!-- VIOLATION 1.1.1: Image with inappropriate alt text -->
                                             <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMTBiOTgxIi8+CjxyZWN0IHg9IjE2IiB5PSIyNCIgd2lkdGg9IjMyIiBoZWlnaHQ9IjE2IiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="Icon" class="w-full h-full object-cover" />
                                         </div>
                                         <div>
@@ -1522,10 +1483,8 @@
             </div>
         </div>
         
-        <!-- ElectroShop Page -->
         <div id="electroshop" class="page">
             <div class="min-h-screen bg-gray-50">
-                <!-- WCAG VIOLATION 2.4.11: Newsletter popup that can obscure focused content -->
                 <div id="newsletter-popup" class="fixed top-1/3 right-4 bg-white rounded-lg shadow-2xl p-6 z-50" style="display: none; width: 280px;">
                     <h3 class="text-lg font-bold mb-3">Newsletter Anmeldung</h3>
                     <p class="text-sm mb-3">Erhalten Sie 10% Rabatt auf Ihre erste Bestellung!</p>
@@ -1537,7 +1496,6 @@
                     </form>
                 </div>
 
-                <!-- WCAG VIOLATION 2.4.11: Cookie banner that obscures footer content when focused -->
                 <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 z-40" style="display: block;">
                     <div class="container mx-auto flex items-center justify-between">
                         <p class="text-sm">Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Mit der Nutzung unserer Website stimmen Sie unserer Cookie-Richtlinie zu.</p>
@@ -1548,17 +1506,14 @@
                     </div>
                 </div>
 
-                <!-- Header -->
                 <header class="bg-white border-b border-gray-200">
                     <div class="container py-4">
-                        <!-- Proper page title -->
                         <script>document.title = 'ElectroShop - Ihr Online-Shop für Elektronik';</script>
                         
                         <div class="flex items-center justify-between">
                             <h1 class="text-3xl font-bold text-blue-600">ElectroShop</h1>
                             
                             <div class="flex items-center space-x-4">
-                                <!-- WCAG VIOLATION 2.4.3: Search button has tabindex before search input -->
                                 <div class="flex items-center gap-2">
                                     <label for="search-input" class="sr-only">Produktsuche</label>
                                     <input 
@@ -1575,7 +1530,6 @@
                                     </button>
                                 </div>
                                 
-                                <!-- WCAG VIOLATION 2.4.7: Focus indicators removed with CSS -->
                                 <style>
                                     /* VIOLATION 2.4.7: Removing focus indicators */
                                     input:focus, select:focus, textarea:focus, button:focus, a:focus {
@@ -1599,7 +1553,6 @@
                             </div>
                         </div>
                         
-                        <!-- Proper navigation without visual reordering -->
                         <nav class="border-t border-gray-200 pt-4" aria-label="Hauptnavigation">
                             <ul class="flex space-x-8">
                                 <li><button class="text-gray-600 hover:text-blue-600 underline" onclick="scrollToProducts()">Smartphones</button></li>
@@ -1612,20 +1565,16 @@
                     </div>
                 </header>
                 
-                <!-- Main Content -->
                 <main class="container py-8">
-                    <!-- Hero Banner -->
                     <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-8 mb-8" style="background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);">
                         <h2 class="text-3xl font-bold mb-2" style="color: #ffffff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Willkommen bei ElectroShop</h2>
                         <p class="text-xl mb-4" style="color: #f8fafc; text-shadow: 0 1px 3px rgba(0,0,0,0.4);">Entdecken Sie unsere aktuellen Angebote - bis zu 50% Rabatt auf ausgewählte Artikel!</p>
                         <button class="bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100" onclick="scrollToProducts()">Angebote ansehen</button>
                     </div>
                     
-                    <!-- Product Filter Section with WCAG VIOLATION 2.4.3: Apply button before filter options -->
                     <div class="bg-white p-6 rounded-lg shadow mb-8">
                         <h2 class="text-xl font-bold mb-4">Produktfilter</h2>
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                            <!-- VIOLATION 2.4.3: Apply button comes first in tab order -->
                             <button class="bg-blue-600 text-white px-6 py-2 rounded" onclick="applyFilters()" tabindex="10">
                                 Filter anwenden
                             </button>
@@ -1660,11 +1609,9 @@
                         </div>
                     </div>
 
-                    <!-- Featured Products -->
                     <h2 id="bestseller" class="text-2xl font-bold mb-6">Unsere Bestseller</h2>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 product-grid">
-                        <!-- Product 1 - Smartphone -->
                         <article class="business-card">
                             <div class="h-48 flex items-center justify-center overflow-hidden mb-4 bg-gray-50 rounded">
                                 <img 
@@ -1713,7 +1660,6 @@
                             </button>
                         </article>
                         
-                        <!-- Product 2 - Laptop -->
                         <article class="business-card">
                             <div class="h-48 flex items-center justify-center overflow-hidden mb-4 bg-gray-50 rounded">
                                 <img 
@@ -1738,9 +1684,7 @@
                                 <span class="text-sm text-gray-600 ml-2">(892)</span>
                             </div>
                             
-                            <!-- Delivery options form -->
                             <div class="mb-3">
-                                <!-- VIOLATION 1.3.1: Radio buttons without proper grouping -->
                                 <div class="text-xs">
                                     <input type="radio" name="delivery" value="standard" checked> Standard (2-3 Tage)
                                     <input type="radio" name="delivery" value="express" class="ml-2"> Express (+9,99€)
@@ -1752,10 +1696,8 @@
                             <button class="btn btn-outline w-full text-sm" onclick="compareProduct(2)">Vergleichen</button>
                         </div>
                         
-                        <!-- Product 3 - Headphones -->
                         <div class="business-card">
                             <div class="h-48 flex items-center justify-center overflow-hidden mb-4">
-                                <!-- VIOLATION 1.1.1: Image with inappropriate alt text -->
                                 <img 
                                     src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSI0NSIgY3k9IjkwIiByPSI0MCIgZmlsbD0iIzM3NDE1MSIvPgogIDxjaXJjbGUgY3g9IjEzNSIgY3k9IjkwIiByPSI0MCIgZmlsbD0iIzM3NDE1MSIvPgogIDxwYXRoIGQ9Ik00NSA1MEM0NSA0NCA3NCA0MCA5MCA0MFMxMzUgNDQgMTM1IDUwIiBzdHJva2U9IiMzNzQxNTEiIHN0cm9rZS13aWR0aD0iOCIgZmlsbD0ibm9uZSIvPgogIDx0ZXh0IHg9IjkwIiB5PSIyMDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+S29wZmjDtnJlcjwvdGV4dD4KPC9zdmc+"
                                     alt="Icon"
@@ -1768,7 +1710,6 @@
                             <p class="text-sm text-gray-600 mb-3">Noise-Cancelling, 30h Akku, Bluetooth 5.3</p>
                             
                             <div class="flex items-center mb-2">
-                                <!-- VIOLATION 1.3.3: Relies on color to convey discount information -->
                                 <span class="text-2xl font-bold" style="color: #7c3aed;">199,99€</span>
                                 <span class="text-sm text-gray-500 line-through ml-2">249,99€</span>
                                 <span class="text-xs px-2 py-1 rounded ml-2" style="background-color: #f59e0b; color: white;">-20%</span>
@@ -1779,9 +1720,7 @@
                                 <span class="text-sm text-gray-600 ml-2">(2.156)</span>
                             </div>
                             
-                            <!-- Extended warranty options -->
                             <div class="mb-3">
-                                <!-- VIOLATION 1.3.1: Checkboxes without proper labels -->
                                 <div class="text-xs space-y-1">
                                     <div><input type="checkbox"> Garantieverlängerung (+29€)</div>
                                     <div><input type="checkbox"> Express-Lieferung (+9€)</div>
@@ -1793,10 +1732,8 @@
                             <button class="btn btn-outline w-full text-sm" onclick="showReviews(3)">Bewertungen lesen</button>
                         </div>
                         
-                        <!-- Product 4 - Tablet -->
                         <div class="business-card">
                             <div class="h-48 flex items-center justify-center overflow-hidden mb-4">
-                                <!-- VIOLATION 1.1.1: Image with vague alt text -->
                                 <img 
                                     src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE4MCIgZmlsbD0iIzM3NDE1MSIgcng9IjEwIi8+CiAgPHJlY3QgeD0iMTAiIHk9IjE1IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iIzAwMDAwMCIgcng9IjUiLz4KICA8cmVjdCB4PSIyMCIgeT0iMjUiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTUiIGZpbGw9IiMzYjgyZjYiIHJ4PSIzIi8+CiAgPHJlY3QgeD0iMjAiIHk9IjUwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgiIGZpbGw9IiNlNWU3ZWIiIHJ4PSIyIi8+CiAgPHJlY3QgeD0iMjAiIHk9IjY1IiB3aWR0aD0iODAiIGhlaWdodD0iOCIgZmlsbD0iI2U1ZTdlYiIgcng9IjIiLz4KICA8cmVjdCB4PSIyMCIgeT0iODAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI4IiBmaWxsPSIjZTVlN2ViIiByeD0iMiIvPgogIDx0ZXh0IHg9IjcwIiB5PSIyMDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VGFibGV0PC90ZXh0Pgo8L3N2Zz4K"
                                     alt="Grafik"
@@ -1819,9 +1756,7 @@
                                 <span class="text-sm text-gray-600 ml-2">(634)</span>
                             </div>
                             
-                            <!-- Storage selection without proper form -->
                             <div class="mb-3">
-                                <!-- VIOLATION 1.3.1: Radio buttons without fieldset/legend -->
                                 <div class="text-xs space-y-1">
                                     <div><input type="radio" name="storage4" checked> 128GB</div>
                                     <div><input type="radio" name="storage4"> 256GB (+100€)</div>
@@ -1829,16 +1764,13 @@
                                 </div>
                             </div>
                             
-                            <!-- VIOLATION 1.3.3: Warning relies on color and icon only -->
                             <div class="text-sm mb-3" style="color: #ea580c;">⚠ Nur noch 3 auf Lager</div>
                             <button class="btn btn-primary w-full mb-2" onclick="addToCart(4)">In den Warenkorb</button>
                             <button class="btn btn-outline w-full text-sm" onclick="notifyAvailability(4)">Bei Verfügbarkeit benachrichtigen</button>
                         </div>
                     </div>
                     
-                    <!-- Customer Reviews Section -->
                     <div id="reviews-section" class="bg-white p-6 rounded-lg shadow mb-8" style="display: none;">
-                        <!-- VIOLATION 2.4.6: Non-descriptive heading -->
                         <h2 class="text-xl font-bold mb-4">Meinungen</h2>
                         <div class="space-y-4">
                             <div class="border-b pb-4">
@@ -1861,14 +1793,10 @@
                         <button onclick="hideReviews()" class="mt-4 text-blue-600">Schließen</button>
                     </div>
 
-                    <!-- Checkout Form Section -->
                     <div id="checkout-section" class="bg-white p-6 rounded-lg shadow mb-8" style="display: none;">
-                        <!-- VIOLATION 2.4.6: Non-descriptive heading -->
                         <h2 class="text-xl font-bold mb-4">Kasse</h2>
-                        <!-- VIOLATION 3.3.1, 3.3.3, 3.3.4: Form without proper error handling -->
                         <form onsubmit="return processCheckout()">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <!-- VIOLATION 1.3.1 & 1.3.5: Missing proper labels and autocomplete -->
                                 <div>
                                     <input type="text" placeholder="Vorname" class="w-full p-3 border rounded">
                                 </div>
@@ -1889,18 +1817,14 @@
                                 </div>
                             </div>
                             
-                            <!-- Payment Information -->
                             <div class="mt-6">
-                                <!-- VIOLATION 2.4.6: Non-descriptive heading -->
                                 <h3 class="text-lg font-semibold mb-3">Zahlung</h3>
-                                <!-- VIOLATION 1.3.1: Payment method selection without proper grouping -->
                                 <div class="space-y-2 mb-4">
                                     <div><input type="radio" name="payment" value="card" checked> Kreditkarte</div>
                                     <div><input type="radio" name="payment" value="paypal"> PayPal</div>
                                     <div><input type="radio" name="payment" value="invoice"> Rechnung</div>
                                 </div>
                                 
-                                <!-- VIOLATION 1.3.5: Credit card fields without autocomplete -->
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div class="md:col-span-2">
                                         <input type="text" placeholder="Kartennummer" class="w-full p-3 border rounded">
@@ -1914,7 +1838,6 @@
                                 </div>
                             </div>
                             
-                            <!-- VIOLATION 2.4.3: Order summary placed before required fields in DOM -->
                             <div class="mt-6 p-4 bg-gray-50 rounded" style="order: -1; display: flex; flex-direction: column;">
                                 <h3 class="font-semibold mb-2">Bestellzusammenfassung</h3>
                                 <div class="flex justify-between">
@@ -1936,16 +1859,12 @@
                     </div>
 
 
-                    <!-- Additional Product Categories -->
                     <div class="mt-12">
-                        <!-- VIOLATION 2.4.6: Non-descriptive heading -->
                         <h2 class="text-2xl font-bold mb-6">Mehr</h2>
                         
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <!-- Gaming Console -->
                             <div class="business-card">
                                 <div class="h-40 flex items-center justify-center overflow-hidden mb-4">
-                                    <!-- VIOLATION 1.1.1: Image without alt text -->
                                     <img 
                                         src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzM3NDE1MSIgcng9IjgiLz4KICA8cmVjdCB4PSIxMCIgeT0iMTAiIHdpZHRoPSIxODAiIGhlaWdodD0iODAiIGZpbGw9IiMxZjI5MzciIHJ4PSI0Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMTUiIGZpbGw9IiNlNWU3ZWIiLz4KICA8Y2lyY2xlIGN4PSIxNTAiIGN5PSI1MCIgcj0iMTUiIGZpbGw9IiNlNWU3ZWIiLz4KICA8dGV4dCB4PSIxMDAiIHk9IjEzMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5HYW1pbmcgS29uc29sZTwvdGV4dD4KPC9zdmc+"
                                         class="max-w-full max-h-full object-contain"
@@ -1958,7 +1877,6 @@
                                 <button class="btn btn-primary w-full mt-3" onclick="addToCart(5)">In den Warenkorb</button>
                             </div>
                             
-                            <!-- Smart Watch -->
                             <div class="business-card">
                                 <div class="h-40 flex items-center justify-center overflow-hidden mb-4">
                                     <img 
@@ -1974,7 +1892,6 @@
                                 <button class="btn btn-primary w-full mt-3" onclick="addToCart(6)">In den Warenkorb</button>
                             </div>
                             
-                            <!-- Bluetooth Speaker -->
                             <div class="business-card">
                                 <div class="h-40 flex items-center justify-center overflow-hidden mb-4">
                                     <img 
@@ -1993,7 +1910,6 @@
                     </div>
                 </main>
 
-                <!-- JavaScript Functions for ElectroShop -->
                 <script>
                 // ElectroShop functionality
                 let cart = [];
@@ -2146,10 +2062,8 @@
             </div>
         </div>
         
-        <!-- SecureBank Page -->
         <div id="securebank" class="page">
             <div class="min-h-screen bg-blue-900 text-white">
-                <!-- Header -->
                 <header class="py-6">
                     <div class="container">
                         <div class="flex items-center justify-between">
@@ -2160,7 +2074,6 @@
                             </div>
                         </div>
                         
-                        <!-- Navigation Menu -->
                         <nav class="mt-6">
                             <div class="flex space-x-8">
                                 <a href="#" class="text-white hover:text-blue-200 border-b-2 border-white pb-2" data-i18n-key="securebank.dashboard">Dashboard</a>
@@ -2173,11 +2086,8 @@
                     </div>
                 </header>
                 
-                <!-- Banking Dashboard -->
                 <main class="container py-8">
-                    <!-- Security Alert Banner -->
                     <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6 rounded">
-                        <!-- VIOLATION: Time-sensitive notification without proper announcement -->
                         <div class="flex">
                             <div class="ml-3">
                                 <p class="text-sm">
@@ -2190,17 +2100,14 @@
                     <h2 class="text-2xl font-bold mb-6" data-i18n-key="securebank.accountOverview">Kontoübersicht</h2>
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                        <!-- Girokonto -->
                         <div class="bg-white text-gray-900 p-6 rounded-lg">
                             <h3 class="text-lg font-semibold mb-2">Girokonto</h3>
                             <div class="text-sm text-gray-600 mb-2">DE89 3704 0044 0532 0130 00</div>
-                            <!-- VIOLATION: Balance without proper currency announcement -->
                             <p class="text-3xl font-bold text-green-600 mb-2">12.345,67€</p>
                             <p class="text-sm text-gray-600" data-i18n-key="securebank.available">Verfügbar</p>
                             <button class="mt-4 text-blue-600 text-sm hover:underline">Details anzeigen</button>
                         </div>
                         
-                        <!-- Sparbuch -->
                         <div class="bg-white text-gray-900 p-6 rounded-lg">
                             <h3 class="text-lg font-semibold mb-2">Sparbuch Plus</h3>
                             <div class="text-sm text-gray-600 mb-2">DE89 3704 0044 0532 0130 01</div>
@@ -2210,7 +2117,6 @@
                             <button class="mt-4 text-blue-600 text-sm hover:underline">Details anzeigen</button>
                         </div>
                         
-                        <!-- Kreditkarte -->
                         <div class="bg-white text-gray-900 p-6 rounded-lg">
                             <h3 class="text-lg font-semibold mb-2">Kreditkarte Visa Gold</h3>
                             <div class="text-sm text-gray-600 mb-2">**** **** **** 4567</div>
@@ -2221,11 +2127,9 @@
                         </div>
                     </div>
                     
-                    <!-- Quick Actions -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="bg-white text-gray-900 p-6 rounded-lg">
                             <h3 class="text-xl font-semibold mb-4" data-i18n-key="securebank.transfer">Überweisung</h3>
-                            <!-- VIOLATION: Form with missing labels and poor error handling -->
                             <form class="space-y-4">
                                 <div>
                                     <input 
@@ -2302,7 +2206,6 @@
                         </div>
                     </div>
                     
-                    <!-- Quick Action Buttons -->
                     <div class="mt-8">
                         <h3 class="text-xl font-semibold mb-4" data-i18n-key="securebank.quickActions">Schnellaktionen</h3>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -2328,16 +2231,13 @@
             </div>
         </div>
         
-        <!-- InnovateCorp Page -->
         <div id="innovatecorp" class="page">
             <div class="min-h-screen bg-gray-50">
-                <!-- Header -->
                 <header class="bg-white shadow-sm">
                     <div class="container py-6">
                         <div class="flex items-center justify-between">
                             <h1 class="text-3xl font-bold text-gray-900" data-i18n-key="innovatecorp.title">Innovate Corp</h1>
                             <nav>
-                                <!-- VIOLATION: Navigation without skip links -->
                                 <div class="flex space-x-6">
                                     <a href="#" class="text-gray-600 hover:text-blue-600" data-i18n-key="innovatecorp.nav.about">Über uns</a>
                                     <a href="#" class="text-gray-600 hover:text-blue-600" data-i18n-key="innovatecorp.nav.services">Dienstleistungen</a>
@@ -2350,7 +2250,6 @@
                     </div>
                 </header>
                 
-                <!-- Hero Section -->
                 <section class="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20">
                     <div class="container">
                         <div class="max-w-4xl">
@@ -2364,7 +2263,6 @@
                     </div>
                 </section>
                 
-                <!-- Services -->
                 <section class="py-16">
                     <div class="container">
                         <div class="text-center mb-12">
@@ -2408,7 +2306,6 @@
                     </div>
                 </section>
                 
-                <!-- Statistics Section -->
                 <section class="py-16 bg-white">
                     <div class="container">
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
@@ -2432,7 +2329,6 @@
                     </div>
                 </section>
                 
-                <!-- About Section -->
                 <section class="py-16 bg-gray-100">
                     <div class="container">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -2451,7 +2347,6 @@
                             
                             <div class="bg-white p-8 rounded-lg shadow-sm">
                                 <h3 class="text-xl font-semibold mb-6" data-i18n-key="innovatecorp.contact.title">Kontakt aufnehmen</h3>
-                                <!-- VIOLATION: Contact form without proper labels and validation -->
                                 <form class="space-y-4">
                                     <input 
                                         type="text" 
@@ -2497,14 +2392,12 @@
                     </div>
                 </section>
                 
-                <!-- Client Testimonials -->
                 <section class="py-16 bg-white">
                     <div class="container">
                         <h2 class="text-3xl font-bold text-center mb-12">Was unsere Kunden sagen</h2>
                         
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                             <div class="business-card">
-                                <!-- VIOLATION: Missing heading structure -->
                                 <div class="text-lg font-semibold mb-4">"Innovate Corp hat unsere digitale Transformation erfolgreich begleitet."</div>
                                 <p class="text-gray-600 mb-4">
                                     Die Zusammenarbeit war professionell und zielorientiert. 
@@ -2561,7 +2454,6 @@
         </div>
     </main>
     
-    <!-- Footer -->
     <footer class="bg-gray-900 text-white py-8 mt-16">
         <div class="container">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -3199,12 +3091,94 @@
         }
         
         // Initialize app when DOM is ready
+        // Initialize sustainability audit charts
+        function initSustainabilityCharts() {
+            // Carbon Footprint Chart (Line Chart)
+            const carbonCtx = document.getElementById('carbonFootprintChart');
+            if (carbonCtx) {
+                new Chart(carbonCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+                        datasets: [{
+                            label: 'CO₂-Emissionen (Tonnen)',
+                            data: [45, 42, 38, 35, 32, 28, 25, 23, 26, 29, 33, 36],
+                            borderColor: 'rgb(34, 197, 94)',
+                            backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Monatlicher CO₂-Fußabdruck'
+                            },
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Tonnen CO₂'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Energy Consumption Chart (Pie Chart)
+            const energyCtx = document.getElementById('energyChart');
+            if (energyCtx) {
+                new Chart(energyCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Solar', 'Wind', 'Wasser', 'Erdgas', 'Kohle'],
+                        datasets: [{
+                            data: [35, 25, 18, 15, 7],
+                            backgroundColor: [
+                                '#FCD34D',
+                                '#3B82F6',
+                                '#06B6D4',
+                                '#F59E0B',
+                                '#6B7280'
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#ffffff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Energiemix (%)'
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
                 WCAGApp.init();
+                initSustainabilityCharts();
             });
         } else {
             WCAGApp.init();
+            initSustainabilityCharts();
         }
     </script>
     </body>
