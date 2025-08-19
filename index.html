@@ -1267,20 +1267,37 @@
         
         <div id="techdaily" class="page">
             <div class="min-h-screen bg-white">
-                <header class="bg-gray-900 text-white">
-                    <div class="container py-6">
-                        <div class="flex items-center justify-between">
-                            <h1 class="text-3xl font-bold" data-i18n-key="techdaily.title">Hier</h1>
-                            <nav>
-                                <div class="flex space-x-6">
-                                    <a href="#" class="hover:text-blue-400 focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400" data-i18n-key="techdaily.nav.home" onclick="navigateToSection('Startseite'); return false;">Startseite</a>
-                                    <a href="#" class="hover:text-blue-400 focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400" data-i18n-key="techdaily.nav.technology" onclick="navigateToSection('Technologie'); return false;">Technologie</a>
-                                    <a href="#" class="hover:text-blue-400 focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400" data-i18n-key="techdaily.nav.innovation" onclick="navigateToSection('Innovation'); return false;">Innovation</a>
-                                    <a href="#" class="hover:text-blue-400 focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400" data-i18n-key="techdaily.nav.startup" onclick="navigateToSection('Startup'); return false;">Startup</a>
-                                    <a href="#" class="hover:text-blue-400 focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400" data-i18n-key="techdaily.nav.reviews" onclick="navigateToSection('Bewertungen'); return false;">Bewertungen</a>
-                                    <a href="#" class="hover:text-blue-400 focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400" data-i18n-key="techdaily.nav.contact" onclick="navigateToSection('Kontakt'); return false;">Kontakt</a>
+                <header class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white shadow-lg">
+                    <div class="container py-8">
+                        <div class="flex items-center justify-between flex-wrap gap-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4 6h16M4 12h16M4 18h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                                <h1 class="text-4xl font-bold" data-i18n-key="techdaily.title">TechDaily News</h1>
+                            </div>
+                            <nav class="bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4">
+                                <div class="flex space-x-12">
+                                    <a href="#" class="text-white/90 hover:text-white hover:bg-white/20 px-4 py-3 rounded-md transition-all duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-white/50" data-i18n-key="techdaily.nav.home" onclick="navigateToSection('Startseite'); return false;">Startseite</a>
+                                    <a href="#" class="text-white/90 hover:text-white hover:bg-white/20 px-4 py-3 rounded-md transition-all duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-white/50" data-i18n-key="techdaily.nav.technology" onclick="navigateToSection('Technologie'); return false;">Technologie</a>
+                                    <a href="#" class="text-white/90 hover:text-white hover:bg-white/20 px-4 py-3 rounded-md transition-all duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-white/50" data-i18n-key="techdaily.nav.innovation" onclick="navigateToSection('Innovation'); return false;">Innovation</a>
+                                    <a href="#" class="text-white/90 hover:text-white hover:bg-white/20 px-4 py-3 rounded-md transition-all duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-white/50" data-i18n-key="techdaily.nav.startup" onclick="navigateToSection('Startup'); return false;">Startup</a>
+                                    <a href="#" class="text-white/90 hover:text-white hover:bg-white/20 px-4 py-3 rounded-md transition-all duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-white/50" data-i18n-key="techdaily.nav.reviews" onclick="navigateToSection('Bewertungen'); return false;">Bewertungen</a>
+                                    <a href="#" class="text-white/90 hover:text-white hover:bg-white/20 px-4 py-3 rounded-md transition-all duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-white/50" data-i18n-key="techdaily.nav.contact" onclick="navigateToSection('Kontakt'); return false;">Kontakt</a>
                                 </div>
                             </nav>
+                        </div>
+                        
+                        <div class="mt-8 border-t border-white/20 pt-6">
+                            <div class="flex items-center justify-between text-sm">
+                                <div class="text-white/80 space-x-6">
+                                    <span>19. Januar 2025</span>
+                                    <span>München 2°C</span>
+                                    <span>DAX +0.8%</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </header>
@@ -1288,193 +1305,317 @@
                 <div class="container py-8">
                     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
                         <main class="lg:col-span-3">
-                            <h2 class="text-2xl font-bold mb-6" data-i18n-key="techdaily.latest">Mehr</h2>
+                            <div class="flex items-center justify-between mb-8">
+                                <h2 class="text-3xl font-bold text-gray-900" data-i18n-key="techdaily.latest">Neueste Nachrichten</h2>
+                                <div class="flex space-x-3">
+                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Live</span>
+                                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Aktualisiert</span>
+                                </div>
+                            </div>
                             
-                            <article class="mb-12">
+                            <article class="mb-12 bg-white shadow-lg rounded-xl overflow-hidden">
                                 <div class="relative">
-                                    <div class="h-64 rounded-lg mb-4 overflow-hidden">
+                                    <div class="h-64 overflow-hidden">
                                         <img 
-                                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzM0ZDM5OSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LSSBpbSBHZXN1bmRoZWl0c3dlc2VuPC90ZXh0Pgo8L3N2Zz4="
+                                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMzYjgyZjY7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzEzNGU0YTtzdG9wLW9wYWNpdHk6MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iNDAwIiBmaWxsPSJ1cmwoI2dyYWQpIi8+CiAgPGNpcmNsZSBjeD0iMjAwIiBjeT0iMTUwIiByPSI0MCIgZmlsbD0iIzEwYjk4MSIgb3BhY2l0eT0iMC44Ii8+CiAgPGNpcmNsZSBjeD0iNzAwIiBjeT0iMjUwIiByPSI2MCIgZmlsbD0iIzA2Yjg4NSIgb3BhY2l0eT0iMC42Ii8+CiAgPHJlY3QgeD0iMzAwIiB5PSIyMDAiIHdpZHRoPSIzMDAiIGhlaWdodD0iMTAwIiByeD0iMTAiIGZpbGw9IiMxOTkxOGIiIG9wYWNpdHk9IjAuNyIvPgogIDx0ZXh0IHg9IjQ1MCIgeT0iMjYwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMzYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+S0kgUmV2b2x1dGlvbjwvdGV4dD4KPC9zdmc+"
+                                            alt="KI Revolution in der Medizin - Symbolbild mit futuristischen medizinischen Geräten"
                                             class="w-full h-full object-cover"
                                         />
                                     </div>
                                     
-                                    <div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded text-sm" data-i18n-key="techdaily.breaking">
-                                        Eilmeldung
+                                    <div class="absolute top-6 left-6 flex space-x-2">
+                                        <span class="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg" data-i18n-key="techdaily.breaking">
+                                            🔴 EILMELDUNG
+                                        </span>
+                                        <span class="bg-blue-600 text-white px-3 py-2 rounded-full text-sm font-medium">
+                                            Gesundheit & Tech
+                                        </span>
                                     </div>
                                 </div>
                                 
-                                <h2 class="text-3xl font-bold text-gray-900 mb-4">
-                                    Information
-                                </h2>
-                                <p class="text-lg text-gray-700 mb-4">Medizinische Fachkräfte nutzen künstliche Intelligenz, um Patientenergebnisse zu verbessern und Diagnosen zu optimieren.</p>
-                                
-                                <div class="text-sm text-gray-600 mb-4">
-                                    <span data-i18n-key="techdaily.publishedBy">Veröffentlicht von</span>
-                                    <span> Dr. Sarah Mitchell</span>
-                                    <span> | </span>
-                                    <span>17. August 2024</span>
-                                    <span> | </span>
-                                    <span>5 Min. Lesezeit</span>
-                                </div>
-                                
-                                <div class="flex gap-4">
-                                    <button class="btn btn-primary" aria-label="Artikel öffnen" data-i18n-key="techdaily.readMore" onclick="readArticle('KI im Gesundheitswesen')">Weiterlesen</button>
-                                    <button class="btn btn-secondary" aria-label="Auf Social Media teilen" onclick="shareArticle('KI im Gesundheitswesen')">Teilen</button>
+                                <div class="p-8">
+                                    <h2 class="text-4xl font-bold text-gray-900 mb-4 leading-tight">
+                                        KI-Revolution im Gesundheitswesen: ChatGPT-ähnliche Systeme diagnostizieren seltene Krankheiten präziser als Ärzte
+                                    </h2>
+                                    <p class="text-xl text-gray-700 mb-6 leading-relaxed">Eine bahnbrechende Studie der Stanford University zeigt, dass fortschrittliche KI-Systeme bei der Diagnose seltener Krankheiten eine 40% höhere Genauigkeit erreichen als erfahrene Mediziner. Die Technologie könnte Millionen von Patienten weltweit helfen.</p>
+                                    
+                                    <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                                        <p class="text-gray-800 font-medium">
+                                            "Dies ist der größte Durchbruch in der medizinischen Diagnostik seit der Erfindung der Röntgenstrahlen", erklärt Dr. Jennifer Adams, Leiterin der Studie. Die KI analysierte über 50.000 Patientenfälle und erkannte Muster, die für das menschliche Auge unsichtbar waren.
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="flex items-center text-sm text-gray-600 mb-6">
+                                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM2MzY2ZjEiLz4KPHN2ZyB4PSIxMCIgeT0iMTAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KPHBhdGggZD0iTTEyIDEyYzIuMjEgMCA0LTEuNzkgNC00cy0xLjc5LTQtNC00LTQgMS43OS00IDQgMS43OSA0IDQgNHptMCAyYy0yLjY3IDAtOCAxLjM0LTggNHYyaDE2di0yYzAtMi42Ni01LjMzLTQtOC00eiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cjwvc3ZnPg==" alt="Autor" class="w-10 h-10 rounded-full mr-3">
+                                        <div>
+                                            <div class="font-semibold text-gray-900">Dr. Sarah Mitchell</div>
+                                            <div>Senior Health Tech Reporter • 19. Januar 2025 • 8 Min. Lesezeit</div>
+                                        </div>
+                                        <div class="ml-auto flex items-center space-x-4">
+                                            <span class="flex items-center"><svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12l-2 8 2-8 2 8-2-8z"/></svg> 2.4k Likes</span>
+                                            <span class="flex items-center"><svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M18 10c0 3.866-3.582 7-8 7-1.454 0-2.827-.31-4.036-.848L2 18l1.848-3.964C3.31 12.827 3 11.454 3 10c0-3.866 3.582-7 8-7s8 3.134 8 7z"/></svg> 156 Kommentare</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex gap-4">
+                                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors" aria-label="Vollständigen Artikel lesen" data-i18n-key="techdaily.readMore" onclick="readArticle('KI im Gesundheitswesen')">Vollständig lesen</button>
+                                        <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-semibold transition-colors" aria-label="Artikel auf Social Media teilen" onclick="shareArticle('KI im Gesundheitswesen')">📤 Teilen</button>
+                                        <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-semibold transition-colors">🔖 Speichern</button>
+                                    </div>
                                 </div>
                             </article>
                             
-                            <h3 class="text-xl font-semibold mb-6">Weitere</h3>
+                            <div class="flex items-center justify-between mb-8">
+                                <h3 class="text-2xl font-bold text-gray-900">Weitere Top-Meldungen</h3>
+                                <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">Alle anzeigen →</a>
+                            </div>
                             
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <article class="business-card">
-                                    <div class="h-48 rounded-lg mb-4 overflow-hidden">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                    <div class="h-40 relative overflow-hidden">
                                         <img 
-                                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI2VmNDQ0NCIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTI1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DeWJlcnNpY2hlcmhlaXQ8L3RleHQ+Cjwvc3ZnPg=="
-                                            alt="Bild"
+                                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iY3liZXIiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZGMzNjI2O3N0b3Atb3BhY2l0eToxIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM2YjE5MWY7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0idXJsKCNjeWJlcikiLz4KICA8cmVjdCB4PSI1MCIgeT0iNTAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMjAiIGZpbGw9IiNmZjU1NTUiIG9wYWNpdHk9IjAuOCIvPgogIDxyZWN0IHg9IjMwMCIgeT0iMTAwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmY5OTk5IiBvcGFjaXR5PSIwLjciLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIyMDAiIHI9IjMwIiBmaWxsPSIjZmZjY2NjIiBvcGFjaXR5PSIwLjYiLz4KICA8dGV4dCB4PSIyNTAiIHk9IjE4MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkN5YmVyc2ljaGVyaGVpdDwvdGV4dD4KPC9zdmc+"
+                                            alt="Cybersicherheit Illustration mit Warnzeichen und Sicherheitssymbolen"
                                             class="w-full h-full object-cover"
                                         />
+                                        <div class="absolute top-3 left-3">
+                                            <span class="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">SICHERHEIT</span>
+                                        </div>
                                     </div>
                                     
-                                    <h3 class="text-xl font-semibold mb-3">Weitere Information</h3>
-                                    <p class="text-gray-600 mb-4">Sicherheitsexperten warnen vor raffinierten Angriffen, die darauf abzielen, Schwachstellen im Homeoffice auszunutzen.</p>
-                                    
-                                    <div class="text-sm text-gray-500">
-                                        <span>Mike Rodriguez</span> · <span>16. August 2024</span>
-                                        <span> · 47</span>
+                                    <div class="p-6">
+                                        <h3 class="text-xl font-bold mb-3 leading-tight">Massive Cyberattacke auf deutsche Krankenhäuser: Hacker erpressen Millionen</h3>
+                                        <p class="text-gray-600 mb-4 leading-relaxed">Cyberkriminelle haben gleichzeitig 47 Krankenhäuser in Deutschland angegriffen und deren IT-Systeme lahmgelegt. Experten sprechen von der größten Attacke auf kritische Infrastruktur seit Jahren.</p>
+                                        
+                                        <div class="flex items-center justify-between text-sm text-gray-500">
+                                            <div class="flex items-center">
+                                                <span class="font-medium">Mike Rodriguez</span>
+                                                <span class="mx-2">•</span>
+                                                <span>18. Januar 2025</span>
+                                            </div>
+                                            <div class="flex items-center space-x-3">
+                                                <span>🔥 847 Reaktionen</span>
+                                                <span>💬 156</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </article>
                                 
-                                <article class="business-card">
-                                    <div class="h-48 rounded-lg mb-4 overflow-hidden">
+                                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                    <div class="h-40 relative overflow-hidden">
                                         <img 
-                                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iIzEwYjk4MSIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTI1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5HcsO8bmUgVGVjaG5vbG9naWU8L3RleHQ+Cjwvc3ZnPg=="
-                                            alt="Nachhaltige Technologie Illustration"
+                                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ3JlZW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMTBiOTgxO3N0b3Atb3BhY2l0eToxIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMwNzJlMzM7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0idXJsKCNncmVlbikiLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjQwIiBmaWxsPSIjMzRkMzk5IiBvcGFjaXR5PSIwLjgiLz4KICA8Y2lyY2xlIGN4PSI0MDAiIGN5PSIyMDAiIHI9IjUwIiBmaWxsPSIjNmVlNGNmIiBvcGFjaXR5PSIwLjciLz4KICA8cmVjdCB4PSIyMDAiIHk9IjEyMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSI2MCIgcng9IjEwIiBmaWxsPSIjYTdmMGVhIiBvcGFjaXR5PSIwLjgiLz4KICA8dGV4dCB4PSIyNTAiIHk9IjI2MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkdyw7xuZSBUZWNobm9sb2dpZTwvdGV4dD4KPC9zdmc+"
+                                            alt="Grüne Technologie und erneuerbare Energien Visualisierung"
                                             class="w-full h-full object-cover"
                                         />
+                                        <div class="absolute top-3 left-3">
+                                            <span class="bg-green-500 text-white px-2 py-1 rounded text-xs font-bold">NACHHALTIGKEIT</span>
+                                        </div>
                                     </div>
                                     
-                                    <h3 class="text-xl font-semibold mb-3">Artikel</h3>
-                                    <p class="text-gray-600 mb-4">Große Tech-Unternehmen investieren Milliarden in erneuerbare Energien für umweltfreundliches Computing.</p>
-                                    
-                                    <div class="text-sm text-gray-500">
-                                        <span>Elena Chen</span> · <span>15. August 2024</span>
-                                        <span> · 23 <span data-i18n-key="techdaily.commentsCount">Kommentare</span></span>
+                                    <div class="p-6">
+                                        <h3 class="text-xl font-bold mb-3 leading-tight">Microsoft investiert 15 Milliarden in grüne Rechenzentren bis 2030</h3>
+                                        <p class="text-gray-600 mb-4 leading-relaxed">Der Tech-Gigant kündigt massive Investitionen in nachhaltige Datacenter an und verspricht, bis 2030 komplett CO2-neutral zu werden. Andere Branchenriesen ziehen nach.</p>
+                                        
+                                        <div class="flex items-center justify-between text-sm text-gray-500">
+                                            <div class="flex items-center">
+                                                <span class="font-medium">Elena Chen</span>
+                                                <span class="mx-2">•</span>
+                                                <span>17. Januar 2025</span>
+                                            </div>
+                                            <div class="flex items-center space-x-3">
+                                                <span>👍 1.2k Likes</span>
+                                                <span>💬 89</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </article>
                                 
-                                <article class="business-card">
-                                    <div class="h-48 rounded-lg mb-4 overflow-hidden">
+                                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                    <div class="h-40 relative overflow-hidden">
                                         <img 
-                                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iIzM5OGNmNCIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTI1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5CbG9ja2NoYWluPC90ZXh0Pgo8L3N2Zz4="
+                                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmxvY2siIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMzk4Y2Y0O3N0b3Atb3BhY2l0eToxIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMxZTNhOGE7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0idXJsKCNibG9jaykiLz4KICA8cmVjdCB4PSI1MCIgeT0iNTAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgZmlsbD0iIzYzNjZmMSIgb3BhY2l0eT0iMC44Ii8+CiAgPHJlY3QgeD0iMTUwIiB5PSI1MCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjOGI5Y2Y2IiBvcGFjaXR5PSIwLjciLz4KICA8cmVjdCB4PSIyNTAiIHk9IjUwIiB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNhMmE5ZjgiIG9wYWNpdHk9IjAuNiIvPgogIDx0ZXh0IHg9IjI1MCIgeT0iMjUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QmxvY2tjaGFpbiAmIFdlYjM8L3RleHQ+CiAgPGxpbmUgeDE9IjkwIiB5MT0iMTMwIiB4Mj0iMTkwIiB5Mj0iMTMwIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8bGluZSB4MT0iMTkwIiB5MT0iMTMwIiB4Mj0iMjkwIiB5Mj0iMTMwIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjMiLz4KPC9zdmc+"
+                                            alt="Blockchain und Web3 Technologie Illustration mit verbundenen Blöcken"
                                             class="w-full h-full object-cover"
                                         />
+                                        <div class="absolute top-3 left-3">
+                                            <span class="bg-blue-500 text-white px-2 py-1 rounded text-xs font-bold">BLOCKCHAIN</span>
+                                        </div>
                                     </div>
                                     
-                                    <h3 class="text-xl font-semibold mb-3">Details</h3>
-                                    <p class="text-gray-600 mb-4">Neue Blockchain-Anwendungen revolutionieren das Lieferkettenmanagement und die Produktverfolgung.</p>
-                                    
-                                    <div class="text-sm text-gray-500">
-                                        <span>Thomas Weber</span> · <span>14. August 2024</span>
-                                        <span> · 31 <span data-i18n-key="techdaily.commentsCount">Kommentare</span></span>
+                                    <div class="p-6">
+                                        <h3 class="text-xl font-bold mb-3 leading-tight">EU plant eigene digitale Währung: Digital-Euro kommt 2026</h3>
+                                        <p class="text-gray-600 mb-4 leading-relaxed">Die Europäische Zentralbank gibt grünes Licht für den Digital-Euro. Die neue Kryptowährung soll traditionelle Banken revolutionieren und Europa digitale Souveränität bringen.</p>
+                                        
+                                        <div class="flex items-center justify-between text-sm text-gray-500">
+                                            <div class="flex items-center">
+                                                <span class="font-medium">Thomas Weber</span>
+                                                <span class="mx-2">•</span>
+                                                <span>16. Januar 2025</span>
+                                            </div>
+                                            <div class="flex items-center space-x-3">
+                                                <span>📈 654 Reaktionen</span>
+                                                <span>💬 243</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </article>
                                 
-                                <article class="business-card">
-                                    <div class="h-48 rounded-lg mb-4 overflow-hidden">
+                                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                    <div class="h-40 relative overflow-hidden">
                                         <img 
-                                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iIzhmNGM2MSIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTI1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5RdWFudGVuY29tcHV0ZXI8L3RleHQ+Cjwvc3ZnPg=="
-                                            alt="Grafik"
+                                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0icXVhbnR1bSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM4ZjRjNjE7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzQ2MWI0OTtzdG9wLW9wYWNpdHk6MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI3F1YW50dW0pIi8+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIyMCIgZmlsbD0iI2VjNGJmZCIgb3BhY2l0eT0iMC45Ij4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InIiIHZhbHVlcz0iMjA7MzA7MjAiIGR1cj0iMnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSBjeD0iNDAwIiBjeT0iMjAwIiByPSIyNSIgZmlsbD0iI2Y0N2NmNCIgb3BhY2l0eT0iMC44Ij4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InIiIHZhbHVlcz0iMjU7MzU7MjUiIGR1cj0iMi41cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICA8L2NpcmNsZT4KICA8cGF0aCBkPSJNMjAwIDEwMCBRIDI1MCA3NCAzMDAgMTAwIEwgMzAwIDE1MCAyMDAgMTUwIFoiIGZpbGw9IiNmN2E1ZjciIG9wYWNpdHk9IjAuNyIvPgogIDx0ZXh0IHg9IjI1MCIgeT0iMjYwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UXVhbnRlbmNvbXB1dGVyPC90ZXh0Pgo8L3N2Zz4="
+                                            alt="Quantencomputer Illustration mit oszillierenden Quantenbits"
                                             class="w-full h-full object-cover"
                                         />
+                                        <div class="absolute top-3 left-3">
+                                            <span class="bg-purple-500 text-white px-2 py-1 rounded text-xs font-bold">QUANTENTECH</span>
+                                        </div>
                                     </div>
                                     
-                                    <h3 class="text-xl font-semibold mb-3">Neues</h3>
-                                    <p class="text-gray-600 mb-4">Wissenschaftler erreichen neuen Meilenstein in der Quantencomputerforschung mit 1000-Qubit-System.</p>
-                                    
-                                    <div class="text-sm text-gray-500">
-                                        <span>Dr. Anna Hoffmann</span> · <span>13. August 2024</span>
-                                        <span> · 89 <span data-i18n-key="techdaily.commentsCount">Kommentare</span></span>
+                                    <div class="p-6">
+                                        <h3 class="text-xl font-bold mb-3 leading-tight">IBM enthüllt 5000-Qubit Quantencomputer: Durchbruch für Kryptographie</h3>
+                                        <p class="text-gray-600 mb-4 leading-relaxed">Der neue IBM "Quantum Godafoss" erreicht eine bisher unerreichbare Rechenpower. Experten warnen vor den Auswirkungen auf aktuelle Verschlüsselungsmethoden und fordern neue Sicherheitsstandards.</p>
+                                        
+                                        <div class="flex items-center justify-between text-sm text-gray-500">
+                                            <div class="flex items-center">
+                                                <span class="font-medium">Prof. Anna Schmidt</span>
+                                                <span class="mx-2">•</span>
+                                                <span>15. Januar 2025</span>
+                                            </div>
+                                            <div class="flex items-center space-x-3">
+                                                <span>🧠 978 Reaktionen</span>
+                                                <span>💬 312</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </article>
                             </div>
                         </main>
                         
-                        <aside class="lg:col-span-1">
-                            <div class="business-card mb-8">
-                                <h3 class="text-lg font-semibold mb-4" data-i18n-key="techdaily.newsletter.title">Hier</h3>
-                                <p class="text-gray-600 mb-4" data-i18n-key="techdaily.newsletter.subtitle">Bleiben Sie auf dem Laufenden mit den neuesten Tech-News.</p>
+                        <aside class="lg:col-span-1 space-y-8">
+                            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <polyline points="22,6 12,13 2,6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-lg font-bold text-gray-900">Newsletter abonnieren</h3>
+                                </div>
+                                <p class="text-gray-700 mb-4">Bleiben Sie auf dem Laufenden mit den neuesten Tech-News und exklusiven Insights.</p>
                                 
-                                <form class="space-y-4" onsubmit="return subscribeNewsletter();">
-                                    <label for="newsletter-email" class="block text-sm font-medium text-gray-700 mb-1">Input</label>
+                                <form class="space-y-3" onsubmit="return subscribeNewsletter();">
+                                    <label for="newsletter-email" class="block text-sm font-medium text-gray-700">E-Mail-Adresse</label>
                                     <input 
                                         type="email" 
                                         id="newsletter-email"
                                         name="newsletter-email"
-                                        placeholder="E-Mail-Adresse eingeben"
-                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                                        placeholder="ihre@email.de"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                         required
                                     />
-                                    <button type="submit" class="btn btn-primary w-full" aria-label="Newsletter-Anmeldung bestätigen" data-i18n-key="techdaily.newsletter.subscribe">Abonnieren</button>
+                                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors" aria-label="Newsletter-Anmeldung bestätigen">Kostenlos abonnieren</button>
                                 </form>
+                                <p class="text-xs text-gray-500 mt-3">📧 Über 50.000 Abonnenten • 📈 Wöchentlicher Tech-Report</p>
                             </div>
                             
-                            <div class="business-card mb-8">
-                                <h3 class="text-lg font-semibold mb-4" data-i18n-key="techdaily.categories">Liste</h3>
+                            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                                <h3 class="text-lg font-bold text-gray-900 mb-4">📂 Kategorien</h3>
                                 
                                 <div class="space-y-3">
-                                    <div class="flex justify-between items-center">
-                                        <button class="text-left hover:text-blue-600 focus:text-blue-600 focus:outline-none" onclick="navigateToSection('Künstliche Intelligenz')">Künstliche Intelligenz</button>
-                                        <span class="text-sm text-gray-500">124</span>
+                                    <div class="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
+                                        <button class="text-left font-medium text-gray-700 hover:text-blue-600 focus:text-blue-600 focus:outline-none transition-colors" onclick="navigateToSection('Künstliche Intelligenz')">Künstliche Intelligenz</button>
+                                        <span class="text-sm font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">124</span>
                                     </div>
-                                    <div class="flex justify-between items-center">
-                                        <button class="text-left hover:text-blue-600 focus:text-blue-600 focus:outline-none" onclick="navigateToSection('Cybersicherheit')">Cybersicherheit</button>
-                                        <span class="text-sm text-gray-500">89</span>
+                                    <div class="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
+                                        <button class="text-left font-medium text-gray-700 hover:text-blue-600 focus:text-blue-600 focus:outline-none transition-colors" onclick="navigateToSection('Cybersicherheit')">Cybersicherheit</button>
+                                        <span class="text-sm font-medium text-red-600 bg-red-50 px-2 py-1 rounded">89</span>
                                     </div>
-                                    <div class="flex justify-between items-center">
-                                        <button class="text-left hover:text-blue-600 focus:text-blue-600 focus:outline-none" onclick="navigateToSection('Blockchain')">Blockchain</button>
-                                        <span class="text-sm text-gray-500">67</span>
+                                    <div class="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
+                                        <button class="text-left font-medium text-gray-700 hover:text-blue-600 focus:text-blue-600 focus:outline-none transition-colors" onclick="navigateToSection('Blockchain')">Blockchain & Web3</button>
+                                        <span class="text-sm font-medium text-purple-600 bg-purple-50 px-2 py-1 rounded">67</span>
                                     </div>
-                                    <div class="flex justify-between items-center">
-                                        <button class="text-left hover:text-blue-600 focus:text-blue-600 focus:outline-none" onclick="navigateToSection('Grüne Technologie')">Grüne Technologie</button>
-                                        <span class="text-sm text-gray-500">45</span>
+                                    <div class="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
+                                        <button class="text-left font-medium text-gray-700 hover:text-blue-600 focus:text-blue-600 focus:outline-none transition-colors" onclick="navigateToSection('Grüne Technologie')">Grüne Technologie</button>
+                                        <span class="text-sm font-medium text-green-600 bg-green-50 px-2 py-1 rounded">45</span>
+                                    </div>
+                                    <div class="flex justify-between items-center py-2">
+                                        <button class="text-left font-medium text-gray-700 hover:text-blue-600 focus:text-blue-600 focus:outline-none transition-colors" onclick="navigateToSection('Quantencomputing')">Quantencomputing</button>
+                                        <span class="text-sm font-medium text-gray-600 bg-gray-50 px-2 py-1 rounded">23</span>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="business-card">
-                                <h3 class="text-lg font-semibold mb-4" data-i18n-key="techdaily.featured">Bereich</h3>
+                            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                                <h3 class="text-lg font-bold text-gray-900 mb-4">🔥 Trending Artikel</h3>
                                 
                                 <div class="space-y-4">
-                                    <div class="flex space-x-3">
-                                        <div class="w-16 h-16 rounded flex-shrink-0 overflow-hidden">
-                                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjM2I4MmY2Ii8+CjxjaXJjbGUgY3g9IjMyIiBjeT0iMzIiIHI9IjEyIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" class="w-full h-full object-cover" />
-                                        </div>
-                                        <div>
-                                            <button class="font-medium text-sm text-left hover:text-blue-600 focus:text-blue-600 focus:outline-none" onclick="readArticle('Neue Smartphone-Features 2024')">Neue Smartphone-Features 2024</button>
-                                            <div class="text-xs text-gray-500">2.500 Aufrufe</div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="flex space-x-3">
-                                        <div class="w-16 h-16 rounded flex-shrink-0 overflow-hidden">
-                                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMTBiOTgxIi8+CjxyZWN0IHg9IjE2IiB5PSIyNCIgd2lkdGg9IjMyIiBoZWlnaHQ9IjE2IiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="Icon" class="w-full h-full object-cover" />
-                                        </div>
-                                        <div>
-                                            <button class="font-medium text-sm text-left hover:text-blue-600 focus:text-blue-600 focus:outline-none" onclick="readArticle('Cloud Computing Trends')">Cloud Computing Trends</button>
-                                            <div class="text-xs text-gray-500">1.800 Aufrufe</div>
+                                    <div class="group cursor-pointer" onclick="readArticle('KI revolutioniert Medizin')">
+                                        <div class="flex items-start space-x-3">
+                                            <span class="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs font-bold rounded flex items-center justify-center">1</span>
+                                            <div class="flex-1">
+                                                <h4 class="font-semibold text-sm text-gray-900 group-hover:text-blue-600 transition-colors leading-tight">KI diagnostiziert seltene Krankheiten präziser als Ärzte</h4>
+                                                <div class="text-xs text-gray-500 mt-1">🔥 12.500 Aufrufe • 2h</div>
+                                            </div>
                                         </div>
                                     </div>
                                     
-                                    <div class="flex space-x-3">
-                                        <div class="w-16 h-16 rounded flex-shrink-0 overflow-hidden">
-                                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZjU5ZTBiIi8+CjxjaXJjbGUgY3g9IjMyIiBjeT0iMjQiIHI9IjgiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHg9IjI0IiB5PSIzNiIgd2lkdGg9IjE2IiBoZWlnaHQ9IjEyIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="5G Technology Miniaturansicht" class="w-full h-full object-cover" />
-                                        </div>
-                                        <div>
-                                            <button class="font-medium text-sm text-left hover:text-blue-600 focus:text-blue-600 focus:outline-none" onclick="readArticle('5G Technologie Ausblick')">5G Technologie Ausblick</button>
-                                            <div class="text-xs text-gray-500">3.200 Aufrufe</div>
+                                    <div class="group cursor-pointer" onclick="readArticle('Massive Cyberattacke')">
+                                        <div class="flex items-start space-x-3">
+                                            <span class="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-orange-500 to-yellow-500 text-white text-xs font-bold rounded flex items-center justify-center">2</span>
+                                            <div class="flex-1">
+                                                <h4 class="font-semibold text-sm text-gray-900 group-hover:text-blue-600 transition-colors leading-tight">Massive Cyberattacke legt deutsche Krankenhäuser lahm</h4>
+                                                <div class="text-xs text-gray-500 mt-1">⚡ 8.900 Aufrufe • 4h</div>
+                                            </div>
                                         </div>
                                     </div>
+                                    
+                                    <div class="group cursor-pointer" onclick="readArticle('Digital Euro 2026')">
+                                        <div class="flex items-start space-x-3">
+                                            <span class="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-yellow-500 to-green-500 text-white text-xs font-bold rounded flex items-center justify-center">3</span>
+                                            <div class="flex-1">
+                                                <h4 class="font-semibold text-sm text-gray-900 group-hover:text-blue-600 transition-colors leading-tight">EU bestätigt: Digital-Euro kommt 2026</h4>
+                                                <div class="text-xs text-gray-500 mt-1">💰 6.200 Aufrufe • 6h</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="group cursor-pointer" onclick="readArticle('Quantencomputer Durchbruch')">
+                                        <div class="flex items-start space-x-3">
+                                            <span class="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-green-500 to-blue-500 text-white text-xs font-bold rounded flex items-center justify-center">4</span>
+                                            <div class="flex-1">
+                                                <h4 class="font-semibold text-sm text-gray-900 group-hover:text-blue-600 transition-colors leading-tight">IBM enthüllt 5000-Qubit Quantencomputer</h4>
+                                                <div class="text-xs text-gray-500 mt-1">🧠 4.800 Aufrufe • 8h</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-6 border border-gray-100">
+                                <h3 class="text-lg font-bold text-gray-900 mb-3">📊 Tech-Markt Report</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm font-medium text-gray-700">NVIDIA</span>
+                                        <span class="text-sm font-bold text-green-600">+2.8%</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm font-medium text-gray-700">Microsoft</span>
+                                        <span class="text-sm font-bold text-green-600">+1.4%</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm font-medium text-gray-700">Bitcoin</span>
+                                        <span class="text-sm font-bold text-red-600">-0.9%</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm font-medium text-gray-700">DAX Tech</span>
+                                        <span class="text-sm font-bold text-green-600">+0.8%</span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-3 border-t border-gray-200">
+                                    <p class="text-xs text-gray-500">💹 Live-Kurse • Letztes Update: 15:42</p>
                                 </div>
                             </div>
                         </aside>
@@ -3079,15 +3220,15 @@
         }
         
         function readArticle(articleTitle) {
-            alert('Demo-Modus: Der vollständige Artikel "' + articleTitle + '" würde in einer echten Anwendung geöffnet werden.\\n\\nDiese Seite dient nur zu WCAG-Testzwecken.');
+            alert('Demo-Modus: Der vollständige Artikel "' + articleTitle + '" würde in einer echten Anwendung geöffnet werden. Diese Seite dient nur zu WCAG-Testzwecken.');
         }
         
         function shareArticle(articleTitle) {
-            alert('Demo-Modus: Der Artikel "' + articleTitle + '" würde in einer echten Anwendung auf Social Media geteilt werden.\\n\\nDiese Seite dient nur zu WCAG-Testzwecken.');
+            alert('Demo-Modus: Der Artikel "' + articleTitle + '" würde in einer echten Anwendung auf Social Media geteilt werden. Diese Seite dient nur zu WCAG-Testzwecken.');
         }
         
         function navigateToSection(sectionName) {
-            alert('Demo-Modus: Der Bereich "' + sectionName + '" würde in einer echten News-Website geöffnet werden.\\n\\nDiese Seite dient nur zu WCAG-Testzwecken.');
+            alert('Demo-Modus: Der Bereich "' + sectionName + '" würde in einer echten News-Website geöffnet werden. Diese Seite dient nur zu WCAG-Testzwecken.');
         }
         
         // Initialize app when DOM is ready
